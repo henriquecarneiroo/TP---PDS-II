@@ -17,5 +17,10 @@ Critérios de Aceitação:
 Cartão CRC
 Classe: Sistema
 Responsabilidades:
-- 
-
+- Inserir um número de matrícula e um saldo atrelado a ele no sistema;
+- Remover um número de matrícula do sistema do sistema;
+- Regarregar o saldo corrente, adicionando uma quantidade solicitada de créditos;
+- Fornecer a visualização do saldo corrente no sistema;
+- Realizar pagamentos em restaurantes e lanchonetes da UFMG, utilizando somente o número de matrícula.
+Colaboradores:
+- Estudantes.
