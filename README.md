@@ -39,6 +39,7 @@ Responsabilidades:
 
 
 Colaboradores:
+list <apartamento>
 
 Classe: Encomendas
 
@@ -48,6 +49,7 @@ Responsabilidades:
 - Apagar encomendas.
 
 Colaboradores:
+list <encomenda>
 
 Classe: Eventos
 
@@ -59,6 +61,8 @@ Responsabilidades:
 - Listar pessoas de um evento.
 
 Colaboradores:
+list <evento>
+
 
 
  
