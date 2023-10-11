@@ -1,26 +1,61 @@
-# Sistema de Crédito para Restaurantes e Lanchonetes na UFMG
+# Administração de Dados, Eventos e Encomendas Simplificada para o Condomínio
 
-Longas filas de espera em restaurantes e lanchonetes na UFMG e a complexidade desnecessária na gestão financeira são problemas que afetam diariamente a vida dos estudantes universitários. Nesse sentido, pensamos em desenvolver um sistema de crédito para estes estabelecimentos dentro da Universidade vinculado ao número de matrícula de cada aluno, a fim de tornar os pagamentos mais simples, rápidos e facilitados para os estudantes, além de reduzir o tempo de espera em filas, otimizando o processo e diminuindo o estresse gerado por isso. 
+*Introdução:*
 
-O sistema consistirá em um programa que armazena os números de matrículas e o saldo de créditos de cada pessoa e os vincula a um sistema próprio, contendo funções que permitem o usuário:
-- recarregar ou visualizar os créditos associados à sua conta;
-- criar ou remover uma conta associada ao seu número de matrícula;
-- realizar pagamentos nos restaurantes e lanchonetes da UFMG a partir do seu número de matrícula utilizando os créditos.
+Na administração de condomínios, o controle de dados e informações é um desafio constante para os gestores. Muitas vezes, garantir um processo eficiente de controle de informações é uma tarefa difícil. É nesse contexto que buscamos simplificar e facilitar a gestão de dados com segurança e praticidade. 
 
-User Story:
-Como estudante da UFMG, quero um sistema de crédito funcional, a partir de uma conta vinculada ao meu número de matrícula, que possa ser utilizado nos pagamentos em restaurantes e lanchonetes dentro da Universidade para facilitar e simplifciar o gerenciamento financeiro, além de reduzir o tempo de espera em filas.
+Imagine um sistema projetado para desembaraçar a complexidade da administração condominial, permitindo que os administradores adicionem, editem e removam informações sobre moradores, seus animais de estimação, visitantes e veículos. Além disso, oferece a capacidade de organizar eventos e rastrear encomendas destinadas aos moradores. Com essa solução, as operações do condomínio fluem de maneira mais suave, tornando o manuseio de dados mais eficiente e descomplicado. 
+
+Este sistema representa a união perfeita entre tecnologia e gestão condominial, atendendo à necessidade de tornar a administração mais prática e eficaz. É um novo começo, onde a inovação é a força que simplifica o complexo universo da administração condominial, tornando-o mais acessível e seguro para todos.
+
+
+*User Story:*
+
+Administração de Dados, Eventos e Encomendas Simplificada para o Condomínio
+Como administrador do condomínio desejo ter um sistema eficiente de organização de informações sobre os moradores, os eventos e as encomendas do condomínio
 Critérios de Aceitação:
-- Posso visualizar ou recarregar os créditos associados ao meu número de matrícula;
-- Posso criar ou remover uma conta atrelada ao meu número de matrícula do sistema;
-- Posso realizar pagamentos em restaurantes e lanchonetes na Universidade utilizando os meus créditos em saldo no sistema.
+- Posso inserir, editar, exibir e remover dados de pessoas, de animais de estimação e de veículos atrelados a um apartamento;
+- Posso criar, mostar, editar ou apagar eventos de em uma data específica solicitados pelos moradores, podendo convidar outras pessoas;
+- Posso ter o controle das encomendas recebidas, podendo registrá-las, escrever o remetente da entrega e exebir um relatório dos últimos cadastros feitos.
 
-Cartão CRC
-Classe: Sistema
+
+*_Cartões CRC:_*
+
+Classe: 
+- Apartamento
 Responsabilidades:
-- Inserir um número de matrícula e um saldo atrelado a ele no sistema;
-- Remover um número de matrícula do sistema do sistema;
-- Regarregar o saldo corrente, adicionando uma quantidade solicitada de créditos;
-- Fornecer a visualização do saldo corrente no sistema;
-- Realizar pagamentos em restaurantes e lanchonetes da UFMG, utilizando somente o número de matrícula.
+- Inserir pessoas no apartamento;
+- Inserir carros no apartamento;
+- Inserir animais no apartamento;
+- Adicionar visitantes ao apartamento;
+- Exibir informações do apartamento;
+- Editar pessoas no apartamento;
+- Editar carros no apartamento ;
+- Editar animais no apartamento;
+- Apagar pessoas no apartamento;
+- Apagar carros no apartamento;
+- Apagar animais no apartamento.
 Colaboradores:
-- Estudantes.
+
+Classe: 
+- Encomendas
+Responsabilidades:
+- Inserir novas encomendas;
+- Exibir encomendas;
+- Apagar encomendas.
+Colaboradores:
+
+Classe:
+- Eventos
+Responsabilidades:
+- Criar um evento;
+- Exibir eventos programados;
+- Apagar um evento;
+- Adicionar convidados em um evento;
+- Listar pessoas de um evento.
+Colaboradores:
+
+
+ 
+
+
