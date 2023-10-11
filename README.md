@@ -22,6 +22,7 @@ Critérios de Aceitação:
 *_Cartões CRC:_*
 
 Classe: Apartamento
+
 Responsabilidades:
 - Inserir pessoas no apartamento;
 - Inserir carros no apartamento;
@@ -34,22 +35,27 @@ Responsabilidades:
 - Apagar pessoas no apartamento;
 - Apagar carros no apartamento;
 - Apagar animais no apartamento.
+
 Colaboradores:
 
 Classe: Encomendas
+
 Responsabilidades:
 - Inserir novas encomendas;
 - Exibir encomendas;
 - Apagar encomendas.
+
 Colaboradores:
 
 Classe: Eventos
+
 Responsabilidades:
 - Criar um evento;
 - Exibir eventos programados;
 - Apagar um evento;
 - Adicionar convidados em um evento;
 - Listar pessoas de um evento.
+
 Colaboradores:
 
 
