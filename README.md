@@ -23,6 +23,7 @@ Critérios de Aceitação:
 
 Classe: Apartamento
 
+
 Responsabilidades:
 - Inserir pessoas no apartamento;
 - Inserir carros no apartamento;
@@ -35,6 +36,7 @@ Responsabilidades:
 - Apagar pessoas no apartamento;
 - Apagar carros no apartamento;
 - Apagar animais no apartamento.
+
 
 Colaboradores:
 
