@@ -9,6 +9,8 @@ using std::string;
 
 /* Coisas que podem ser adicionadas:
     - Um destruidor
+    - Uma funçao que verifica se a pesssoa eh adm ou moradora para faciliar a
+    implementacao das outras classes
 
    Consideracoes antes de alterar o codigo:
    - Nenhuma por enquanto
@@ -101,9 +103,9 @@ class Apartamento {
         string tipo_veiculo;
     };
 
-    list <Pessoa> pessoas;
-    list <Pet> pets;
-    list <Veiculo> veiculos;
+    list <Pessoa> pessoas_;
+    list <Pet> pets_;
+    list <Veiculo> veiculos_;
 
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos
 
