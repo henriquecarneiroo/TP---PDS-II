@@ -33,3 +33,9 @@ void Evento::exibir_evento(string responsavel, string nome_evento) {
         }
     }
 }
+
+void Evento::excluir_evento(string responsavel, string nome_evento) {
+    eventos_.remove_if([responsavel, nome_evento](const Agendamento& evento) {
+        return evento.responsavel == responsavel && evento.nome_evento == nome_evento;
+    });
+}
