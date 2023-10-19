@@ -5,7 +5,7 @@
 #include <list>
 #include <string>
 #include <vector>
-
+using namespace std;
 /* Coisas que podem ser adicionadas:
     - Queria fazer um metodo de verificacao mais eficiente em relaçao
     ao criar evento (ver se a pessoa eh adm ou moradora para a criacao)
