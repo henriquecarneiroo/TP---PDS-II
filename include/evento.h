@@ -37,15 +37,15 @@ class Evento {
 
     /*  Adiciona um convidado ao evento, o apartamento dele deve ser passado*/
 
-    void editar_evento (string responsavel; string nome_evento);
+    void editar_evento (string responsavel, string nome_evento);
 
     /* Permite editar um evento*/
     
-    void excluir_evento (string responsavel; string nome_evento);
+    void excluir_evento (string responsavel, string nome_evento);
 
     /* Permite exluir um evento da lista de eventos */
 
-    void exibir_evento (string responsavel; string nome_evento);
+    void exibir_evento (string responsavel, string nome_evento);
 
     /* Exibe todas a informacoes do evento, como data e lista de convidados*/
 
