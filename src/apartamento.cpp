@@ -4,130 +4,159 @@
 #include <iostream>
 
 using namespace std;
+/*
+Mudanças no ultimo commit:
+criado o construtor
+algumas funções refeitas para usar os parâmetros
+chamada de funções implementadas no .h
 
-void Apartamento::inserir_pessoa()
+ideias:
+vincular o pet e o veículo a um dono
+colocar mais estatisticas
+*/
+
+//tem que testar esse construtor pra ver se ele funciona como o esperado
+Apartamento::Apartamento(int max_Adm = 1, int max_Morador = 5, int max_Visitante = 10,
+                         int max_Pet = 3, int max_Veiculo = 2)
 {
-    int tipo;
+    numeroAdm = max_Adm;
+    numeroMoradores = max_Morador;
+    numeroVisitantes = max_Visitante;
+    numeroPets = max_Pet;
+    numeroVeiculos = max_Veiculo;
+}
+//talvez seria interessante criar uma função que adiciona o tipo_pessoa pra usar aq e no editar pessoa
+void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
+{
     Pessoa pessoa;
-    cin >> pessoa.nome;
-    cin >> pessoa.data_nascimento;
-    cin >> tipo;
 
-    switch (tipo)
+    pessoa.nome = nome;
+    pessoa.data_nascimento = data_nascimento;
+
+    if (tipo_pessoa == "administradora")
     {
-    case 1:
         pessoa.tipo_pessoa = administradora;
-    case 2:
+    }
+    else if (tipo_pessoa == "moradora")
+    {
         pessoa.tipo_pessoa = moradora;
-    case 3:
+    }
+    else if (tipo_pessoa == "visitante")
+    {
         pessoa.tipo_pessoa = visitante;
     }
-    pessoas_.push_back(pessoa);
 }
-
-void Apartamento::inserir_pet()
+//o mesmo vale pra essa...
+void Apartamento::inserir_pet(string nome, string raca, string tipo)
 {
-    int tipo;
     Pet pet;
-    cin >> pet.nome;
-    cin >> pet.raca;
-    cin >> tipo;
+    pet.nome = nome;
+    pet.raca = raca;
 
-    switch (tipo)
+    if (tipo == "cachorro")
     {
-    case 1:
         pet.tipo_pet = cachorro;
-    case 2:
-        pet.tipo_pet = gato;
-    case 3:
+    }
+    else if (tipo == "gato")
+    {
+        pet.tipo_pet = cachorro;
+    }
+    else if (tipo == "passaro")
+    {
         pet.tipo_pet = passaro;
-    case 4:
+    }
+    else if (tipo == "outro")
+    {
         pet.tipo_pet = outro;
     }
     pets_.push_back(pet);
 }
 
-void Apartamento::inserir_veiculo()
+void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veiculo)
 {
     Veiculo veiculo;
-    cin >> veiculo.modelo;
-    cin >> veiculo.placa;
-    cin >> veiculo.tipo_veiculo;
-
+    veiculo.modelo = modelo;
+    veiculo.placa = placa;
+    veiculo.tipo_veiculo = tipo_veiculo;
     veiculos_.push_back(veiculo);
 }
-void Apartamento::editar_pessoa(string nome_pessoa)
+void Apartamento::editar_pessoa(string nome_antigo, string nome_novo, string data_nascimento_antiga,
+                                string data_nascimento_nova, string tipo_pessoa)
 {
-    int tipo;
-
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
-        if ((*it).nome == nome_pessoa)
+        if ((*it).nome == nome_antigo && (*it).data_nascimento == data_nascimento_antiga)
         {
-            cin >> (*it).nome;
-            cin >> (*it).data_nascimento;
-            cin >> tipo;
-            switch (tipo)
+            (*it).nome = nome_novo;
+            (*it).data_nascimento = data_nascimento_nova;
+
+            if (tipo_pessoa == "administradora")
             {
-            case 1:
                 (*it).tipo_pessoa = administradora;
-            case 2:
+            }
+            else if (tipo_pessoa == "moradora")
+            {
                 (*it).tipo_pessoa = moradora;
-            case 3:
+            }
+            else if (tipo_pessoa == "visitante")
+            {
                 (*it).tipo_pessoa = visitante;
             }
             break;
         }
     }
 }
-void Apartamento::editar_pet(string nome_pet)
+void Apartamento::editar_pet(string nome_pet, string nome_pet_novo, string raca_antiga,
+                             string raca, string tipo)
 {
-    int tipo;
 
     for (auto it = pets_.begin(); it != pets_.end(); it++)
     {
-        if ((*it).nome == nome_pet)
+        if ((*it).nome == nome_pet && (*it).raca == raca_antiga)
         {
-            cin >> (*it).nome;
-            cin >> (*it).raca;
-            cin >> tipo;
+            (*it).nome = nome_pet_novo;
+            (*it).raca = raca;
 
-            switch (tipo)
+            if (tipo == "cachorro")
             {
-            case 1:
                 (*it).tipo_pet = cachorro;
-            case 2:
-                (*it).tipo_pet = gato;
-            case 3:
+            }
+            else if (tipo == "gato")
+            {
+                (*it).tipo_pet = cachorro;
+            }
+            else if (tipo == "passaro")
+            {
                 (*it).tipo_pet = passaro;
-            case 4:
+            }
+            else if (tipo == "outro")
+            {
                 (*it).tipo_pet = outro;
             }
-
             break;
         }
     }
 }
-void Apartamento::editar_veiculo(string placa)
+void Apartamento::editar_veiculo(string placa_antiga, string placa_nova, string modelo, string tipo_veiculo)
 {
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++)
     {
-        if ((*it).placa == placa)
+        if ((*it).placa == placa_antiga)
         {
-            cin >> (*it).modelo;
-            cin >> (*it).placa;
-            cin >> (*it).tipo_veiculo;
+            (*it).modelo = modelo;
+            (*it).placa = placa_nova;
+            (*it).tipo_veiculo = tipo_veiculo;
 
             break;
         }
     }
 }
 
-void Apartamento::editar_pessoa(string nome_pessoa)
+void Apartamento::excluir_pessoa(string nome_pessoa, string data_nascimento)
 {
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
-        if ((*it).nome == nome_pessoa)
+        if ((*it).nome == nome_pessoa && (*it).data_nascimento == data_nascimento)
         {
             pessoas_.erase(it);
             break;
@@ -135,13 +164,14 @@ void Apartamento::editar_pessoa(string nome_pessoa)
     }
 }
 
-void Apartamento::excluir_pet(string nome_pet)
+void Apartamento::excluir_pet(string nome_pet, string raca)
 {
     for (auto it = pets_.begin(); it != pets_.end(); it++)
     {
-        if ((*it).nome == nome_pet)
+        if ((*it).nome == nome_pet && (*it).raca == raca)
         {
             pets_.erase(it);
+            break;
         }
     }
 }
@@ -159,11 +189,13 @@ void Apartamento::excluir_veiculo(string placa)
 
 void Apartamento::exibir_estatisticas()
 {
-    // as funções que irão contar as quantidades ainda precisam ser implementadas
-    cout << "Quantidades de moradores do prédio: ";
-    cout << "Quantidade de visitantes: ";
-    cout << "Administrador(a): ";
-    cout << "Quantidade de visitantes: ";
+    cout << "Quantidades de moradores do prédio: " << contar_moradores();
+    cout << "Quantidade de visitantes: " << contar_visitantes();
     cout << "Quantidade de pets: " << pets_.size();
     cout << "Quantidade de veículos: " << veiculos_.size();
+
+    /*
+    Se tiver mais alguma coisa que vocês quiserem adicionar nessa função fiquem a vontade,
+    lembrem de sempre usar o encapsulamento.
+    */
 }
