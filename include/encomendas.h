@@ -20,7 +20,7 @@
 class Encomendas{
     public:
 
-    void registrar_encomenda (string id, string destinatario, string data_entrega);
+    bool registrar_encomenda (string id, string destinatario, string data_entrega);
 
     /* Permite inserir uma nova encomenda, informando o seu id, que não pode ter menos de
     6 caracteres e nem mais de 50, o destinatário que deve ser um morador do prédio, caso
@@ -32,8 +32,8 @@ class Encomendas{
     /* Permite apagar uma encomenda, o seu id deve ser fornecido, caso ele não exista, nada
     acontecerá */
 
-    void exibir_encomendas (string id);
-
+    void exibir_encomendas ();
+    /*tirei o parâmetro id pq não precisa dele pra exibir as encomendas*/
     /* Permite exibir todas as encomendas existentes */
 
     bool verificar_encomenda (string id);
@@ -47,7 +47,7 @@ class Encomendas{
         string data_entrega;
     };
 
-    map <string, Encomenda> encomendas_;
+    std::map <string, Encomenda> encomendas_;
 
 };
 
