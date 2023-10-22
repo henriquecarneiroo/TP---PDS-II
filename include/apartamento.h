@@ -69,6 +69,7 @@ public:
 
     void exibir_estatisticas();
 
+
     /*
     Exibe, de um modo geral as informacoes de um apartamento, como:
     - Estatísticas (por enquanto so a quantidade de cada objeto, com o passar
@@ -116,32 +117,6 @@ private:
     list<Pessoa> pessoas_;
     list<Pet> pets_;
     list<Veiculo> veiculos_;
-    int contar_moradores()
-    {
-        int num_moradores = 0;
-        for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
-        {
-
-            if ((*it).tipo_pessoa == 'moradora')
-            {
-                num_moradores++;
-            }
-        }
-        return num_moradores;
-    }
-
-    int contar_visitantes()
-    {
-        int num_visitantes = 0;
-        for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
-        {
-            if ((*it).tipo_pessoa == 'visitante')
-            {
-                num_visitantes++;
-            }
-        }
-        return num_visitantes;
-    }
     /*
     fiz algumas pesquisas e não tem como declarar essas funções privadas do 
     jeito que eu queria, que era o mesmo que declara os métodos publicos, se
