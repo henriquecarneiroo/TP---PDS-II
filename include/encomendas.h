@@ -20,7 +20,7 @@
 class Encomendas{
     public:
 
-    bool registrar_encomenda (string id, string destinatario, string data_entrega);
+    void registrar_encomenda (string id, string destinatario, string data_entrega);
 
     /* Permite inserir uma nova encomenda, informando o seu id, que não pode ter menos de
     6 caracteres e nem mais de 50, o destinatário que deve ser um morador do prédio, caso
