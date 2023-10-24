@@ -1,4 +1,6 @@
 #include "evento.h"
+#include "funcoes_auxiliares.h"
+
 #include <iostream>
 #include <list>
 #include <string>
@@ -12,9 +14,10 @@ void Evento::criar_evento(string responsavel, string nome_evento, string data_ev
     eventos_.push_back(novo_evento);
 }
 
+//Pré-condição: convidados devem ser moradores ou visitantes
 void Evento::adicionar_convidado(Apartamento& apartamento) {
-    for (auto& evento : eventos_) {
-        if (evento.responsavel == apartamento.getResponsavel()) {
+    for (auto& it : eventos_) {
+        if (it.responsavel == apartamento.getResponsavel()) {
             evento.convidados.push_back(apartamento.getNomeConvidado());
         }
     }

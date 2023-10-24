@@ -1,7 +1,7 @@
 #include "funcoes_auxiliares.h"
 #include "apartamento.h"
 
-int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE)
+int contar_moradores(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE)
 {
     int num_moradores = 0;
     for (itB;itB != itE; itB++)
@@ -15,7 +15,7 @@ int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE)
     return num_moradores;
 }
 
-int contar_visitante(int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE))
+int contar_visitantes(int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE))
 {
     int num_visitantes = 0;
     for (itB;itB != itE; itB++)
