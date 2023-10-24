@@ -15,11 +15,13 @@ struct Pessoa
 };
 
 list<Pessoa> pessoas_;
+
 auto itB = pessoas_.begin();
 auto itE = pessoas_.end();
 
-int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE);
-int contar_visitante(int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE)
-);
+//Computa e retorna a quantidade de moradores exitentes no condomínio
+int contar_moradores(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE);
+int contar_visitante(int contar_morador(list<Pessoa>::iterator itB, list<Pessoa>::iterator itE));
+
 
 #endif
