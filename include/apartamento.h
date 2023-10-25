@@ -116,7 +116,6 @@ private:
     {
         string nome;
         string raca;
-        Pessoa dono;
         TipoPet tipo_pet;
     };
 
@@ -124,7 +123,6 @@ private:
     {
         string modelo;
         string placa;
-        Pessoa dono;
         string tipo_veiculo;
     };
 
