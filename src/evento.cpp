@@ -1,5 +1,4 @@
 #include "evento.h"
-#include "funcoes_auxiliares.h"
 
 #include <iostream>
 #include <list>
