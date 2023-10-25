@@ -4,60 +4,47 @@
 #include <iostream>
 
 using namespace std;
-/*
-Mudanças no ultimo commit:
-criado o construtor
-algumas funções refeitas para usar os parâmetros
-chamada de funções implementadas no .h
 
+/*
 ideias:
 vincular o pet e o veículo a um dono
 colocar mais estatisticas
 */
 
 // tem que testar esse construtor pra ver se ele funciona como o esperado
-Apartamento::Apartamento(int max_Moradores, int max_Visitantes, int max_Pessoas,
+Apartamento::Apartamento(int max_Moradores, int max_Visitantes,
                          int max_Pets, int max_Veiculos)
 {
     NumeroRestanteMoradores = max_Moradores;
     NumeroRestanteVisitantes = max_Visitantes;
-    NumeroRestantePessoas = max_Pessoas;
     NumeroRestantePets = max_Pets;
     NumeroRestanteVeiculos = max_Veiculos;
 }
 
-// Introduzindo a ideia do contador e retirando o tipo adm
 // Lembrar de tratar a exceção para nomes, datas e tipos inválidos
-// Lembrar de tratar exceção quando quiser adicionar mais moradores ou visitantes que o maximo permitido
-// mesmo quando o numero de pessoas restante é válido
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
 {
-    if (NumeroRestantePessoas > 0){
-        Pessoa pessoa;
-
-        pessoa.nome = nome;
-        pessoa.data_nascimento = data_nascimento;
-
-        if (tipo_pessoa == "moradora")
-        {
-            if(NumeroRestanteMoradores > 0){
-                pessoa.tipo_pessoa = moradora;
-                contador["Moradores"]++;
-            }
+    Pessoa pessoa;
+    pessoa.nome = nome;
+    pessoa.data_nascimento = data_nascimento;
+    if (tipo_pessoa == "moradora")
+    {
+        if(NumeroRestanteMoradores > 0){
+            pessoa.tipo_pessoa = moradora;
+            pessoas_.push_back(pessoa);
+            NumeroRestanteMoradores--;
+            contador["Moradores"]++;
         }
-        else if (tipo_pessoa == "visitante")
-        {
-            if(NumeroRestanteVisitantes > 0){
-                pessoa.tipo_pessoa = visitante;
-                NumeroRestanteVisitantes--;
-                contador["Visitantes"]++;
-            }
+    }
+    else if (tipo_pessoa == "visitante")
+    {
+        if(NumeroRestanteVisitantes > 0){
+            pessoa.tipo_pessoa = visitante;
+            pessoas_.push_back(pessoa);
+            NumeroRestanteVisitantes--;
+            contador["Visitantes"]++;
         }
-
-        pessoas_.push_back(pessoa);
-        NumeroRestantePessoas--;
-        contador["Pessoas"]++;
-    }//else?
+    }
 }
 
 // introduzindo a ideia do contador
@@ -197,31 +184,29 @@ void Apartamento::editar_veiculo(string placa_antiga, string modelo_antigo, stri
             (*it).modelo = modelo_novo;
             (*it).placa = placa_nova;
             (*it).tipo_veiculo = tipo_veiculo_novo;
-
             break;
         }
     }
 }
 
 // Lembrar de tratar exceções, pro caso dos dados não baterem
+// Exclui a pessoa e atualiza os contadores
 void Apartamento::excluir_pessoa(string nome_pessoa, string data_nascimento)
 {
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
         if ((*it).nome == nome_pessoa && (*it).data_nascimento == data_nascimento)
         {
-            if(NumeroRestantePessoas < 15){
-                if ((*it).tipo_pessoa == moradora){
-                    contador["Moradores"]--;
-                    NumeroRestanteMoradores++;
-                }
-                else if ((*it).tipo_pessoa == visitante){
-                    contador["Visitantes"]--;
-                    NumeroRestanteVisitantes++;
-                }
+            if ((*it).tipo_pessoa == moradora){
                 pessoas_.erase(it);
-                NumeroRestantePessoas++;
-                contador["Pessoas"]--;
+                contador["Moradores"]--;
+                NumeroRestanteMoradores++;
+                break;
+            }
+            else if ((*it).tipo_pessoa == visitante){
+                pessoas_.erase(it);
+                contador["Visitantes"]--;
+                NumeroRestanteVisitantes++;
                 break;
             }
         }
@@ -230,6 +215,7 @@ void Apartamento::excluir_pessoa(string nome_pessoa, string data_nascimento)
 
 // Lembrar de tratar exceções, pro caso dos dados não baterem
 // Lembrando que podemos retirar esse contadores de tipos, talvez seja desnecessário
+// Exclui um pet e atualiza os contadores
 void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
 {
     for (auto it = pets_.begin(); it != pets_.end(); it++)
@@ -263,6 +249,7 @@ void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
 }
 
 // Lembrar de tratar exceções, pro caso dos dados não baterem
+// Exclui um veículo e atualiza os contadores
 void Apartamento::excluir_veiculo(string placa)
 {
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++)
@@ -271,6 +258,7 @@ void Apartamento::excluir_veiculo(string placa)
             if ((*it).placa == placa)
             {
                 veiculos_.erase(it);
+                contador["Veiculos"]--;
                 NumeroRestanteVeiculos++;
             }
         }
@@ -278,12 +266,15 @@ void Apartamento::excluir_veiculo(string placa)
     }
 }
 
-// Não tenho certeza se é possível acessar o contador assim direto, visto que ele é privado
-// apesar de ele estar no .cpp. De qq, forma, se não, alteremos depois
 void Apartamento::exibir_estatisticas()
 {
     cout << "Quantidades de moradores do prédio: " << contador["Moradores"] << endl;
     cout << "Quantidade de visitantes: " << contador["Visitantes"] << endl;
     cout << "Quantidade de pets: " << contador["Pets"] << endl;
     cout << "Quantidade de veículos: " << contador["Veículos"] << endl;
+}
+
+// Retorna a quantidade de itens, a partir da chave passada, do contador
+int Apartamento::quantidade(string chave){
+    return contador[chave];
 }

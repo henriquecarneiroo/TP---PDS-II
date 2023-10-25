@@ -29,7 +29,7 @@ using std::string;
 class Apartamento
 {
 public:
-    Apartamento(int max_Moradores = 5, int max_Visitantes = 10, int max_Pessoas = 15,
+    Apartamento(int max_Moradores = 5, int max_Visitantes = 10,
                 int max_Pets = 3, int max_Veiculos = 2);
 
     /* Construtor que permite definir limites máximos para diferentes tipos de
@@ -139,11 +139,9 @@ private:
     */
 
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos
-    // Adicionei MAX_PESSOAS para facilitar implementações
 
     static const int MAX_MORADORES;
     static const int MAX_VISITANTES;
-    static const int MAX_PESSOAS;
     static const int MAX_PETS;
     static const int MAX_VEICULOS;
 
@@ -151,7 +149,6 @@ private:
 
     int NumeroRestanteMoradores = 0;
     int NumeroRestanteVisitantes = 0;
-    int NumeroRestantePessoas = 0;
     int NumeroRestantePets = 0;
     int NumeroRestanteVeiculos = 0;
 };
