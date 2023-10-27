@@ -130,6 +130,7 @@ private:
     list<Pet> pets_;
     list<Veiculo> veiculos_;
     map<string,int> contador;
+    
     friend class Evento;
     friend class Encomendas;
 
