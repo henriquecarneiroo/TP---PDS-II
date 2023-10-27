@@ -122,5 +122,56 @@ int main() {
         }
     }
 
+    Encomendas encomendasManager;
+    int choice;
+
+    while (true) {
+        std::cout << "Escolha uma ação:\n";
+        std::cout << "1. Registrar Encomenda\n";
+        std::cout << "2. Apagar Encomenda\n";
+        std::cout << "3. Exibir Encomendas\n";
+        std::cout << "4. Verificar Encomenda\n";
+        std::cout << "5. Sair\n";
+
+        std::cin >> choice;
+
+        if (choice == 1) {
+            std::string id, destinatario, data_entrega;
+            std::cout << "ID da Encomenda: ";
+            std::cin >> id;
+            std::cout << "Destinatário: ";
+            std::cin >> destinatario;
+            std::cout << "Data de Entrega: ";
+            std::cin >> data_entrega;
+
+            if (encomendasManager.registrar_encomenda(id, destinatario, data_entrega)) {
+                std::cout << "Encomenda registrada com sucesso.\n";
+            } else {
+                std::cout << "Falha ao registrar a encomenda. Verifique as entradas.\n";
+            }
+            
+        } else if (choice == 2) {
+            std::string id;
+            std::cout << "ID da Encomenda a ser apagada: ";
+            std::cin >> id;
+            encomendasManager.apagar_encomenda(id);
+            
+        } else if (choice == 3) {
+            std::cout << "Encomendas Registradas:\n";
+            encomendasManager.exibir_encomendas();
+            
+        } else if (choice == 4) {
+            std::string id;
+            std::cout << "ID da Encomenda a ser verificada: ";
+            std::cin >> id;
+            if (encomendasManager.verificar_encomenda(id)) {
+                std::cout << "A encomenda com o ID " << id << " existe.\n";
+            } else {
+                std::cout << "A encomenda com o ID " << id << " não existe.\n";
+            }
+            
+        } else if (choice == 5) {
+            break; // encerra programa
+
     return 0;
 }
