@@ -172,6 +172,6 @@ int main() {
             
         } else if (choice == 5) {
             break; // encerra programa
-
+    }
     return 0;
 }
