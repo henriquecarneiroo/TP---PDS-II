@@ -72,10 +72,14 @@ Responsabilidades:
 
 Colaboradores:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5da20c6614fba6d852bab7cd8cf62c19c5ed5f50
 list <evento>
 
 
 
+<<<<<<< HEAD
 
  
 
@@ -83,4 +87,8 @@ list <evento>
 struct Agendamento
 list<Agendamento>
 >>>>>>> 0ad18ba1e645087f1347c8813707de07990bb947
+=======
+ 
+
+>>>>>>> 5da20c6614fba6d852bab7cd8cf62c19c5ed5f50
 
