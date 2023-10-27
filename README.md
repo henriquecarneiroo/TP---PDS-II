@@ -39,7 +39,16 @@ Responsabilidades:
 
 
 Colaboradores:
-list <apartamento>
+list <Pessoas>
+list <Pets>
+list <Veiculos>
+map<string,int>
+enum TipoPessoa
+Struct Pessoa
+Enum TipoPet
+struct Pet
+struct Veiculo
+
 
 Classe: Encomendas
 
@@ -49,9 +58,10 @@ Responsabilidades:
 - Apagar encomendas.
 
 Colaboradores:
-list <encomenda>
+struct Encomenda
+map<string, Encomenda>
 
-Classe: Eventos
+Classe: Evento
 
 Responsabilidades:
 - Criar um evento;
@@ -61,6 +71,7 @@ Responsabilidades:
 - Listar pessoas de um evento.
 
 Colaboradores:
+<<<<<<< HEAD
 list <evento>
 
 
@@ -68,4 +79,8 @@ list <evento>
 
  
 
+=======
+struct Agendamento
+list<Agendamento>
+>>>>>>> 0ad18ba1e645087f1347c8813707de07990bb947
 
