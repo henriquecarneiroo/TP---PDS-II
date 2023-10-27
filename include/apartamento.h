@@ -1,6 +1,6 @@
 #ifndef APARTAMNETO_H_
 #define APARTAMENTO_H_
-
+#include "evento.h"
 #include <list>
 #include <map>
 #include <string>
@@ -130,6 +130,8 @@ private:
     list<Pet> pets_;
     list<Veiculo> veiculos_;
     map<string,int> contador;
+    friend class Evento;
+    friend class Encomendas;
 
     /*
     fiz algumas pesquisas e não tem como declarar essas funções privadas do 
@@ -151,6 +153,8 @@ private:
     int NumeroRestanteVisitantes = 0;
     int NumeroRestantePets = 0;
     int NumeroRestanteVeiculos = 0;
+
+
 };
 
 #endif
