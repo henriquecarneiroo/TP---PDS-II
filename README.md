@@ -71,8 +71,7 @@ Responsabilidades:
 - Listar pessoas de um evento.
 
 Colaboradores:
-struct Agendamento
-list<Agendamento>
+list <evento>
 
 
 

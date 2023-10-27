@@ -1,16 +1,25 @@
-all: obj/apartamento.o obj/evento.o obj/encomendas.o
+CC=g++
+CFLAGS=-std=c++11 -Wall
+TARGET = vpl_execution
 
-obj/apartamento.o: apartamento.cpp apartamento.h
-	c++ -c src/apartamento.cpp -I include -o obj/apartamento.o
+BUILD = ./build
+INCLUDE = ./include
+SRC = ./src
 
-obj/evento.o: evento.h evento.cpp apartamento.h
-	c++ -c src/evento.cpp -I include -o obj/evento.o
+${TARGET} : ${BUILD}/Apartamento.o ${BUILD}/Encomendas.o ${BUILD}/Evento.o ${BUILD}/main.o
+	${CC} ${CFLAGS} -o ${TARGET} ${BUILD}/Apartamento.o ${BUILD}/Encomendas.o ${BUILD}/Evento.o ${BUILD}/main.o
 
-obj/encomendas.o: encomendas.h encomendas.cpp apartamento.h
-	c++ -c src/encomendas.cpp -I include -o obj/encomendas.o
+${BUILD}/Apartamento.o : ${INCLUDE}/apartamento.h ${SRC}/apartamento.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/apartamento.cpp -o ${BUILD}/Apartamento.o
 
-debug: obj/apartamento.o obj/evento.o obj/encomendas.o
-	c++ -g obj/apartamento.o obj/evento.o obj/encomendas.o -o main
+${BUILD}/Encomendas.o : ${INCLUDE}/encomendas.h ${SRC}/encomendas.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/encomendas.cpp -o ${BUILD}/Encomendas.o
+
+${BUILD}/Evento.o : ${INCLUDE}/evento.h ${SRC}/evento.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/evento.cpp -o ${BUILD}/Evento.o
+
+${BUILD}/main.o : ${INCLUDE}/apartamento.hpp ${INCLUDE}/encomendas.hpp ${INCLUDE}/evento.hpp ${SRC}/main.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/main.cpp -o ${BUILD}/main.o
 
 clean:
-	rm -f main obj/*
+	rm -f ${BUILD}/*
