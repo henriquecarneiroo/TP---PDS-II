@@ -71,24 +71,50 @@ Responsabilidades:
 - Listar pessoas de um evento.
 
 Colaboradores:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5da20c6614fba6d852bab7cd8cf62c19c5ed5f50
 list <evento>
 
 
+Comentários do projeto (apenas para a progresso do trabalho):
 
-<<<<<<< HEAD
+    Apartamento =====================================================================================
+    Coisas que podem ser adicionadas:
 
- 
+    Consideracoes antes de alterar o codigo:
 
-=======
-struct Agendamento
-list<Agendamento>
->>>>>>> 0ad18ba1e645087f1347c8813707de07990bb947
-=======
- 
+    Mudanças no último commit:
+    adicionadas funções privadas, adicionados parâmetros nas funções
+    incluindo alguns para dar mais segurança (como data de nascimento
+    pra editar a pessoa)
 
->>>>>>> 5da20c6614fba6d852bab7cd8cf62c19c5ed5f50
+    att.: Adicionando também a opção de alterar o tipo da pessoa, pet ou veículo para 
+    que as funções fiquem mais completas;
+    Removendo o tipo administradora, já que ela não vai mais existir
+    
+    Encomendas ======================================================================================
+    Comentários:
+    Não sei se na função de verificar se uma encomenda existe ou não é melhor retornar uma
+    string afirmando isso ou um true or false
+    
+    O map foi utilizado, porque ele simplifica as operações
+
+    Na criação do .cpp, somente moradores podem receber encomendas, não sei ainda muito bem
+    como vamos relacionar as duas classes
+
+    Evento ===========================================================================================
+    Coisas que podem ser adicionadas:
+    - Queria que o adicionar convidado abrangesse todos os apartamentos
+    para nao ter que ficar chamando a funcao toda vez que for necessario
+    adiconar um convidado
+    - A funcao criar_evento, ao ser implementada, devemos tomar cuidado, 
+    pois um evento nao pode ter o mesmo nome de um outro registrado no 
+    mesmo responsavel
+    - Nao sei se devemos juntar as funcoes exibir_evento e exibir-eventos
+    em uma só
+
+    Consideracoes antes de alterar o codigo:
+    - Fiquei em duvida se devemos criar uma classe Eventos ou Evento, ja
+    que temos uma lsita de armazena todos os eventos
+
+    Main ============================================================================================
+
 

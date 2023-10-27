@@ -6,12 +6,6 @@
 
 using namespace std;
 
-/*
-ideias:
-vincular o pet e o veículo a um dono
-colocar mais estatisticas
-*/
-
 // tem que testar esse construtor pra ver se ele funciona como o esperado
 Apartamento::Apartamento(int max_Moradores, int max_Visitantes,
                          int max_Pets, int max_Veiculos)

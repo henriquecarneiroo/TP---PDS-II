@@ -6,23 +6,6 @@
 #include <string>
 #include <vector>
 using namespace std;
-/* Coisas que podem ser adicionadas:
-    - Queria fazer um metodo de verificacao mais eficiente em relaçao
-    ao criar evento (ver se a pessoa eh adm ou moradora para a criacao)
-    - Queria que o adicionar convidado abrangesse todos os apartamentos
-    para nao ter que ficar chamando a funcao toda vez que for necessario
-    adiconar um convidado
-    - A funcao criar_evento, ao ser implementada, devemos tomar cuidado, 
-    pois um evento nao pode ter o mesmo nome de um outro registrado no 
-    mesmo responsavel
-    - Nao sei se devemos juntar as funcoes exibir_evento e exibir-eventos
-    em uma só
-
-   Consideracoes antes de alterar o codigo:
-   - Fiquei em duvida se devemos criar uma classe Eventos ou Evento, ja
-   que temos uma lsita de armazena todos os eventos
- */
-
 class Evento {
     public:
 

@@ -6,17 +6,6 @@
 #include <string>
 #include <vector>
 #include <map>
-
-/* Comentários:
-    Não sei se na função de verificar se uma encomenda existe ou não é melhor retornar uma
-    string afirmando isso ou um true or false
-    
-    O map foi utilizado, porque ele simplifica as operações
-
-    Na criação do .cpp, somente moradores podem receber encomendas, não sei ainda muito bem
-    como vamos relacionar as duas classes
-*/
-
 class Encomendas{
     public:
 

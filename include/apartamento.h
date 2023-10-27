@@ -8,24 +8,6 @@
 using std::list;
 using std::string;
 
-/* Coisas que podem ser adicionadas:
-    - Um destruidor
-    - Uma funçao que verifica se a pesssoa eh adm ou moradora para faciliar a
-    implementacao das outras classes
-
-   Consideracoes antes de alterar o codigo:
-   - Nenhuma por enquanto
-    
-    Mudanças no último commit:
-    adicionadas funções privadas, adicionados parâmetros nas funções
-    incluindo alguns para dar mais segurança (como data de nascimento
-    pra editar a pessoa)
-
-    att.: Adicionando também a opção de alterar o tipo da pessoa, pet ou veículo para 
-    que as funções fiquem mais completas;
-    Removendo o tipo administradora, já que ela não vai mais existir
- */
-
 class Apartamento
 {
 public:
