@@ -20,7 +20,8 @@ int main() {
     std::cout << "Informe o número máximo de veículos: ";
     std::cin >> max_Veiculos;
 
-    Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
+    int numero_do_apartamento;
+    map<int, Apartamento> apartamentos_;
 
     while (true){
         std::cout << "Escolha uma opção:\n";
@@ -32,53 +33,61 @@ int main() {
         std::cin >> opcao;
 
         if (opcao == 1){
-        while (true) {
-            std::cout << "Escolha uma ação:\n";
-            std::cout << "1. Inserir Pessoa\n";
-            std::cout << "2. Inserir Pet\n";
-            std::cout << "3. Inserir Veículo\n";
-            std::cout << "4. Exibir Estatísticas\n";
-            std::cout << "5. Sair\n";
 
-            int escolha;
-            std::cin >> escolha;
+            Apartamento apartamento;
+            std::cout << "Informe o número do apartamento: \n";
+            std::cin >> numero_do_apartamento;
+            if (apartamentos_.count(numero_do_apartamento) == 0){
+                 apartamentos_[numero_do_apartamento] = apartamento;
+            } // Se não existir um apartamento com o numero especificado, cria um
 
-            if (escolha == 1) {
-                std::string nome, data_nascimento, tipo_pessoa;
-                std::cout << "Nome: ";
-                std::cin >> nome;
-                std::cout << "Data de Nascimento: ";
-                std::cin >> data_nascimento;
-                std::cout << "Tipo de Pessoa (moradora ou visitante): ";
-                std::cin >> tipo_pessoa;
-                apartamento.inserir_pessoa(nome, data_nascimento, tipo_pessoa);
-            
-            } else if (escolha == 2) {
-                std::string nome, raca, tipo;
-                std::cout << "Nome do Pet: ";
-                std::cin>> nome;
-                std::cout << "Raça do Pet: ";
-                std::cin >> raca;
-                std::cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
-                std::cin >> tipo;
-                apartamento.inserir_pet(nome, raca, tipo);
-            } else if (escolha == 3) {
-                std::string modelo, placa, tipo_veiculo;
-                std::cout << "Modelo do Veículo: ";
-                std::cin>> modelo;
-                std::cout << "Placa do Veículo: ";
-                std::cin >> placa;
-                std::cout << "Tipo de Veículo: ";
-                std::cin >> tipo_veiculo;
-                apartamento.inserir_veiculo(modelo, placa, tipo_veiculo);
-            
-            } else if (escolha == 4) {
-                apartamento.exibir_estatisticas();
-            
-            } else if (escolha == 5) {
-                break; // Encerra essa parte do programa
+            while (true) {
+                std::cout << "Escolha uma ação:\n";
+                std::cout << "1. Inserir Pessoa\n";
+                std::cout << "2. Inserir Pet\n";
+                std::cout << "3. Inserir Veículo\n";
+                std::cout << "4. Exibir Estatísticas\n";
+                std::cout << "5. Sair\n";
+
+                int escolha;
+                std::cin >> escolha;
+
+                if (escolha == 1) {
+                    std::string nome, data_nascimento, tipo_pessoa;
+                    std::cout << "Nome: ";
+                    std::cin >> nome;
+                    std::cout << "Data de Nascimento: ";
+                    std::cin >> data_nascimento;
+                    std::cout << "Tipo de Pessoa (moradora ou visitante): ";
+                    std::cin >> tipo_pessoa;
+                    apartamentos_[numero_do_apartamento].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
+
+                } else if (escolha == 2) {
+                    std::string nome, raca, tipo;
+                    std::cout << "Nome do Pet: ";
+                    std::cin>> nome;
+                    std::cout << "Raça do Pet: ";
+                    std::cin >> raca;
+                    std::cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
+                    std::cin >> tipo;
+                    apartamentos_[numero_do_apartamento].inserir_pet(nome, raca, tipo);
+                } else if (escolha == 3) {
+                    std::string modelo, placa, tipo_veiculo;
+                    std::cout << "Modelo do Veículo: ";
+                    std::cin>> modelo;
+                    std::cout << "Placa do Veículo: ";
+                    std::cin >> placa;
+                    std::cout << "Tipo de Veículo: ";
+                    std::cin >> tipo_veiculo;
+                    apartamentos_[numero_do_apartamento].inserir_veiculo(modelo, placa, tipo_veiculo);
+
+                } else if (escolha == 4) {
+                    apartamentos_[numero_do_apartamento].exibir_estatisticas();
+
+                } else if (escolha == 5) {
+                    break; // Encerra essa parte do programa
+                }
             }
-        }
         }
 
         if (opcao == 2){

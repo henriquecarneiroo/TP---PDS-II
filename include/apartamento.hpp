@@ -22,41 +22,53 @@ public:
     void inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa);
 
     // Insere uma pessoa
+    // Pré-condição: não há uma pessoa com o mesmo nome
+    // dentro de um mesmo apartamento (associado ao número)
 
     void inserir_pet(string nome, string raca, string tipo);
 
     // Insere um pet
+    // Pré-condição: não há um pet com o mesmo nome, raça e tipo
+    // dentro de um mesmo apartamento (associado ao número)
 
     void inserir_veiculo(string modelo, string placa, string tipo_veiculo);
 
     // Insere um veiculo
+    // Pré-condição: não há outro veículo com a mesma placa cadastrada
+    // em nenhum outro apartamento
 
     void editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
                        string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
 
     // Edita uma pessoa
+    // Pré-condição: essa pessoa deve existir de acordo com os dados passados
 
     void editar_pet(string nome_pet_antigo, string raca_antiga, string tipo_antigo,
                         string nome_pet_novo, string raca_nova, string tipo_novo);
 
     // Edita um pet
+    // Pré-condição: esse pet deve existir de acordo com os dados passados
 
-    void editar_veiculo(string placa_antiga, string modelo_antigo, string tipo_veiculo_antigo,
+    void editar_veiculo(string placa_antiga,
                         string placa_nova, string modelo_novo, string tipo_veiculo_novo);
 
     // Edita um veiculo
+    // Pré-condição: esse veículo deve existir de acordo com os dados passados
 
-    void excluir_pessoa(string nome_pessoa, string data_nascimento);
+    void excluir_pessoa(string nome_pessoa);
 
     // Exclui uma pessoa
+    // Pré-condição: essa pessoa deve existir de acordo com os dados passados
 
     void excluir_pet(string nome_pet, string raca, string tipo);
 
     // Exclui um pet
+    // Pré-condição: esse pet deve existir de acordo com os dados passados
 
     void excluir_veiculo(string placa);
 
     // Exclui um veiculo
+    // Pré-condição: esse veículo deve existir de acordo com os dados passados
 
     void exibir_estatisticas();
 
@@ -71,8 +83,6 @@ public:
 
    // Função que retorna a quantidade de algo específico dentro das classes
    // desde o número de pessoas, visitantes, moradores, pets, tipos de pets...
-   // Achei interessante implementar essa função por meio de um map que conta
-   // a quantidade desses objetos, podendo ser muito útil com o desenvolvimento
 
 private:
     enum TipoPessoa
@@ -110,6 +120,7 @@ private:
         string tipo_veiculo;
     };
 
+    int numero_apartamento;
     list <Pessoa> pessoas_;
     list <Pet> pets_;
     list <Veiculo> veiculos_;

@@ -16,7 +16,6 @@ Apartamento::Apartamento(int max_Moradores, int max_Visitantes,
     NumeroRestanteVeiculos = max_Veiculos;
 }
 
-// Lembrar de tratar a exceção para nomes, datas e tipos inválidos
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
 {
     Pessoa pessoa;
@@ -42,8 +41,6 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
     }
 }
 
-// introduzindo a ideia do contador
-// lembrar de tratar exceções para nomes, raças e/ou tipos inválidos e para as quantidades máximas
 void Apartamento::inserir_pet(string nome, string raca, string tipo)
 {
     Pet pet;
@@ -56,7 +53,6 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         {
             pet.tipo_pet = cachorro;
             contador["Cachorros"]++;
-            // "Cães"?
         }
         else if (tipo == "gato")
         {
@@ -72,13 +68,12 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         {
             pet.tipo_pet = outro;
             contador["Outras racas"]++;
-            //... "raças"?
         }
 
         pets_.push_back(pet);
         NumeroRestantePets--;
         contador["Pets"]++;
-    }//else?
+    }
 }
 
 void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veiculo)
@@ -93,10 +88,9 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
         veiculos_.push_back(veiculo);
         NumeroRestanteVeiculos--;
         contador["Veículos"]++;
-    } //else?
+    }
 }
 
-// É necessário implementar número restante?
 void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
                                 string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo)
 {
@@ -128,8 +122,6 @@ void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antig
     }
 }
 
-// Pensar como remover a raça antiga do contador (pensei por ifs, mas ficaria grande)
-// É necessário implementar número restante?
 void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string tipo_antigo,
                              string nome_pet_novo, string raca_nova, string tipo_novo)
 {
@@ -141,6 +133,7 @@ void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string 
             (*it).nome = nome_pet_novo;
             (*it).raca = raca_nova;
 
+            // Essa parte define o novo tipo de pet
             if (tipo_novo == "cachorro")
             {
                 (*it).tipo_pet = cachorro;
@@ -161,15 +154,31 @@ void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string 
                 (*it).tipo_pet = outro;
                 contador["Outras racas"]++;
             }
+
+            // Essa parte remove o tipo antigo do pet do contador
+            if (tipo_antigo == "cachorro")
+            {
+                contador["Cachorros"]--;
+            }
+            else if (tipo_antigo == "gato")
+            {
+                contador["Gatos"]--;
+            }
+            else if (tipo_antigo == "passaro")
+            {
+                contador["Passaros"]--;
+            }
+            else if (tipo_antigo == "outro")
+            {
+                contador["Outras racas"]--;
+            }
+
             break;
         }
     }
 }
 
-// Talvez não seja necessário tantos parâmetros, apagar depois
-// Lembrar de tratar exceções, pro caso dos dados não baterem
-// É necessário implementar número restante?
-void Apartamento::editar_veiculo(string placa_antiga, string modelo_antigo, string tipo_veiculo_antigo,
+void Apartamento::editar_veiculo(string placa_antiga,
                                  string placa_nova, string modelo_novo, string tipo_veiculo_novo)
 {
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++)
@@ -184,13 +193,12 @@ void Apartamento::editar_veiculo(string placa_antiga, string modelo_antigo, stri
     }
 }
 
-// Lembrar de tratar exceções, pro caso dos dados não baterem
 // Exclui a pessoa e atualiza os contadores
-void Apartamento::excluir_pessoa(string nome_pessoa, string data_nascimento)
+void Apartamento::excluir_pessoa(string nome_pessoa)
 {
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
-        if ((*it).nome == nome_pessoa && (*it).data_nascimento == data_nascimento)
+        if ((*it).nome == nome_pessoa)
         {
             if ((*it).tipo_pessoa == moradora){
                 pessoas_.erase(it);
@@ -243,7 +251,6 @@ void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
     }
 }
 
-// Lembrar de tratar exceções, pro caso dos dados não baterem
 // Exclui um veículo e atualiza os contadores
 void Apartamento::excluir_veiculo(string placa)
 {

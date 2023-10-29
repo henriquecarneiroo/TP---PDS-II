@@ -88,7 +88,7 @@ Comentários do projeto (apenas para a progresso do trabalho):
 
     att.: Adicionando também a opção de alterar o tipo da pessoa, pet ou veículo para 
     que as funções fiquem mais completas;
-    Removendo o tipo administradora, já que ela não vai mais existir
+    Removendo o tipo administradora, já que ela não vai mais existir.
     
     Encomendas ======================================================================================
     Comentários:
@@ -117,4 +117,8 @@ Comentários do projeto (apenas para a progresso do trabalho):
 
     Main ============================================================================================
 
-
+    att.: Adicionando um map na main para associar cada ap a um número;
+    Ajustando melhor, também, os parâmetros das funções e estabelecendo algumas pré-condições (prévias);
+    Mudei o "Apartamento apartamento" para dentro do bloco na main pois ele vai variando de acordo
+    com o número do apartamento e precisa ser reiniciado, se não, dados de outro apartamento
+    poderiam ser copiados indesejavelmente para o outro.
