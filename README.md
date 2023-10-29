@@ -89,6 +89,9 @@ Comentários do projeto (apenas para a progresso do trabalho):
     att.: Adicionando também a opção de alterar o tipo da pessoa, pet ou veículo para 
     que as funções fiquem mais completas;
     Removendo o tipo administradora, já que ela não vai mais existir.
+
+    att.: Alterações de parâmetros desnecessários nas funções
+    Pequenas correções na implementação
     
     Encomendas ======================================================================================
     Comentários:
