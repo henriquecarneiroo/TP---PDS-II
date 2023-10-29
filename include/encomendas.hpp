@@ -1,15 +1,17 @@
-#ifndef ENCOMENDAS_H_
-#define ENCOMENDAS_H_
-#include "apartamento.h"
+#ifndef ENCOMENDAS_HPP
+#define ENCOMENDAS_HPP
 
 #include <list>
 #include <string>
 #include <vector>
 #include <map>
+
+using std::string;
+using std::map;
 class Encomendas{
     public:
 
-    void registrar_encomenda (string id, string destinatario, string data_entrega);
+    bool registrar_encomenda (string id, string destinatario, string data_entrega);
 
     /* Permite inserir uma nova encomenda, informando o seu id, que não pode ter menos de
     6 caracteres e nem mais de 50, o destinatário que deve ser um morador do prédio, caso

@@ -1,15 +1,17 @@
-#ifndef APARTAMNETO_H_
-#define APARTAMENTO_H_
-#include "evento.h"
+#ifndef APARTAMENTO_HPP
+#define APARTAMENTO_HPP
+
 #include <list>
 #include <map>
 #include <string>
 #include <iostream>
+
+using namespace std;
 using std::list;
 using std::string;
+using std::map;
 
-class Apartamento
-{
+class Apartamento {
 public:
     Apartamento(int max_Moradores = 5, int max_Visitantes = 10,
                 int max_Pets = 3, int max_Veiculos = 2);
@@ -108,10 +110,10 @@ private:
         string tipo_veiculo;
     };
 
-    list<Pessoa> pessoas_;
-    list<Pet> pets_;
-    list<Veiculo> veiculos_;
-    map<string,int> contador;
+    list <Pessoa> pessoas_;
+    list <Pet> pets_;
+    list <Veiculo> veiculos_;
+    map <string , int> contador;
     
     friend class Evento;
     friend class Encomendas;

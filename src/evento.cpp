@@ -1,4 +1,5 @@
-#include "evento.h"
+#include "evento.hpp"
+#include "apartamento.hpp"
 
 #include <iostream>
 #include <list>
@@ -14,12 +15,12 @@ void Evento::criar_evento(string responsavel, string nome_evento, string data_ev
 }
 
 //Pré-condição: convidados devem ser moradores ou visitantes
-void Evento::adicionar_convidado(Apartamento& apartamento) {
-    for (auto& it : eventos_) {
-        if (it.responsavel == apartamento.getResponsavel()) {
-            evento.convidados.push_back(apartamento.getNomeConvidado());
-        }
-    }
+void Evento::adicionar_convidado(/*Apartamento::Apartamento& apartamento*/) {
+    // for (auto& it : eventos_) {
+    //     if (it.responsavel == apartamento.getResponsavel()) { // O que é esse get responsavel?!
+    //         eventos_.convidados.push_back(apartamento.getNomeConvidado()); // De novo esse get
+    //     }
+    // }
 }
 
 void Evento::exibir_evento(string responsavel, string nome_evento) {

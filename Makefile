@@ -9,13 +9,13 @@ SRC = ./src
 ${TARGET} : ${BUILD}/Apartamento.o ${BUILD}/Encomendas.o ${BUILD}/Evento.o ${BUILD}/main.o
 	${CC} ${CFLAGS} -o ${TARGET} ${BUILD}/Apartamento.o ${BUILD}/Encomendas.o ${BUILD}/Evento.o ${BUILD}/main.o
 
-${BUILD}/Apartamento.o : ${INCLUDE}/apartamento.h ${SRC}/apartamento.cpp
+${BUILD}/Apartamento.o : ${INCLUDE}/apartamento.hpp ${SRC}/apartamento.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/apartamento.cpp -o ${BUILD}/Apartamento.o
 
-${BUILD}/Encomendas.o : ${INCLUDE}/encomendas.h ${SRC}/encomendas.cpp
+${BUILD}/Encomendas.o : ${INCLUDE}/encomendas.hpp ${SRC}/encomendas.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/encomendas.cpp -o ${BUILD}/Encomendas.o
 
-${BUILD}/Evento.o : ${INCLUDE}/evento.h ${SRC}/evento.cpp
+${BUILD}/Evento.o : ${INCLUDE}/evento.hpp ${SRC}/evento.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE}/ -c ${SRC}/evento.cpp -o ${BUILD}/Evento.o
 
 ${BUILD}/main.o : ${INCLUDE}/apartamento.hpp ${INCLUDE}/encomendas.hpp ${INCLUDE}/evento.hpp ${SRC}/main.cpp

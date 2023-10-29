@@ -1,6 +1,6 @@
-#include "apartamento.h"
-#include "evento.h"
-#include "encomendas.h"
+#include "apartamento.hpp"
+#include "evento.hpp"
+#include "encomendas.hpp"
 
 #include <iostream>
 #include <string>
@@ -99,7 +99,7 @@ int main() {
             std::cin >> responsavel;
             std::cout << "Nome do Evento: ";
             std::cin >> nome_evento;
-            eventoManager.adicionar_convidado(responsavel, nome_evento);
+            //eventoManager.adicionar_convidado(responsavel, nome_evento);
           
         } else if (choice == 3) {
             std::string responsavel, nome_evento;
@@ -123,7 +123,6 @@ int main() {
     }
 
     Encomendas encomendasManager;
-    int choice;
 
     while (true) {
         std::cout << "Escolha uma ação:\n";
@@ -174,4 +173,5 @@ int main() {
             break; // encerra programa
     }
     return 0;
+}
 }

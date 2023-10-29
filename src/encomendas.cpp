@@ -1,4 +1,4 @@
-#include "encomendas.h"
+#include "encomendas.hpp"
 
 #include <list>
 #include <string>
@@ -19,6 +19,7 @@ bool verifica_id(string id)
 bool eh_morador(string destinatario)
 {
     // pensar nessa implemtação
+    return true;
 }
 bool Encomendas::registrar_encomenda(string id, string destinatario, string data_entrega)
 {

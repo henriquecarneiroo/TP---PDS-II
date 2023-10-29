@@ -1,10 +1,10 @@
-#ifndef EVENTO_H_
-#define EVENTO_H_
-#include "apartamento.h"
+#ifndef EVENTO_HPP
+#define EVENTO_HPP
 
 #include <list>
 #include <string>
 #include <vector>
+#include "apartamento.hpp"
 using namespace std;
 class Evento {
     public:
@@ -16,7 +16,7 @@ class Evento {
         Visitantes nao podem criar eventos
     */
 
-    void adicionar_convidado (Apartamento& apartamento);
+    void adicionar_convidado (/*Apartamento::Apartamento& apartamento*/);
 
     /*  Adiciona um convidado ao evento, o apartamento dele deve ser passado*/
 
