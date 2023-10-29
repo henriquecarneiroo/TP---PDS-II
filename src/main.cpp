@@ -34,7 +34,7 @@ int main() {
 
         if (opcao == 1){
 
-            Apartamento apartamento;
+            Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
             std::cout << "Informe o número do apartamento: \n";
             std::cin >> numero_do_apartamento;
             if (apartamentos_.count(numero_do_apartamento) == 0){
