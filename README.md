@@ -21,7 +21,7 @@ Critérios de Aceitação:
 
 *_Cartões CRC:_*
 
-Classe: Apartamento
+== Classe: Apartamento ==
 
 
 Responsabilidades:
@@ -29,13 +29,13 @@ Responsabilidades:
 - Inserir carros no apartamento;
 - Inserir animais no apartamento;
 - Adicionar visitantes ao apartamento;
-- Exibir informações do apartamento;
 - Editar pessoas no apartamento;
 - Editar carros no apartamento ;
 - Editar animais no apartamento;
 - Apagar pessoas no apartamento;
 - Apagar carros no apartamento;
 - Apagar animais no apartamento.
+- Exibir estatísiticas de um apartamento;
 
 
 Colaboradores:
@@ -50,29 +50,45 @@ struct Pet
 struct Veiculo
 
 
-Classe: Encomendas
+== Classe: Encomendas ==
 
 Responsabilidades:
 - Inserir novas encomendas;
 - Exibir encomendas;
 - Apagar encomendas.
+- Verificar se uma encomenda existe;
 
 Colaboradores:
 struct Encomenda
 map<string, Encomenda>
 
-Classe: Evento
+== Classe: Evento ==
 
 Responsabilidades:
 - Criar um evento;
 - Exibir eventos programados;
-- Apagar um evento;
+- Apagar e Editar um evento;
 - Adicionar convidados em um evento;
 - Listar pessoas de um evento.
 
 Colaboradores:
-list <evento>
+struct Agendamento
+list <Agendamento>
 
+*_Instruções de Instalação e de Uso:_*
+
+A compilação do código pode ser feita de forma rápida e eficiente através do arquivo makefile, digitando apenas
+"make" no terminal. Caso um novo código seja criado, apenas o nome do "main.cpp" deverá ser alterado.
+
+A execução do caso de teste pode ser realizada escrevendo no terminal "./tp-execution".
+
+As observações de cada biblioteca estão destacadas nos comentários, com suas devidas pré condições.
+
+Para a utilização do código, é recomendado que seja criado um map da classe para que assim os números de cada apartamento sejam 
+enumerados de acordo com o interesse do usuário.
+
+Para o uso de todo o potencial do código, é recomendado que um código que integre todas a bibliotecas seja criado, pois elas são
+capazes de conversar entre si.
 
 Comentários do projeto (apenas para a progresso do trabalho):
 

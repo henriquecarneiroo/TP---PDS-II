@@ -21,6 +21,7 @@ void Evento::adicionar_convidado(/*Apartamento::Apartamento& apartamento*/) {
     //         eventos_.convidados.push_back(apartamento.getNomeConvidado()); // De novo esse get
     //     }
     // }
+    Apartamento ap;
 }
 
 void Evento::exibir_evento(string responsavel, string nome_evento) {

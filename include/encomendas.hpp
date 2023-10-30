@@ -1,5 +1,3 @@
-
-
 #ifndef ENCOMENDAS_HPP
 #define ENCOMENDAS_HPP
 

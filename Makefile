@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall
-TARGET = vpl_execution
+TARGET = tp_execution
 
 BUILD = ./build
 INCLUDE = ./include
