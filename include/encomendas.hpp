@@ -1,3 +1,5 @@
+
+
 #ifndef ENCOMENDAS_HPP
 #define ENCOMENDAS_HPP
 
@@ -8,31 +10,42 @@
 
 using std::string;
 using std::map;
+
+/**
+ * @class Encomendas 
+ * Classe que organiza as operações realizadas nas Encomendas
+*/
 class Encomendas{
     public:
 
+    /**
+     * @brief Permite inserir uma nova encomenda, informando o seu id,o destinatário que deve ser um morador do prédio e a data 
+     * de entrega
+     * @pre o id não pode ter menos de 6 caracteres e nem mais de 50 e se o destinatário nao existir, a encomenda nao sera registrada
+    */
     bool registrar_encomenda (string id, string destinatario, string data_entrega);
 
-    /* Permite inserir uma nova encomenda, informando o seu id, que não pode ter menos de
-    6 caracteres e nem mais de 50, o destinatário que deve ser um morador do prédio, caso
-    não seja, a encomenda não será registrada, e a data de entrega
+    /**
+     * @brief Permite apagar uma encomenda, o seu id deve ser fornecido
+     * @pre o id deve existir, senao,nada acontecera
     */
-
     void apagar_encomenda (string id);
 
-    /* Permite apagar uma encomenda, o seu id deve ser fornecido, caso ele não exista, nada
-    acontecerá */
-
+    /**
+     * @brief Permite exibir todas as encomendas existentes
+    */
     void exibir_encomendas ();
-    /*tirei o parâmetro id pq não precisa dele pra exibir as encomendas*/
-    /* Permite exibir todas as encomendas existentes */
 
+    /**
+     * @brief Permite permite verificar se uma encomenda existe ou não
+    */
     bool verificar_encomenda (string id);
-
-    /* Permite permite verificar se uma encomenda existe ou não  */
 
     private:
 
+    /**
+     * Variáveis que serão utilizadas nas funções
+    */
     struct Encomenda {
         string destinatario;
         string data_entrega;
