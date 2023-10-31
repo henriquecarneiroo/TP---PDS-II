@@ -15,6 +15,12 @@ class Evento {
     public:
 
     /**
+     * @brief Construtor do tipo evento
+     * 
+    */
+    Evento();
+    
+    /**
      * @brief Cria um evento, informando o nome do responsavel, o nome do evento e sua data
      * @pre Um responsavel nao pode ter em seu nome dois eventos com o mesmo nome. Visitantes nao podem criar eventos
     */

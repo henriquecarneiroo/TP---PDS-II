@@ -92,9 +92,21 @@ public:
     /**
      * @brief Função que retorna a quantidade de algo específico dentro das classes desde o número de 
      * pessoas, visitantes, moradores, pets, tipos de pets...
-     * @pre Esse veículo deve existir de acordo com os dados passados
+     * @pre O objeto especificado deve existir de acordo com os dados passados
     */    
-    int quantidade(string);
+    int quantidade(string objeto);
+
+    /**
+    * @brief Função que retorna true se a o nome passado corresponde ao de um morador do prédio e
+    * false caso contrário
+    */
+    bool eh_morador(string nome);
+
+    /**
+    * @brief Função que retorna true se a o nome passado corresponde ao de um visitante do prédio e
+    * false caso contrário
+    */
+    bool eh_visitante(string nome);
 
 private:
 

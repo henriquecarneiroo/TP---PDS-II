@@ -280,3 +280,21 @@ void Apartamento::exibir_estatisticas()
 int Apartamento::quantidade(string chave){
     return contador[chave];
 }
+
+bool Apartamento::eh_morador(string nome){
+    for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
+        if ((*it).nome == nome && (*it).tipo_pessoa == moradora){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Apartamento::eh_visitante(string nome){
+    for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
+        if ((*it).nome == nome && (*it).tipo_pessoa == visitante){
+            return true;
+        }
+    }
+    return false;
+}

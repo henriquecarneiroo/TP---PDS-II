@@ -36,6 +36,8 @@ Responsabilidades:
 - Apagar carros no apartamento;
 - Apagar animais no apartamento.
 - Exibir estatísiticas de um apartamento;
+- Verificar se uma pessoa é moradora;
+- Verificar se uma pessoa é visitante;
 
 
 Colaboradores:
@@ -108,6 +110,9 @@ Comentários do projeto (apenas para a progresso do trabalho):
 
     att.: Alterações de parâmetros desnecessários nas funções
     Pequenas correções na implementação
+
+    att.: Adicionei funções de bool em apartamento.hpp e as implementei;
+    Implementei algumas funções do evento.cpp, temos que pensar em como vamos adicionar os convidados
     
     Encomendas ======================================================================================
     Comentários:
