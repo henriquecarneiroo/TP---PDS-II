@@ -28,9 +28,9 @@ class Evento {
 
     /**
      * @brief Adiciona um convidado ao evento 
-     * @pre O apartamento dele deve ser passado
+     * @pre O nome do evento deve estar associado a um evento existente. O nome do convidade deve estar associado a um morador ou visitante
     */
-    void adicionar_convidado (/*Apartamento::Apartamento& apartamento*/);
+    void adicionar_convidado (string nome_evento, string convidado);
 
     /**
      * @brief Permite editar um evento
