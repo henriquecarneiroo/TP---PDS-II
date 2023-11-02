@@ -11,10 +11,9 @@ Apartamento::Apartamento(int _Moradores, int _Visitantes, int _Pets, int _Veicul
     : MAX_MORADORES(_Moradores), MAX_VISITANTES(_Visitantes), MAX_PETS(_Pets), MAX_VEICULOS(_Veiculos){   
     }
 
-Apartamento::Apartamento()
-{
-    
-}
+Apartamento::Apartamento(){}
+
+
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
 {
     Pessoa pessoa;
@@ -22,7 +21,6 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
     pessoa.data_nascimento = data_nascimento;
     if (tipo_pessoa == "moradora" || 0)
     {
-        cout << MAX_MORADORES << endl;
         if(MAX_MORADORES > 0){
             pessoa.tipo_pessoa = moradora;
             MAX_MORADORES--;

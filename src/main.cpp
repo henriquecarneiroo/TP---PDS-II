@@ -151,7 +151,7 @@ int main() {
                 cout << "Nome do Evento: ";
                 cin.ignore(); 
                 getline(cin, nome_evento);
-                //eventoManager.adicionar_convidado(responsavel, nome_evento);
+                eventoManager.adicionar_convidado(responsavel, nome_evento);
             
             // Exibir Evento
             } else if (choice == 3) {

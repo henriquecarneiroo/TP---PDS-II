@@ -15,7 +15,7 @@ void Evento::criar_evento(string responsavel, string nome_evento, string data_ev
     novo_evento.nome_evento = nome_evento;
     novo_evento.data_evento = data_evento;
     eventos_.push_back(novo_evento);
-}
+};
 
 //Pré-condição: convidados devem ser moradores ou visitantes
 void Evento::adicionar_convidado(string nome_evento, string convidado){

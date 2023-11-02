@@ -163,14 +163,10 @@ private:
 
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos e serão utilizadas nos construtores
 
-    int MAX_MORADORES;
-    int MAX_VISITANTES;
-    int MAX_PETS;
-    int MAX_VEICULOS;
-    int NumeroRestanteMoradores = 0;
-    int NumeroRestanteVisitantes = 0;
-    int NumeroRestantePets = 0;
-    int NumeroRestanteVeiculos = 0;
+    int MAX_MORADORES = 0;
+    int MAX_VISITANTES = 0;
+    int MAX_PETS = 0;
+    int MAX_VEICULOS = 0;
 
 
 };
