@@ -23,9 +23,10 @@ public:
     */
     Apartamento(int max_Moradores, int max_Visitantes,
                 int max_Pets, int max_Veiculos);
+    
+    Apartamento();
         
     
-
     /**
      * @brief Insere uma pessoa
      * @pre Não há uma pessoa com o mesmo nome dentro de um mesmo apartamento

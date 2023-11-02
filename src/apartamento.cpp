@@ -16,6 +16,10 @@ Apartamento::Apartamento(int max_Moradores, int max_Visitantes,
     NumeroRestanteVeiculos = max_Veiculos;
 }
 
+Apartamento::Apartamento()
+{
+    
+}
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
 {
     Pessoa pessoa;
