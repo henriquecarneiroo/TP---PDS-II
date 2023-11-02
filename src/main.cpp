@@ -25,6 +25,7 @@ int main() {
 
     // Map que armazena os apartamentos com o número de cada 
     int num_ap = 0;
+
     map<int, Apartamento> aps;
 
 // PAINEL INICIAL ====================================================================================================================
@@ -134,12 +135,12 @@ int main() {
             
             // Adicionar Convidado
             } else if (choice == 2) {
-                std::string responsavel, nome_evento;
+                std::string responsavel, nome_evento, nome_convidado;
                 std::cout << "Responsável do Evento: ";
                 std::cin>> responsavel;
                 std::cout << "Nome do Evento: ";
-                std::cin>> nome_evento;
-                //eventoManager.adicionar_convidado(responsavel, nome_evento);
+                std::cin>> nome_convidado;
+                eventoManager.adicionar_convidado(responsavel, nome_convidado); 
             
             // Exibir Evento
             } else if (choice == 3) {
