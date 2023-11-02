@@ -25,9 +25,9 @@ int main() {
     cout << "Informe o número máximo de veículos: ";
     cin >> max_Veiculos;
 
-    // Map que armazena os apartamentos com o número de cada 
+    // Map que armazena os apartamentos com o número de cada
+    map<int, Apartamento> aps; 
     int num_ap = 0;
-    map<int, Apartamento> aps;
 
 // PAINEL INICIAL ====================================================================================================================
 
@@ -47,6 +47,8 @@ int main() {
                 Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
                 cout << "Informe o número do apartamento: \n";
                 cin >> num_ap;
+                Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
+                aps[num_ap] = novoApartamento;
                 if (num_ap <= 0){
                     cout << "Digite um numero de apartamento válido\n";
                 }

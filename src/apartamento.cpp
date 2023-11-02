@@ -6,15 +6,10 @@
 
 using namespace std;
 
-// tem que testar esse construtor pra ver se ele funciona como o esperado
-Apartamento::Apartamento(int max_Moradores, int max_Visitantes,
-                         int max_Pets, int max_Veiculos)
-{
-    NumeroRestanteMoradores = max_Moradores;
-    NumeroRestanteVisitantes = max_Visitantes;
-    NumeroRestantePets = max_Pets;
-    NumeroRestanteVeiculos = max_Veiculos;
-}
+
+Apartamento::Apartamento(int _Moradores, int _Visitantes, int _Pets, int _Veiculos)
+    : MAX_MORADORES(_Moradores), MAX_VISITANTES(_Visitantes), MAX_PETS(_Pets), MAX_VEICULOS(_Veiculos){   
+    }
 
 Apartamento::Apartamento()
 {
@@ -25,21 +20,21 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
     Pessoa pessoa;
     pessoa.nome = nome;
     pessoa.data_nascimento = data_nascimento;
-    if (tipo_pessoa == "moradora")
+    if (tipo_pessoa == "moradora" || 0)
     {
-        if(NumeroRestanteMoradores > 0){
+        cout << MAX_MORADORES << endl;
+        if(MAX_MORADORES > 0){
             pessoa.tipo_pessoa = moradora;
-            pessoas_.push_back(pessoa);
-            NumeroRestanteMoradores--;
+            MAX_MORADORES--;
             contador["Moradores"]++;
         }
     }
-    else if (tipo_pessoa == "visitante")
+    else if (tipo_pessoa == "visitante" || 1)
     {
-        if(NumeroRestanteVisitantes > 0){
+        if(MAX_VISITANTES > 0){
             pessoa.tipo_pessoa = visitante;
             pessoas_.push_back(pessoa);
-            NumeroRestanteVisitantes--;
+            MAX_VISITANTES--;
             contador["Visitantes"]++;
         }
     }
@@ -52,7 +47,7 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
     pet.nome = nome;
     pet.raca = raca;
 
-    if(NumeroRestantePets > 0){
+    if(MAX_PETS > 0){
         if (tipo == "cachorro")
         {
             pet.tipo_pet = cachorro;
@@ -71,7 +66,7 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         }
 
         pets_.push_back(pet);
-        NumeroRestantePets--;
+        MAX_PETS--;
         contador["Pets"]++;
     }
 }
@@ -84,9 +79,9 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
     veiculo.placa = placa;
     veiculo.tipo_veiculo = tipo_veiculo;
 
-    if(NumeroRestanteVeiculos > 0){
+    if(MAX_VEICULOS > 0){
         veiculos_.push_back(veiculo);
-        NumeroRestanteVeiculos--;
+        MAX_VEICULOS--;
         contador["Veículos"]++;
     }
 }
@@ -180,13 +175,13 @@ void Apartamento::excluir_pessoa(string nome_pessoa)
             if ((*it).tipo_pessoa == moradora){
                 pessoas_.erase(it);
                 contador["Moradores"]--;
-                NumeroRestanteMoradores++;
+                MAX_MORADORES++;
                 break;
             }
             else if ((*it).tipo_pessoa == visitante){
                 pessoas_.erase(it);
                 contador["Visitantes"]--;
-                NumeroRestanteVisitantes++;
+                MAX_VISITANTES++;
                 break;
             }
         }
@@ -200,11 +195,11 @@ void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
 {
     for (auto it = pets_.begin(); it != pets_.end(); it++)
     {
-        if(NumeroRestantePets < 3){
+        if(MAX_PETS < 3){
             if ((*it).nome == nome_pet && (*it).raca == raca)
             {
                 pets_.erase(it);
-                NumeroRestantePets++;
+                MAX_PETS++;
                 contador["Pets"]--;
             }
         }
@@ -217,12 +212,12 @@ void Apartamento::excluir_veiculo(string placa)
 {
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++)
     {
-        if(NumeroRestanteVeiculos < 2){
+        if(MAX_VEICULOS < 2){
             if ((*it).placa == placa)
             {
                 veiculos_.erase(it);
                 contador["Veiculos"]--;
-                NumeroRestanteVeiculos++;
+                MAX_VEICULOS++;
             }
         }
         break;
