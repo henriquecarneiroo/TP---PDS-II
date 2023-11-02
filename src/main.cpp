@@ -5,23 +5,25 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 int main() {
 
 // CONSTRUTORES =======================================================================================================================
 
     int max_Moradores, max_Visitantes, max_Pets, max_Veiculos;
 
-    std::cout << "Informe o número máximo de moradores: ";
-    std::cin >> max_Moradores;
+    cout << "Informe o número máximo de moradores: ";
+    cin >> max_Moradores;
 
-    std::cout << "Informe o número máximo de visitantes: ";
-    std::cin >> max_Visitantes;
+    cout << "Informe o número máximo de visitantes: ";
+    cin >> max_Visitantes;
 
-    std::cout << "Informe o número máximo de pets: ";
-    std::cin >> max_Pets;
+    cout << "Informe o número máximo de pets: ";
+    cin >> max_Pets;
 
-    std::cout << "Informe o número máximo de veículos: ";
-    std::cin >> max_Veiculos;
+    cout << "Informe o número máximo de veículos: ";
+    cin >> max_Veiculos;
 
     // Map que armazena os apartamentos com o número de cada 
     int num_ap = 0;
@@ -30,69 +32,73 @@ int main() {
 // PAINEL INICIAL ====================================================================================================================
 
     while (true){
-        std::cout << "Escolha uma opção:\n";
-        std::cout << "1. Modificar Apartamentos\n";
-        std::cout << "2. Modificar Eventos\n";
-        std::cout << "3. Modificar Encomendas\n";
-        std::cout << "4. Encerrar programa\n";
+        cout << "Escolha uma opção:\n";
+        cout << "1. Modificar Apartamentos\n";
+        cout << "2. Modificar Eventos\n";
+        cout << "3. Modificar Encomendas\n";
+        cout << "4. Encerrar programa\n";
         int opcao;
-        std::cin >> opcao;
+        cin >> opcao;
 
 
         // Permite o gerenciamento dos Apartamentos
         if (opcao == 1){
             while (num_ap <= 0){
                 Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
-                std::cout << "Informe o número do apartamento: \n";
-                std::cin >> num_ap;
+                cout << "Informe o número do apartamento: \n";
+                cin >> num_ap;
                 if (num_ap <= 0){
-                    std::cout << "Digite um numero de apartamento válido\n";
+                    cout << "Digite um numero de apartamento válido\n";
                 }
             }
         
     // MENU DE OPÇÕES APARTAMENTOS ====================================================================================================
             while (true) {
-                std::cout << "Escolha uma ação:\n";
-                std::cout << "1. Inserir Pessoa\n";
-                std::cout << "2. Inserir Pet\n";
-                std::cout << "3. Inserir Veículo\n";
-                std::cout << "4. Exibir Estatísticas\n";
-                std::cout << "5. Sair\n";
+                cout << "Escolha uma ação:\n";
+                cout << "1. Inserir Pessoa\n";
+                cout << "2. Inserir Pet\n";
+                cout << "3. Inserir Veículo\n";
+                cout << "4. Exibir Estatísticas\n";
+                cout << "5. Voltar\n";
 
                 int escolha;
-                std::cin >> escolha;
+                cin >> escolha;
 
                 // Inserir pessoa
                 if (escolha == 1) {
-                    std::string nome, data_nascimento, tipo_pessoa;
-                    std::cout << "Nome: ";
-                    std::cin >> nome;
-                    std::cout << "Data de Nascimento: ";
-                    std::cin >> data_nascimento;
-                    std::cout << "Tipo de Pessoa (moradora ou visitante): ";
-                    std::cin >> tipo_pessoa;
+                    string nome, data_nascimento, tipo_pessoa;
+                    cout << "Nome: ";
+                    cin.ignore(); 
+                    getline(cin, nome);
+                    cout << "Data de Nascimento: ";
+                    cin >> data_nascimento;
+                    cout << "Tipo de Pessoa (moradora ou visitante): ";
+                    cin >> tipo_pessoa;
                     aps[num_ap].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
 
                 // Inserir pet
                 } else if (escolha == 2) {
-                    std::string nome, raca, tipo;
-                    std::cout << "Nome do Pet: ";
-                    std::cin>> nome;
-                    std::cout << "Raça do Pet: ";
-                    std::cin >> raca;
-                    std::cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
-                    std::cin >> tipo;
+                    string nome, raca, tipo;
+                    cout << "Nome do Pet: ";
+                    cin.ignore(); 
+                    getline(cin, nome);
+                    cout << "Raça do Pet: ";
+                    cin >> raca;
+                    cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
+                    cin >> tipo;
                     aps[num_ap].inserir_pet(nome, raca, tipo);
 
                 // Inserir veículo
                 } else if (escolha == 3) {
-                    std::string modelo, placa, tipo_veiculo;
-                    std::cout << "Modelo do Veículo: ";
-                    std::cin>> modelo;
-                    std::cout << "Placa do Veículo: ";
-                    std::cin >> placa;
-                    std::cout << "Tipo de Veículo: ";
-                    std::cin >> tipo_veiculo;
+                    string modelo, placa, tipo_veiculo;
+                    cout << "Modelo do Veículo: ";
+                    cin.ignore(); 
+                    getline(cin, modelo);
+                    cout << "Placa do Veículo: ";
+                    cin >> placa;
+                    cout << "Tipo de Veículo: ";
+                    cin.ignore(); 
+                    getline(cin, tipo_veiculo);
                     aps[num_ap].inserir_veiculo(modelo, placa, tipo_veiculo);
 
                 // Exibir estatisticas do apartamento
@@ -112,51 +118,59 @@ int main() {
         int choice;
 
         while (true) {
-            std::cout << "Escolha uma ação:\n";
-            std::cout << "1. Criar Evento\n";
-            std::cout << "2. Adicionar Convidado\n";
-            std::cout << "3. Exibir Evento\n";
-            std::cout << "4. Excluir Evento\n";
-            std::cout << "5. Sair\n";
+            cout << "Escolha uma ação:\n";
+            cout << "1. Criar Evento\n";
+            cout << "2. Adicionar Convidado\n";
+            cout << "3. Exibir Evento\n";
+            cout << "4. Excluir Evento\n";
+            cout << "5. Voltar\n";
 
-            std::cin >> choice;
+            cin >> choice;
 
             // Criar Evento
             if (choice == 1) {
-                std::string responsavel, nome_evento, data_evento;
-                std::cout << "Responsável: ";
-                std::cin>> responsavel;
-                std::cout << "Nome do Evento: ";
-                std::cin>> nome_evento;
-                std::cout << "Data do Evento: ";
-                std::cin >> data_evento;
+                string responsavel, nome_evento, data_evento;
+                cout << "Responsável: ";
+                cin.ignore(); 
+                getline(cin, responsavel);
+                cout << "Nome do Evento: ";
+                cin.ignore(); 
+                getline(cin, nome_evento);
+                cout << "Data do Evento: ";
+                cin >> data_evento;
                 eventoManager.criar_evento(responsavel, nome_evento, data_evento);
             
             // Adicionar Convidado
             } else if (choice == 2) {
-                std::string responsavel, nome_evento;
-                std::cout << "Responsável do Evento: ";
-                std::cin>> responsavel;
-                std::cout << "Nome do Evento: ";
-                std::cin>> nome_evento;
+                string responsavel, nome_evento;
+                cout << "Responsável do Evento: ";
+                cin.ignore(); 
+                getline(cin, responsavel);
+                cout << "Nome do Evento: ";
+                cin.ignore(); 
+                getline(cin, nome_evento);
                 //eventoManager.adicionar_convidado(responsavel, nome_evento);
             
             // Exibir Evento
             } else if (choice == 3) {
-                std::string responsavel, nome_evento;
-                std::cout << "Responsável do Evento: ";
-                std::cin>> responsavel;
-                std::cout << "Nome do Evento: ";
-                std::cin>> nome_evento;
+                string responsavel, nome_evento;
+                cout << "Responsável do Evento: ";
+                cin.ignore(); 
+                getline(cin, responsavel);
+                cout << "Nome do Evento: ";
+                cin.ignore(); 
+                getline(cin, nome_evento);
                 eventoManager.exibir_evento(responsavel, nome_evento);
             
             // Excluir Evento
             } else if (choice == 4) {
-                std::string responsavel, nome_evento;
-                std::cout << "Responsável do Evento: ";
-                std::cin>> responsavel;
-                std::cout << "Nome do Evento: ";
-                std::cin>> nome_evento;
+                string responsavel, nome_evento;
+                cout << "Responsável do Evento: ";
+                cin.ignore(); 
+                getline(cin, responsavel);
+                cout << "Nome do Evento: ";
+                cin.ignore(); 
+                getline(cin, nome_evento);
                 eventoManager.excluir_evento(responsavel, nome_evento);
             
             } else if (choice == 5) {
@@ -171,52 +185,53 @@ int main() {
         Encomendas encomendasManager;
 
         while (true) {
-            std::cout << "Escolha uma ação:\n";
-            std::cout << "1. Registrar Encomenda\n";
-            std::cout << "2. Apagar Encomenda\n";
-            std::cout << "3. Exibir Encomendas\n";
-            std::cout << "4. Verificar Encomenda\n";
-            std::cout << "5. Sair\n";
+            cout << "Escolha uma ação:\n";
+            cout << "1. Registrar Encomenda\n";
+            cout << "2. Apagar Encomenda\n";
+            cout << "3. Exibir Encomendas\n";
+            cout << "4. Verificar Encomenda\n";
+            cout << "5. Voltar\n";
             int choice;
-            std::cin >> choice;
+            cin >> choice;
 
             // Registrar Encomenda
             if (choice == 1) {
-                std::string id, destinatario, data_entrega;
-                std::cout << "ID da Encomenda: ";
-                std::cin >> id;
-                std::cout << "Destinatário: ";
-                std::cin>> destinatario;
-                std::cout << "Data de Entrega: ";
-                std::cin >> data_entrega;
+                string id, destinatario, data_entrega;
+                cout << "ID da Encomenda: ";
+                cin >> id;
+                cout << "Destinatário: ";
+                cin.ignore(); 
+                getline(cin, destinatario);
+                cout << "Data de Entrega: ";
+                cin >> data_entrega;
 
                 if (encomendasManager.registrar_encomenda(id, destinatario, data_entrega)) {
-                    std::cout << "Encomenda registrada com sucesso.\n";
+                    cout << "Encomenda registrada com sucesso.\n";
                 } else {
-                    std::cout << "Falha ao registrar a encomenda. Verifique as entradas.\n";
+                    cout << "Falha ao registrar a encomenda. Verifique as entradas.\n";
                 }
             
             // Apagar Encomenda    
             } else if (choice == 2) {
-                std::string id;
-                std::cout << "ID da Encomenda a ser apagada: ";
-                std::cin >> id;
+                string id;
+                cout << "ID da Encomenda a ser apagada: ";
+                cin >> id;
                 encomendasManager.apagar_encomenda(id);
             
             // Exibir Encomendas
             } else if (choice == 3) {
-                std::cout << "Encomendas Registradas:\n";
+                cout << "Encomendas Registradas:\n";
                 encomendasManager.exibir_encomendas();
             
             // Verificar Encomenda    
             } else if (choice == 4) {
-                std::string id;
-                std::cout << "ID da Encomenda a ser verificada: ";
-                std::cin >> id;
+                string id;
+                cout << "ID da Encomenda a ser verificada: ";
+                cin >> id;
                 if (encomendasManager.verificar_encomenda(id)) {
-                    std::cout << "A encomenda com o ID " << id << " existe.\n";
+                    cout << "A encomenda com o ID " << id << " existe.\n";
                 } else {
-                    std::cout << "A encomenda com o ID " << id << " não existe.\n";
+                    cout << "A encomenda com o ID " << id << " não existe.\n";
                 }
                 
             } else if (choice == 5) {
@@ -227,7 +242,7 @@ int main() {
 
     // FIM DO PROGRAMA ================================================================================================================
         if (opcao == 4){
-            std::cout <<"Até mais!\n";
+            cout <<"Até mais!\n";
             break;
         }  
     }
