@@ -16,6 +16,10 @@ Apartamento::Apartamento(int max_Moradores, int max_Visitantes,
     NumeroRestanteVeiculos = max_Veiculos;
 }
 
+Apartamento::Apartamento()
+{
+    
+}
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
 {
     Pessoa pessoa;
@@ -52,22 +56,18 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         if (tipo == "cachorro")
         {
             pet.tipo_pet = cachorro;
-            contador["Cachorros"]++;
         }
         else if (tipo == "gato")
         {
             pet.tipo_pet = gato;
-            contador["Gatos"]++;
         }
         else if (tipo == "passaro")
         {
             pet.tipo_pet = passaro;
-            contador["Passaros"]++;
         }
         else if (tipo == "outro")
         {
             pet.tipo_pet = outro;
-            contador["Outras racas"]++;
         }
 
         pets_.push_back(pet);
@@ -137,42 +137,19 @@ void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string 
             if (tipo_novo == "cachorro")
             {
                 (*it).tipo_pet = cachorro;
-                contador["Cachorros"]++;
             }
             else if (tipo_novo == "gato")
             {
                 (*it).tipo_pet = gato;
-                contador["Gatos"]++;
             }
             else if (tipo_novo == "passaro")
             {
                 (*it).tipo_pet = passaro;
-                contador["Passaros"]++;
             }
             else if (tipo_novo == "outro")
             {
                 (*it).tipo_pet = outro;
-                contador["Outras racas"]++;
             }
-
-            // Essa parte remove o tipo antigo do pet do contador
-            if (tipo_antigo == "cachorro")
-            {
-                contador["Cachorros"]--;
-            }
-            else if (tipo_antigo == "gato")
-            {
-                contador["Gatos"]--;
-            }
-            else if (tipo_antigo == "passaro")
-            {
-                contador["Passaros"]--;
-            }
-            else if (tipo_antigo == "outro")
-            {
-                contador["Outras racas"]--;
-            }
-
             break;
         }
     }
@@ -226,22 +203,6 @@ void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
         if(NumeroRestantePets < 3){
             if ((*it).nome == nome_pet && (*it).raca == raca)
             {
-                if (tipo == "cachorro")
-                {
-                    contador["Cachorros"]--;
-                }
-                else if (tipo == "gato")
-                {
-                    contador["Gatos"]--;
-                }
-                else if (tipo == "passaro")
-                {
-                    contador["Passaros"]--;
-                }
-                else if (tipo == "outro")
-                {
-                    contador["Outras racas"]--;
-                }
                 pets_.erase(it);
                 NumeroRestantePets++;
                 contador["Pets"]--;

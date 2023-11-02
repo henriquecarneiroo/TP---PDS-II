@@ -18,8 +18,13 @@ void Evento::criar_evento(string responsavel, string nome_evento, string data_ev
 }
 
 //Pré-condição: convidados devem ser moradores ou visitantes
-void Evento::adicionar_convidado(/*Apartamento::Apartamento& apartamento*/){
-
+void Evento::adicionar_convidado(string nome_evento, string convidado){
+    Apartamento ap;
+    for (auto it = eventos_.begin(); it != eventos_.end(); it++){
+        if ((*it).nome_evento == nome_evento && (ap.eh_morador(convidado) || ap.eh_visitante(convidado))){
+            (*it).convidados.push_back(convidado);
+        }
+    }
 }
 
 void Evento::editar_evento(string responsavel, string nome_evento){

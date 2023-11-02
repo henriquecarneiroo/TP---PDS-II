@@ -1,4 +1,5 @@
 #include "encomendas.hpp"
+#include "apartamento.hpp"
 
 #include <list>
 #include <string>
@@ -7,6 +8,7 @@
 #include <iostream>
 
 using namespace std;
+
 bool verifica_id(string id)
 {
     if (id.size() < 6 || id.size() > 50)
@@ -16,16 +18,12 @@ bool verifica_id(string id)
     return true;
 }
 
-bool eh_morador(string destinatario)
-{
-    // pensar nessa implemtação
-    return true;
-}
 bool Encomendas::registrar_encomenda(string id, string destinatario, string data_entrega)
 {
     Encomenda encomenda;
+    Apartamento ap;
 
-    if (verifica_id(id) && eh_morador(destinatario))
+    if (verifica_id(id) && ap.eh_morador(destinatario))
     {
         encomenda.data_entrega = data_entrega;
         encomenda.destinatario = destinatario;

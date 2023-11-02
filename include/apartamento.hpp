@@ -21,9 +21,12 @@ public:
      * @brief Construtor que permite definir limites máximos para diferentes tipos de
     pessoas, pets e veículos
     */
-    Apartamento(int max_Moradores = 5, int max_Visitantes = 10,
-                int max_Pets = 3, int max_Veiculos = 2);
-
+    Apartamento(int max_Moradores, int max_Visitantes,
+                int max_Pets, int max_Veiculos);
+    
+    Apartamento();
+        
+    
     /**
      * @brief Insere uma pessoa
      * @pre Não há uma pessoa com o mesmo nome dentro de um mesmo apartamento
@@ -160,10 +163,10 @@ private:
 
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos e serão utilizadas nos construtores
 
-    static const int MAX_MORADORES;
-    static const int MAX_VISITANTES;
-    static const int MAX_PETS;
-    static const int MAX_VEICULOS;
+    int MAX_MORADORES;
+    int MAX_VISITANTES;
+    int MAX_PETS;
+    int MAX_VEICULOS;
     int NumeroRestanteMoradores = 0;
     int NumeroRestanteVisitantes = 0;
     int NumeroRestantePets = 0;
