@@ -93,6 +93,8 @@ bool Encomendas::registrar_encomenda(string id, string destinatario, string data
     }
 
     // Declaração da variável encomendas_ na classe Encomendas
+    // preenche os membros da encomenda com os valores fornecidos como argumentos para a função registrar_encomenda
+    // necessário para criar uma nova encomenda com informações sobre a data de entrega e o destinatário.
     Encomenda encomenda;
     encomenda.data_entrega = data_entrega;
     encomenda.destinatario = destinatario;
