@@ -43,15 +43,15 @@ int main() {
 
         // Permite o gerenciamento dos Apartamentos
         if (opcao == 1){
-            while (num_ap <= 0){
-                Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
-                cout << "Informe o número do apartamento: \n";
-                cin >> num_ap;
+            Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
+            cout << "Informe o número do apartamento: \n";
+            cin >> num_ap;
+            if (!aps.contains(num_ap)){
                 Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
                 aps[num_ap] = novoApartamento;
-                if (num_ap <= 0){
-                    cout << "Digite um numero de apartamento válido\n";
-                }
+            }
+            if (num_ap <= 0){
+                cout << "Digite um numero de apartamento válido\n";
             }
         
     // MENU DE OPÇÕES APARTAMENTOS ====================================================================================================
@@ -75,6 +75,7 @@ int main() {
                     cout << "Data de Nascimento: ";
                     cin >> data_nascimento;
                     cout << "Tipo de Pessoa (moradora ou visitante): ";
+                    cin.ignore();
                     cin >> tipo_pessoa;
                     aps[num_ap].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
 

@@ -23,6 +23,7 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
     {
         if(MAX_MORADORES > 0){
             pessoa.tipo_pessoa = moradora;
+            pessoas_.push_back(pessoa);
             MAX_MORADORES--;
             contador["Moradores"]++;
         }
@@ -226,8 +227,17 @@ void Apartamento::exibir_estatisticas()
 {
     cout << "Quantidades de moradores do prédio: " << contador["Moradores"] << endl;
     cout << "Quantidade de visitantes: " << contador["Visitantes"] << endl;
+    for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
+        cout <<"Nome: "<< it->nome << endl <<"Data de Nascimemto: "<< it->data_nascimento << endl <<"Tipo: "<< it->tipo_pessoa << endl;
+    }
     cout << "Quantidade de pets: " << contador["Pets"] << endl;
+    for (auto it = pets_.begin(); it != pets_.end(); it++){
+        cout <<"Nome: "<< it->nome << endl <<"Raca: "<< it->raca << endl <<"Tipo Pet: "<< it->tipo_pet << endl;
+    }
     cout << "Quantidade de veículos: " << contador["Veículos"] << endl;
+    for (auto it = veiculos_.begin(); it != veiculos_.end(); it++){
+        cout <<"Modelo: "<< it->modelo << endl <<"Placa: "<< it->placa << endl <<"Tipo Veiculo: "<< it->tipo_veiculo << endl;
+    }
 }
 
 // Retorna a quantidade de itens, a partir da chave passada, do contador
