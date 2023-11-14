@@ -55,63 +55,119 @@ int main() {
             }
         
     // MENU DE OPÇÕES APARTAMENTOS ====================================================================================================
-            while (true) {
-                cout << "Escolha uma ação:\n";
-                cout << "1. Inserir Pessoa\n";
-                cout << "2. Inserir Pet\n";
-                cout << "3. Inserir Veículo\n";
-                cout << "4. Exibir Estatísticas\n";
+            while (true){
+                cout << "Escolha uma execução\n";
+                cout << "1. Inserir\n";
+                cout << "2. Editar\n";
+                cout << "3. Excluir\n";
+                cout << "4. Exibir Estatísiticas\n";
                 cout << "5. Voltar\n";
 
-                int escolha;
-                cin >> escolha;
+                int execucao;
+                cin >> execucao;
 
-                // Inserir pessoa
-                if (escolha == 1) {
-                    string nome, data_nascimento, tipo_pessoa;
-                    cout << "Nome: ";
-                    cin.ignore(); 
-                    getline(cin, nome);
-                    cout << "Data de Nascimento: ";
-                    cin >> data_nascimento;
-                    cout << "Tipo de Pessoa (moradora ou visitante): ";
-                    cin.ignore();
-                    cin >> tipo_pessoa;
-                    aps[num_ap].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
+                if (execucao == 1){
+                while (true) {
+                    cout << "Escolha uma ação:\n";
+                    cout << "1. Inserir Pessoa\n";
+                    cout << "2. Inserir Pet\n";
+                    cout << "3. Inserir Veículo\n";
+                    cout << "4. Voltar\n";
 
-                // Inserir pet
-                } else if (escolha == 2) {
-                    string nome, raca, tipo;
-                    cout << "Nome do Pet: ";
-                    cin.ignore(); 
-                    getline(cin, nome);
-                    cout << "Raça do Pet: ";
-                    cin >> raca;
-                    cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
-                    cin >> tipo;
-                    aps[num_ap].inserir_pet(nome, raca, tipo);
+                    int escolha;
+                    cin >> escolha;
 
-                // Inserir veículo
-                } else if (escolha == 3) {
-                    string modelo, placa, tipo_veiculo;
-                    cout << "Modelo do Veículo: ";
-                    cin.ignore(); 
-                    getline(cin, modelo);
-                    cout << "Placa do Veículo: ";
-                    cin >> placa;
-                    cout << "Tipo de Veículo: ";
-                    cin.ignore(); 
-                    getline(cin, tipo_veiculo);
-                    aps[num_ap].inserir_veiculo(modelo, placa, tipo_veiculo);
+                    // Inserir pessoa
+                    if (escolha == 1) {
+                        string nome, data_nascimento, tipo_pessoa;
+                        cout << "Nome: ";
+                        cin.ignore(); 
+                        getline(cin, nome);
+                        cout << "Data de Nascimento: ";
+                        cin >> data_nascimento;
+                        cout << "Tipo de Pessoa (moradora ou visitante): ";
+                        cin.ignore();
+                        cin >> tipo_pessoa;
+                        aps[num_ap].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
 
-                // Exibir estatisticas do apartamento
-                } else if (escolha == 4) {
+                    // Inserir pet
+                    } else if (escolha == 2) {
+                        string nome, raca, tipo;
+                        cout << "Nome do Pet: ";
+                        cin.ignore(); 
+                        getline(cin, nome);
+                        cout << "Raça do Pet: ";
+                        cin >> raca;
+                        cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
+                        cin >> tipo;
+                        aps[num_ap].inserir_pet(nome, raca, tipo);
+
+                    // Inserir veículo
+                    } else if (escolha == 3) {
+                        string modelo, placa, tipo_veiculo;
+                        cout << "Modelo do Veículo: ";
+                        cin.ignore(); 
+                        getline(cin, modelo);
+                        cout << "Placa do Veículo: ";
+                        cin >> placa;
+                        cout << "Tipo de Veículo: ";
+                        cin.ignore(); 
+                        getline(cin, tipo_veiculo);
+                        aps[num_ap].inserir_veiculo(modelo, placa, tipo_veiculo);
+                    
+                    // Encerra essa parte do programa
+                    } else if (escolha == 4) {
+                        break; 
+                    }
+                }
+                }
+                if (execucao == 2){
+                while (true) {
+                    cout << "Escolha uma ação:\n";
+                    cout << "1. Editar Pessoa\n";
+                    cout << "2. Editar Pet\n";
+                    cout << "3. Editar Veículo\n";
+                    cout << "4. Voltar\n";
+
+                    int escolha;
+                    cin >> escolha;
+                    if (escolha == 1){
+                        string nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
+                        cout << "Informe os dados antigos\n";
+                        cout << "Nome: \n";
+                        cin >> nome_antigo;
+                        cout << "Data de Nascimento: \n";
+                        cin >> data_nascimento_antiga;
+                        cout << "Tipo: \n";
+                        cin >> tipo_pessoa_antigo;
+                        cout << "Informe os dados novos\n";
+                        cout << "Nome: \n";
+                        cin >> nome_novo;
+                        cout << "Data de Nascimento: \n";
+                        cin >> data_nascimento_nova;
+                        cout << "Tipo: \n";
+                        cin >> tipo_pessoa_novo;
+                        aps[num_ap].editar_pessoa (nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
+                    } else if (escolha == 2){
+                    
+                    } else if (escolha == 3){
+                        
+                    } else if (escolha == 4){
+                        break;
+                    }
+                }
+                }
+                if (execucao == 3){
+
+                }
+                if (execucao == 4){
                     aps[num_ap].exibir_estatisticas();
-
-                } else if (escolha == 5) {
-                    break; // Encerra essa parte do programa
+                }
+                if (execucao == 5){
+                    break;
                 }
             }
+
         }
 
     // MENU DE OPÇÕES DOS EVENTOS =====================================================================================================
