@@ -70,7 +70,7 @@ public:
      * @brief Exclui uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
     */
-    void excluir_pessoa(string nome_pessoa);
+    void excluir_pessoa(string nome_pessoa, string data_nascimento, string tipo_pessoa);
 
     /**
      * @brief Exclui um pet
@@ -160,6 +160,10 @@ private:
     
     friend class Evento;
     friend class Encomendas;
+    // verifica se o numero máximo de cada tipo foi atingido. Retorna true caso não e false caso sim
+    bool verifica_quantidade_restante(string tipo);
+    //verifica se a lista de pessoas, veiculos ou pets está vazia. Retorna true se sim e false caso contrário
+    bool esta_vazio(string tipo);
 
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos e serão utilizadas nos construtores
 
