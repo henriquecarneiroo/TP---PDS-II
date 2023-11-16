@@ -159,6 +159,54 @@ int main() {
                 }
                 if (execucao == 3){
 
+                    while (true) {
+                    cout << "Escolha uma ação:\n";
+                    cout << "1. Excluir Pessoa\n";
+                    cout << "2. Excluir Pet\n";
+                    cout << "3. Excluir Veículo\n";
+                    cout << "4. Voltar\n";
+
+                    int escolha;
+                    cin >> escolha;
+
+                    // Excluir pessoa
+                    if (escolha == 1) {
+                        string nome, data_nascimento, tipo_pessoa;
+                        cout << "Nome: ";
+                        cin.ignore(); 
+                        getline(cin, nome);
+                        cout << "Data de Nascimento: ";
+                        cin >> data_nascimento;
+                        cout << "Tipo de Pessoa (moradora ou visitante): ";
+                        cin.ignore();
+                        cin >> tipo_pessoa;
+                        aps[num_ap].excluir_pessoa(nome, data_nascimento, tipo_pessoa);
+
+                    // Excluir pet
+                    } else if (escolha == 2) {
+                        string nome, raca, tipo;
+                        cout << "Nome do Pet: ";
+                        cin.ignore(); 
+                        getline(cin, nome);
+                        cout << "Raça do Pet: ";
+                        cin >> raca;
+                        cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
+                        cin >> tipo;
+                        aps[num_ap].excluir_pet(nome, raca, tipo);
+
+                    // Excluir veículo
+                    } else if (escolha == 3) {
+                        string placa;
+                        cout << "Placa do Veículo: ";
+                        cin >> placa;
+                        aps[num_ap].excluir_veiculo(placa);
+                    
+                    // Encerra essa parte do programa
+                    } else if (escolha == 4) {
+                        break; 
+                    }
+                
+                }
                 }
                 if (execucao == 4){
                     aps[num_ap].exibir_estatisticas();
