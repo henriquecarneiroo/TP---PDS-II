@@ -27,6 +27,7 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
             MAX_MORADORES--;
             contador["Moradores"]++;
         }
+        cout << "Morador inserido com sucesso\n";
         return;
     }
     if (tipo_pessoa == "visitante")
@@ -83,7 +84,7 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
     if(MAX_VEICULOS > 0){
         veiculos_.push_back(veiculo);
         MAX_VEICULOS--;
-        contador["Veículos"]++;
+        contador["Veiculos"]++;
     }
 }
 
@@ -217,14 +218,12 @@ void Apartamento::excluir_veiculo(string placa)
 {
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++)
     {
-        if(MAX_VEICULOS < 2){
             if ((*it).placa == placa)
             {
                 veiculos_.erase(it);
                 contador["Veiculos"]--;
                 MAX_VEICULOS++;
             }
-        }
         break;
     }
 }
@@ -240,7 +239,7 @@ void Apartamento::exibir_estatisticas()
     for (auto it = pets_.begin(); it != pets_.end(); it++){
         cout <<"Nome: "<< it->nome << endl <<"Raca: "<< it->raca << endl <<"Tipo Pet: "<< it->tipo_pet << endl;
     }
-    cout << "Quantidade de veículos: " << contador["Veículos"] << endl;
+    cout << "Quantidade de veículos: " << contador["Veiculos"] << endl;
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++){
         cout <<"Modelo: "<< it->modelo << endl <<"Placa: "<< it->placa << endl <<"Tipo Veiculo: "<< it->tipo_veiculo << endl;
     }

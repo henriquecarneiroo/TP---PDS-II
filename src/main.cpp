@@ -66,7 +66,7 @@ int main() {
                 int execucao;
                 cin >> execucao;
 
-                // Adicionar =========================================================================================================
+                // Inserir =========================================================================================================
                 if (execucao == 1){
                 while (true) {
                     cout << "Escolha uma ação:\n";
@@ -138,14 +138,16 @@ int main() {
                         string nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
                         cout << "Informe os dados antigos da pessoa\n";
                         cout << "Nome: ";
-                        cin >> nome_antigo;
+                        cin.ignore(); 
+                        getline(cin, nome_antigo);
                         cout << "Data de Nascimento: ";
                         cin >> data_nascimento_antiga;
                         cout << "Tipo: ";
                         cin >> tipo_pessoa_antigo;
                         cout << "Informe os dados novos da pessoa\n";
                         cout << "Nome: ";
-                        cin >> nome_novo;
+                        cin.ignore();
+                        getline(cin, nome_novo);
                         cout << "Data de Nascimento: ";
                         cin >> data_nascimento_nova;
                         cout << "Tipo: ";
@@ -157,14 +159,16 @@ int main() {
                         string nome_pet_antigo, raca_antiga, tipo_antigo, nome_pet_novo, raca_nova, tipo_novo;
                         cout << "Informe os dados antigos do pet\n";
                         cout << "Nome: ";
-                        cin >> nome_pet_antigo;
+                        cin.ignore(); 
+                        getline(cin, nome_pet_antigo);
                         cout << "Raca: ";
                         cin >> raca_antiga;
                         cout << "Tipo: ";
                         cin >> tipo_antigo;
                         cout << "Informe os dados novos do pet\n";
                         cout << "Nome: ";
-                        cin >> nome_pet_novo;
+                        cin.ignore();
+                        getline(cin, nome_pet_novo);
                         cout << "Raca: ";
                         cin >> raca_nova;
                         cout << "Tipo: ";
@@ -177,7 +181,7 @@ int main() {
                         cout << "Informe a placa antiga do veiculo\n";
                         cout << "Placa: ";
                         cin >> placa_antiga;
-                        cout << "Informe os dados antigos do pet\n";
+                        cout << "Informe os dados novos do veiculo\n";
                         cout << "Placa: ";
                         cin >> placa_nova;
                         cout << "Modelo: ";
@@ -207,18 +211,20 @@ int main() {
                     // Excluir Pessoa
                     if (escolha == 1){
                         string pessoa_excluida;
-                        cout << "Informe o nome da pessoa a ser excluida\n";
+                        cout << "Informe o nome da pessoa a ser excluida: \n";
                         cout << "Nome: ";
-                        cin >> pessoa_excluida;
+                        cin.ignore();
+                        getline(cin, pessoa_excluida);
                         aps [num_ap].excluir_pessoa(pessoa_excluida);
                     }
 
                     // Excluir Pet
                     if (escolha == 2){
                         string nome_excluido, raca_excluido, tipo_exlcuido;
-                        cout << "Informe sobre o pet a ser excluido\n";
+                        cout << "Informe sobre o pet a ser excluido:\n";
                         cout << "Nome: ";
-                        cin >> nome_excluido;
+                        cin.ignore(); 
+                        getline(cin, nome_excluido);
                         cout << "Raca: ";
                         cin >> raca_excluido;
                         cout << "Tipo: ";
@@ -229,7 +235,7 @@ int main() {
                     // Excluir Veiculo
                     if (escolha == 3){
                         string veiculo_excluido;
-                        cout << "Informe a placa do veiculo a ser excluido\n";
+                        cout << "Informe a placa do veiculo a ser excluido: \n";
                         cin >> veiculo_excluido;
                         aps [num_ap].excluir_veiculo(veiculo_excluido);
                     }
@@ -273,7 +279,6 @@ int main() {
                 cin.ignore(); 
                 getline(cin, responsavel);
                 cout << "Nome do Evento: ";
-                cin.ignore(); 
                 getline(cin, nome_evento);
                 cout << "Data do Evento: ";
                 cin >> data_evento;
@@ -281,14 +286,13 @@ int main() {
             
             // Adicionar Convidado
             } else if (choice == 2) {
-                string responsavel, nome_evento;
-                cout << "Responsável do Evento: ";
-                cin.ignore(); 
-                getline(cin, responsavel);
+                string convidado, nome_evento;
                 cout << "Nome do Evento: ";
                 cin.ignore(); 
                 getline(cin, nome_evento);
-                eventoManager.adicionar_convidado(responsavel, nome_evento);
+                cout << "Nome do Convidado: "; 
+                getline(cin, convidado);
+                eventoManager.adicionar_convidado(nome_evento, convidado);
             
             // Exibir Evento
             } else if (choice == 3) {
@@ -297,7 +301,6 @@ int main() {
                 cin.ignore(); 
                 getline(cin, responsavel);
                 cout << "Nome do Evento: ";
-                cin.ignore(); 
                 getline(cin, nome_evento);
                 eventoManager.exibir_evento(responsavel, nome_evento);
             
@@ -308,7 +311,6 @@ int main() {
                 cin.ignore(); 
                 getline(cin, responsavel);
                 cout << "Nome do Evento: ";
-                cin.ignore(); 
                 getline(cin, nome_evento);
                 eventoManager.excluir_evento(responsavel, nome_evento);
             
@@ -344,11 +346,7 @@ int main() {
                 cout << "Data de Entrega: ";
                 cin >> data_entrega;
 
-                if (encomendasManager.registrar_encomenda(id, destinatario, data_entrega)) {
-                    cout << "Encomenda registrada com sucesso.\n";
-                } else {
-                    cout << "Falha ao registrar a encomenda. Verifique as entradas.\n";
-                }
+                encomendasManager.registrar_encomenda(id, destinatario, data_entrega);
             
             // Apagar Encomenda    
             } else if (choice == 2) {
@@ -367,11 +365,7 @@ int main() {
                 string id;
                 cout << "ID da Encomenda a ser verificada: ";
                 cin >> id;
-                if (encomendasManager.verificar_encomenda(id)) {
-                    cout << "A encomenda com o ID " << id << " existe.\n";
-                } else {
-                    cout << "A encomenda com o ID " << id << " não existe.\n";
-                }
+                encomendasManager.verificar_encomenda(id);
                 
             } else if (choice == 5) {
                 break; // encerra programa
@@ -380,7 +374,7 @@ int main() {
         }
 
     // FIM DO PROGRAMA ================================================================================================================
-        if (opcao == 4){
+        else {
             cout <<"Até mais!\n";
             break;
         }
