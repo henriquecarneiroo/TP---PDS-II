@@ -26,8 +26,10 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
             pessoas_.push_back(pessoa);
             MAX_MORADORES--;
             contador["Moradores"]++;
+            cout << "Morador inserido com sucesso\n";
+        } else {
+            cout << "Morador não inserido, número máximo atingido\n";
         }
-        cout << "Morador inserido com sucesso\n";
         return;
     }
     if (tipo_pessoa == "visitante")
@@ -37,7 +39,13 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
             pessoas_.push_back(pessoa);
             MAX_VISITANTES--;
             contador["Visitantes"]++;
+            cout << "Visitante inserido com sucesso\n";
+        } else {
+            cout << "Morador não inserido, número máximo atingido\n";
         }
+        return;
+    } else {
+        cout << "Inserção Falhou\n";
         return;
     }
 }
@@ -53,23 +61,32 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         if (tipo == "cachorro")
         {
             pet.tipo_pet = "cachorro";
+            cout << "Pet inserido com sucesso\n";
         }
         else if (tipo == "gato")
         {
             pet.tipo_pet = "gato";
+            cout << "Pet inserido com sucesso\n";
         }
         else if (tipo == "passaro")
         {
             pet.tipo_pet = "passaro";
+            cout << "Pet inserido com sucesso\n";
         }
         else if (tipo == "outro")
         {
             pet.tipo_pet = "outro";
+            cout << "Pet inserido com sucesso\n";
+        } else {
+            cout << "Inserção Falhou\n";
         }
 
         pets_.push_back(pet);
         MAX_PETS--;
         contador["Pets"]++;
+        return;
+    } else {
+        cout << "Pet não inserido, número máximo atingido\n";
     }
 }
 
@@ -85,6 +102,9 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
         veiculos_.push_back(veiculo);
         MAX_VEICULOS--;
         contador["Veiculos"]++;
+        cout << "Veículo inserido com sucesso\n";
+    } else {
+        cout << "Veículo não inserido, número máximo atingido\n";
     }
 }
 
@@ -105,6 +125,8 @@ void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antig
                 if(tipo_pessoa_antigo == "visitante"){
                     contador["Visitantes"]--;
                     contador["Moradores"]++;
+                    cout << "Edição concluída com sucesso\n";
+                    return;
                 }
             }
             else if (tipo_pessoa_novo == "visitante")
@@ -113,11 +135,14 @@ void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antig
                 if(tipo_pessoa_antigo == "moradora"){
                     contador["Moradores"]--;
                     contador["Visitantes"]++;
+                    cout << "Edição concluída com sucesso\n";
+                    return;
                 }
             }
             break;
         }
     }
+    cout << "Edição Falhou\n";
 }
 
 // da para deixar so o nome 
@@ -136,22 +161,31 @@ void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string 
             if (tipo_novo == "cachorro")
             {
                 (*it).tipo_pet = "cachorro";
+                cout << "Edição concluída com sucesso\n";
+                return;
             }
             else if (tipo_novo == "gato")
             {
                 (*it).tipo_pet = "gato";
+                cout << "Edição concluída com sucesso\n";
+                return;
             }
             else if (tipo_novo == "passaro")
             {
                 (*it).tipo_pet = "passaro";
+                cout << "Edição concluída com sucesso\n";
+                return;
             }
             else if (tipo_novo == "outro")
             {
                 (*it).tipo_pet = "outro";
+                cout << "Edição concluída com sucesso\n";
+                return;
             }
             break;
         }
     }
+    cout << "Edição Falhou\n";
 }
 
 void Apartamento::editar_veiculo(string placa_antiga,
@@ -164,9 +198,12 @@ void Apartamento::editar_veiculo(string placa_antiga,
             (*it).modelo = modelo_novo;
             (*it).placa = placa_nova;
             (*it).tipo_veiculo = tipo_veiculo_novo;
+            cout << "Edição concluída com sucesso\n";
+            return;
             break;
         }
     }
+    cout << "Edição Falhou\n";
 }
 
 // Exclui a pessoa e atualiza os contadores
@@ -180,16 +217,21 @@ void Apartamento::excluir_pessoa(string nome_pessoa)
                 pessoas_.erase(it);
                 contador["Moradores"]--;
                 MAX_MORADORES++;
+                cout << "Pessoa excluida com sucesso\n";
+                return;
                 break;
             }
             else if ((*it).tipo_pessoa == "visitante"){
                 pessoas_.erase(it);
                 contador["Visitantes"]--;
                 MAX_VISITANTES++;
+                cout << "Pessoa excluida com sucesso\n";
+                return;
                 break;
             }
         }
     }
+    cout << "Exclusão Falhou\n";
 }
 
 // Lembrar de tratar exceções, pro caso dos dados não baterem
@@ -207,10 +249,13 @@ void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
                 pets_.erase(it);
                 MAX_PETS++;
                 contador["Pets"]--;
+                cout << "Pet excluido com sucesso\n";
+                return;
             }
         }
         break;
     }
+    cout << "Exclusão Falhou\n";
 }
 
 // Exclui um veículo e atualiza os contadores
@@ -223,9 +268,12 @@ void Apartamento::excluir_veiculo(string placa)
                 veiculos_.erase(it);
                 contador["Veiculos"]--;
                 MAX_VEICULOS++;
+                cout << "Veículo excluida com sucesso\n";
+                return;
             }
         break;
     }
+    cout << "Exclusão Falhou\n";
 }
 
 void Apartamento::exibir_estatisticas()

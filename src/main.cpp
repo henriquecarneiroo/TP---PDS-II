@@ -85,9 +85,11 @@ int main() {
                         getline(cin, nome);
                         cout << "Data de Nascimento: ";
                         cin >> data_nascimento;
-                        cout << "Tipo de Pessoa (moradora ou visitante): ";
-                        cin.ignore();
-                        cin >> tipo_pessoa;
+                        while (tipo_pessoa != "moradora" && tipo_pessoa != "visitante"){
+                            cout << "Tipo de Pessoa (moradora ou visitante): ";
+                            cin.ignore();
+                            cin >> tipo_pessoa;
+                        }
                         aps[num_ap].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
 
                     // Inserir pet
@@ -98,8 +100,11 @@ int main() {
                         getline(cin, nome);
                         cout << "Raça do Pet: ";
                         cin >> raca;
-                        cout << "Tipo de Pet (cachorro, gato, passaro ou outro): ";
-                        cin >> tipo;
+                        while (tipo != "cachorro" && tipo != "gato" && tipo != "passaro" && tipo != "outro"){
+                            cout << "Tipo do Pet (cachorro, gato, passaro ou outro): ";
+                            cin.ignore();
+                            cin >> tipo;
+                        }
                         aps[num_ap].inserir_pet(nome, raca, tipo);
 
                     // Inserir veículo
