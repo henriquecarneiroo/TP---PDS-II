@@ -46,7 +46,7 @@ int main() {
             Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
             cout << "Informe o número do apartamento: \n";
             cin >> num_ap;
-            if (!aps.contains(num_ap)){
+            if (aps.find(num_ap)==aps.end()){
                 Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
                 aps[num_ap] = novoApartamento;
             }
@@ -136,21 +136,23 @@ int main() {
                     cin >> escolha;
                     if (escolha == 1){
                         string nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
-                        cout << "Informe os dados antigos\n";
-                        cout << "Nome: \n";
+                        cout << "Informe os dados antigos da pessoa\n";
+                        cout << "Nome: ";
                         cin >> nome_antigo;
-                        cout << "Data de Nascimento: \n";
+                        cout << "Data de Nascimento: ";
                         cin >> data_nascimento_antiga;
-                        cout << "Tipo: \n";
+                        cout << "Tipo: ";
                         cin >> tipo_pessoa_antigo;
-                        cout << "Informe os dados novos\n";
-                        cout << "Nome: \n";
+                        cout << "Informe os dados novos da pessoa\n";
+                        cout << "Nome: ";
                         cin >> nome_novo;
-                        cout << "Data de Nascimento: \n";
+                        cout << "Data de Nascimento: ";
                         cin >> data_nascimento_nova;
-                        cout << "Tipo: \n";
+                        cout << "Tipo: ";
                         cin >> tipo_pessoa_novo;
                         aps[num_ap].editar_pessoa (nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
+                    
+                    // Editar Pet
                     } else if (escolha == 2){
                         string nome_pet_antigo, raca_antiga, tipo_antigo, nome_pet_novo, raca_nova, tipo_novo;
                         cout << "Informe os dados antigos do pet\n";
@@ -193,7 +195,50 @@ int main() {
 
                 // Excluir ============================================================================================================
                 if (execucao == 3){
+                while (true) {
+                    cout << "Escolha uma ação:\n";
+                    cout << "1. Excluir Pessoa\n";
+                    cout << "2. Excluir Pet\n";
+                    cout << "3. Excluir Veículo\n";
+                    cout << "4. Voltar\n";
+                    int escolha;
+                    cin >> escolha;
 
+                    // Excluir Pessoa
+                    if (escolha == 1){
+                        string pessoa_excluida;
+                        cout << "Informe o nome da pessoa a ser excluida\n";
+                        cout << "Nome: ";
+                        cin >> pessoa_excluida;
+                        aps [num_ap].excluir_pessoa(pessoa_excluida);
+                    }
+
+                    // Excluir Pet
+                    if (escolha == 2){
+                        string nome_excluido, raca_excluido, tipo_exlcuido;
+                        cout << "Informe sobre o pet a ser excluido\n";
+                        cout << "Nome: ";
+                        cin >> nome_excluido;
+                        cout << "Raca: ";
+                        cin >> raca_excluido;
+                        cout << "Tipo: ";
+                        cin >> tipo_exlcuido;
+                        aps [num_ap].excluir_pet(nome_excluido, raca_excluido, tipo_exlcuido);
+                    }
+
+                    // Excluir Veiculo
+                    if (escolha == 3){
+                        string veiculo_excluido;
+                        cout << "Informe a placa do veiculo a ser excluido\n";
+                        cin >> veiculo_excluido;
+                        aps [num_ap].excluir_veiculo(veiculo_excluido);
+                    }
+
+                    // Voltar
+                    if (escolha == 4){
+                        break;
+                    }
+                }
                 }
                 if (execucao == 4){
                     aps[num_ap].exibir_estatisticas();

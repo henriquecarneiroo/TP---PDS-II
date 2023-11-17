@@ -49,8 +49,8 @@ public:
      * @brief Edita uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
     */
-    void editar_pessoa(string nome_antigo,
-                       string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
+    void editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
+                                string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
 
     /**
      * @brief Edita um pet
@@ -70,7 +70,7 @@ public:
      * @brief Exclui uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
     */
-    void excluir_pessoa(string nome_pessoa, string data_nascimento, string tipo_pessoa);
+    void excluir_pessoa(string nome_pessoa);
 
     /**
      * @brief Exclui um pet
@@ -117,32 +117,18 @@ private:
      * Variáveis que serão utilizadas nas funções
     */
 
-    enum TipoPessoa
-    {
-        moradora,
-        visitante,
-    };
-
     struct Pessoa
     {
         string nome;
         string data_nascimento;
-        TipoPessoa tipo_pessoa;
-    };
-
-    enum TipoPet
-    {
-        cachorro,
-        gato,
-        passaro,
-        outro,
+        string tipo_pessoa;
     };
 
     struct Pet
     {
         string nome;
         string raca;
-        TipoPet tipo_pet;
+        string tipo_pet;
     };
 
     struct Veiculo
