@@ -167,39 +167,37 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
     }
 }
 
-void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
-                                string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo)
-{
-    if(verifica_quantidade_restante(tipo_pessoa_novo)){ // verifica se o tipo de pessoa ainda não atingiu o número máximo
+void Apartamento::editar_pessoa(string nome_antigo,
+                                string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo){
 
-    for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
-    { // procura a pessoa
-        if ((*it).nome == nome_antigo && (*it).data_nascimento == data_nascimento_antiga) // não está avaliando o tipo antigo antes de editar, não é possivel comparar enum com string
-        {
-            (*it).nome = nome_novo;
-            (*it).data_nascimento = data_nascimento_nova;
-
-            if (tipo_pessoa_novo == "moradora")
-            {
-                (*it).tipo_pessoa = moradora;
-                if (tipo_pessoa_antigo == "visitante")
-                {
+    for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){ // procura a pessoa
+        if (it->nome == nome_antigo){
+            it->nome = nome_novo;
+            it->data_nascimento = data_nascimento_nova;
+            if (tipo_pessoa_novo == "moradora"){ // faz a alteração do tipo e dos contadores
+                if (it->tipo_pessoa == visitante){
                     contador["Visitantes"]--;
                     contador["Moradores"]++;
+                    it->tipo_pessoa = moradora;
+                    cout << "Edição concluída! \n" << endl;
+
+                } else if (it->tipo_pessoa == moradora){
+                    it->tipo_pessoa = moradora;
+                    cout << "Edição concluída! \n" << endl;
                 }
-            }
-            else if (tipo_pessoa_novo == "visitante")
-            {
-                (*it).tipo_pessoa = visitante;
-                if (tipo_pessoa_antigo == "moradora")
-                {
+            } else if (tipo_pessoa_novo == "visitante"){
+                if (it->tipo_pessoa == moradora){
                     contador["Moradores"]--;
                     contador["Visitantes"]++;
+                    it->tipo_pessoa = visitante;
+                    cout << "Edição concluída! \n" << endl;
+                } else if (it->tipo_pessoa == visitante){
+                    it->tipo_pessoa = visitante;
+                    cout << "Edição concluída! \n" << endl;
                 }
             }
             break;
         }
-    }
     }
 }
 
@@ -209,27 +207,27 @@ void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string 
     if(verifica_quantidade_restante("pet")){
     for (auto it = pets_.begin(); it != pets_.end(); it++)
     {
-        if ((*it).nome == nome_pet_antigo && (*it).raca == raca_antiga)
+        if (it->nome == nome_pet_antigo && it->raca == raca_antiga)
         {
-            (*it).nome = nome_pet_novo;
-            (*it).raca = raca_nova;
+            it->nome = nome_pet_novo;
+            it->raca = raca_nova;
 
             // Essa parte define o novo tipo de pet
             if (tipo_novo == "cachorro")
             {
-                (*it).tipo_pet = cachorro;
+                it->tipo_pet = cachorro;
             }
             else if (tipo_novo == "gato")
             {
-                (*it).tipo_pet = gato;
+                it->tipo_pet = gato;
             }
             else if (tipo_novo == "passaro")
             {
-                (*it).tipo_pet = passaro;
+                it->tipo_pet = passaro;
             }
             else if (tipo_novo == "outro")
             {
-                (*it).tipo_pet = outro;
+                it->tipo_pet = outro;
             }
             break;
         }
@@ -243,11 +241,11 @@ void Apartamento::editar_veiculo(string placa_antiga,
     if(verifica_quantidade_restante("veiculo")){
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++)
     {
-        if ((*it).placa == placa_antiga)
+        if (it->placa == placa_antiga)
         {
-            (*it).modelo = modelo_novo;
-            (*it).placa = placa_nova;
-            (*it).tipo_veiculo = tipo_veiculo_novo;
+            it->modelo = modelo_novo;
+            it->placa = placa_nova;
+            it->tipo_veiculo = tipo_veiculo_novo;
             break;
         }
     }
@@ -260,16 +258,16 @@ void Apartamento::excluir_pessoa(string nome_pessoa, string data_nascimento, str
     if(!esta_vazio("pessoa")){ 
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
-        if ((*it).nome == nome_pessoa && (*it).data_nascimento == data_nascimento) // problema do enum denovo
+        if (it->nome == nome_pessoa && it->data_nascimento == data_nascimento) // problema do enum denovo
         {
-            if ((*it).tipo_pessoa == moradora)
+            if (it->tipo_pessoa == moradora)
             {
                 pessoas_.erase(it);
                 contador["Moradores"]--;
                 MAX_MORADORES++;
                 break;
             }
-            else if ((*it).tipo_pessoa == visitante)
+            else if (it->tipo_pessoa == visitante)
             {
                 pessoas_.erase(it);
                 contador["Visitantes"]--;
@@ -291,7 +289,7 @@ void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
     {
         if (MAX_PETS < 3)
         {
-            if ((*it).nome == nome_pet && (*it).raca == raca)
+            if (it->nome == nome_pet && it->raca == raca)
             {
                 pets_.erase(it);
                 MAX_PETS++;
@@ -311,7 +309,7 @@ void Apartamento::excluir_veiculo(string placa)
     {
         //if (MAX_VEICULOS < 2)
         {
-            if ((*it).placa == placa)
+            if (it->placa == placa)
             {
                 veiculos_.erase(it);
                 contador["Veiculos"]--;
@@ -360,7 +358,7 @@ bool Apartamento::eh_morador(string nome)
 {
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
-        if ((*it).nome == nome && (*it).tipo_pessoa == moradora)
+        if (it->nome == nome && it->tipo_pessoa == moradora)
         {
             return true;
         }
@@ -372,7 +370,7 @@ bool Apartamento::eh_visitante(string nome)
 {
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++)
     {
-        if ((*it).nome == nome && (*it).tipo_pessoa == visitante)
+        if (it->nome == nome && it->tipo_pessoa == visitante)
         {
             return true;
         }

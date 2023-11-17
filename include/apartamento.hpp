@@ -49,7 +49,7 @@ public:
      * @brief Edita uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
     */
-    void editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
+    void editar_pessoa(string nome_antigo,
                        string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
 
     /**

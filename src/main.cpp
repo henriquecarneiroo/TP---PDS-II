@@ -132,22 +132,19 @@ int main() {
                     int escolha;
                     cin >> escolha;
                     if (escolha == 1){
-                        string nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
+                        string nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
                         cout << "Informe os dados antigos\n";
                         cout << "Nome: \n";
-                        cin >> nome_antigo;
-                        cout << "Data de Nascimento: \n";
-                        cin >> data_nascimento_antiga;
-                        cout << "Tipo: \n";
-                        cin >> tipo_pessoa_antigo;
+                        cin.ignore();
+                        getline(cin, nome_antigo);
                         cout << "Informe os dados novos\n";
                         cout << "Nome: \n";
-                        cin >> nome_novo;
+                        getline(cin, nome_novo);
                         cout << "Data de Nascimento: \n";
-                        cin >> data_nascimento_nova;
+                        getline(cin, data_nascimento_nova);
                         cout << "Tipo: \n";
-                        cin >> tipo_pessoa_novo;
-                        aps[num_ap].editar_pessoa (nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
+                        getline(cin, tipo_pessoa_novo);
+                        aps[num_ap].editar_pessoa(nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
                     } else if (escolha == 2){
                     
                     } else if (escolha == 3){
