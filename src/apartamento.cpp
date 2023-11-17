@@ -85,6 +85,7 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
     }
 }
 
+// da para deixar so o nome
 void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
                                 string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo)
 {
@@ -116,6 +117,7 @@ void Apartamento::editar_pessoa(string nome_antigo, string data_nascimento_antig
     }
 }
 
+// da para deixar so o nome 
 void Apartamento::editar_pet(string nome_pet_antigo, string raca_antiga, string tipo_antigo,
                              string nome_pet_novo, string raca_nova, string tipo_novo)
 {
@@ -190,6 +192,8 @@ void Apartamento::excluir_pessoa(string nome_pessoa)
 // Lembrar de tratar exceções, pro caso dos dados não baterem
 // Lembrando que podemos retirar esse contadores de tipos, talvez seja desnecessário
 // Exclui um pet e atualiza os contadores
+
+//Da para deixar so com o nome do pet 
 void Apartamento::excluir_pet(string nome_pet, string raca, string tipo)
 {
     for (auto it = pets_.begin(); it != pets_.end(); it++)
