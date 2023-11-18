@@ -9,59 +9,59 @@
 
 using namespace std;
 
-bool verifica_id(string id)
-{
-    if (id.size() < 6 || id.size() > 50)
-    {
+// Verifica se o id é válido
+bool verifica_id(string id){
+    if (id.size() < 6 || id.size() > 50){
         return false;
     }
     return true;
 }
 
-bool Encomendas::registrar_encomenda(string id, string destinatario, string data_entrega)
-{
+void Encomendas::registrar_encomenda(string id, string destinatario, string data_entrega){
     Encomenda encomenda;
-    Apartamento ap;
-
-    if (verifica_id(id) && ap.eh_morador(destinatario))
-    {
+    if (verifica_id(id)){
         encomenda.data_entrega = data_entrega;
         encomenda.destinatario = destinatario;
-
         encomendas_[id] = encomenda;
-        return true;
+        cout << "Encomenda registrada!\n" << endl;
+        return;
     }
-    return false;
+    cout << "Registro de encomenda falhou :(\n" << endl;
 }
 
-void Encomendas::apagar_encomenda(string id)
-{
-    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++)
-    {
-        if ((*it).first == id)
-        {
+void Encomendas::apagar_encomenda(string id){
+    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
+        if (it->first == id){
             encomendas_.erase(it);
             break;
         }
     }
 }
 
-void Encomendas::exibir_encomendas()
-{
-    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++)
-    {
-        cout << "id: " << (*it).first << endl;
-        cout << "destinatario: " << (*it).second.destinatario << endl;
-        cout << "data de entrega: " << (*it).second.data_entrega << endl;
+void Encomendas::exibir_encomendas(){
+    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
+        cout << "Id: " << it->first << endl;
+        cout << "Destinatario: " << it->second.destinatario << endl;
+        cout << "Data de entrega: \n" << it->second.data_entrega << endl;
     }
 }
 
-bool Encomendas::verificar_encomenda(string id)
-{
-    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++)
-    {
-        if ((*it).first == id)
-        {
+void Encomendas::procurar_encomenda(string id){
+    if (verificar_encomenda(id)){
+        for(auto it = encomendas_.begin(); it != encomendas_.end(); it++){
+            if(it->first == id){
+                cout << "Dados da encomenda:\n" << "Id: " << it->first << "\nDestinatário: " << it->second.destinatario 
+                << "\nData de entrega :" << it->second.data_entrega << "\n" << endl;
+            }
+        }
+    } else {
+        cout << "Essa encomenda não existe" << endl;
+    }
+}
+
+bool Encomendas::verificar_encomenda(string id){
+    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
+        if (it->first == id){
             return true;
         }
     }

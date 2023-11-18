@@ -35,7 +35,7 @@ public:
 
     /**
      * @brief Insere um pet
-     * @pre Não há um pet com o mesmo nome, raça e tipo dentro de um mesmo apartamento (associado ao número)
+     * @pre Não há um pet com o mesmo nome dentro de um mesmo apartamento (associado ao número)
     */
     void inserir_pet(string nome, string raca, string tipo);
 
@@ -49,15 +49,15 @@ public:
      * @brief Edita uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
     */
-    void editar_pessoa(string nome_antigo, string data_nascimento_antiga, string tipo_pessoa_antigo,
-                                string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
+    void editar_pessoa(string nome_antigo,
+                       string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
 
     /**
      * @brief Edita um pet
      * @pre Esse pet deve existir de acordo com os dados passados
     */
-    void editar_pet(string nome_pet_antigo, string raca_antiga, string tipo_antigo,
-                        string nome_pet_novo, string raca_nova, string tipo_novo);
+    void editar_pet(string nome_pet_antigo,
+                    string nome_pet_novo, string raca_nova, string tipo_novo);
 
     /**
      * @brief Edita um veiculo
@@ -76,7 +76,7 @@ public:
      * @brief Exclui um pet
      * @pre Esse pet deve existir de acordo com os dados passados
     */
-    void excluir_pet(string nome_pet, string raca, string tipo);
+    void excluir_pet(string nome_pet);
 
     /**
      * @brief Exclui um veiculo

@@ -113,6 +113,10 @@ Comentários do projeto (apenas para a progresso do trabalho):
 
     att.: Adicionei funções de bool em apartamento.hpp e as implementei;
     Implementei algumas funções do evento.cpp, temos que pensar em como vamos adicionar os convidados
+
+    att.: Corrigi os parâmetros e adaptei os códigos de acordo
+    OBS.: Temos que lembrar do seguinte caso: alterar pessoa quando ela tem encomendas ou eventos
+    relacionadas a ela
     
     Encomendas ======================================================================================
     Comentários:
@@ -123,6 +127,9 @@ Comentários do projeto (apenas para a progresso do trabalho):
 
     Na criação do .cpp, somente moradores podem receber encomendas, não sei ainda muito bem
     como vamos relacionar as duas classes
+
+    att.: Implementalção funcional das encomendas.
+    OBS.: Lembrar de tratar caso onde a pessoa(destinatária) é editada 
 
     Evento ===========================================================================================
     Coisas que podem ser adicionadas:
@@ -146,3 +153,6 @@ Comentários do projeto (apenas para a progresso do trabalho):
     Mudei o "Apartamento apartamento" para dentro do bloco na main pois ele vai variando de acordo
     com o número do apartamento e precisa ser reiniciado, se não, dados de outro apartamento
     poderiam ser copiados indesejavelmente para o outro.
+
+    att.: Atualizei e adaptei algumas opções na main e alterei o painel do "editar_pessoa" como teste
+    para um possível modelo para os tratamentos de exceções. Se não for utilizar, só tirar.

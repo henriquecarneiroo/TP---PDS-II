@@ -139,37 +139,38 @@ int main() {
                     cout << "4. Voltar\n";
                     int escolha;
                     cin >> escolha;
+
+                    // Editar Pessoa
                     if (escolha == 1){
-                        string nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
-                        cout << "Informe os dados antigos da pessoa\n";
-                        cout << "Nome: ";
-                        cin.ignore(); 
+                        string nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
+
+                        cout << "Informe o nome da pessoa a ser alterada: ";
+                        cin.ignore();
                         getline(cin, nome_antigo);
-                        cout << "Data de Nascimento: ";
-                        cin >> data_nascimento_antiga;
-                        cout << "Tipo: ";
-                        cin >> tipo_pessoa_antigo;
+
                         cout << "Informe os dados novos da pessoa\n";
                         cout << "Nome: ";
-                        cin.ignore();
                         getline(cin, nome_novo);
                         cout << "Data de Nascimento: ";
                         cin >> data_nascimento_nova;
-                        cout << "Tipo: ";
-                        cin >> tipo_pessoa_novo;
-                        aps[num_ap].editar_pessoa (nome_antigo, data_nascimento_antiga, tipo_pessoa_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
+                        while (tipo_pessoa_novo != "moradora" && tipo_pessoa_novo != "visitante"){
+                            cout << "Tipo (moradora ou visitante): ";
+                            cin.ignore();
+                            cin >> tipo_pessoa_novo;
+                        }
+                        //cout << "Tipo: ";
+                        //cin.ignore();
+                        //cin >> tipo_pessoa_novo;
+                        aps[num_ap].editar_pessoa (nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
                     
                     // Editar Pet
                     } else if (escolha == 2){
-                        string nome_pet_antigo, raca_antiga, tipo_antigo, nome_pet_novo, raca_nova, tipo_novo;
-                        cout << "Informe os dados antigos do pet\n";
-                        cout << "Nome: ";
+                        string nome_pet_antigo, nome_pet_novo, raca_nova, tipo_novo;
+
+                        cout << "Informe o nome antigo do pet: ";
                         cin.ignore(); 
                         getline(cin, nome_pet_antigo);
-                        cout << "Raca: ";
-                        cin >> raca_antiga;
-                        cout << "Tipo: ";
-                        cin >> tipo_antigo;
+
                         cout << "Informe os dados novos do pet\n";
                         cout << "Nome: ";
                         cin.ignore();
@@ -178,14 +179,16 @@ int main() {
                         cin >> raca_nova;
                         cout << "Tipo: ";
                         cin >> tipo_novo;
-                        aps[num_ap].editar_pet(nome_pet_antigo, raca_antiga, tipo_antigo, nome_pet_novo, raca_nova, tipo_novo);
+                        aps[num_ap].editar_pet(nome_pet_antigo, nome_pet_novo, raca_nova, tipo_novo);
                     
                     // Editar Veiculo
                     } else if (escolha == 3){
                         string placa_antiga, placa_nova, modelo_novo, tipo_veiculo_novo;
+
                         cout << "Informe a placa antiga do veiculo\n";
                         cout << "Placa: ";
                         cin >> placa_antiga;
+
                         cout << "Informe os dados novos do veiculo\n";
                         cout << "Placa: ";
                         cin >> placa_nova;
@@ -225,16 +228,11 @@ int main() {
 
                     // Excluir Pet
                     if (escolha == 2){
-                        string nome_excluido, raca_excluido, tipo_exlcuido;
-                        cout << "Informe sobre o pet a ser excluido:\n";
-                        cout << "Nome: ";
+                        string pet_excluido;
+                        cout << "Informe o nome do pet a ser excluido:\n";
                         cin.ignore(); 
-                        getline(cin, nome_excluido);
-                        cout << "Raca: ";
-                        cin >> raca_excluido;
-                        cout << "Tipo: ";
-                        cin >> tipo_exlcuido;
-                        aps [num_ap].excluir_pet(nome_excluido, raca_excluido, tipo_exlcuido);
+                        getline(cin, pet_excluido);
+                        aps [num_ap].excluir_pet(pet_excluido);
                     }
 
                     // Excluir Veiculo
@@ -335,7 +333,7 @@ int main() {
             cout << "1. Registrar Encomenda\n";
             cout << "2. Apagar Encomenda\n";
             cout << "3. Exibir Encomendas\n";
-            cout << "4. Verificar Encomenda\n";
+            cout << "4. Procurar Encomenda\n";
             cout << "5. Voltar\n";
             int choice;
             cin >> choice;
@@ -343,15 +341,22 @@ int main() {
             // Registrar Encomenda
             if (choice == 1) {
                 string id, destinatario, data_entrega;
-                cout << "ID da Encomenda: ";
-                cin >> id;
+                int num_ap;
+                cout << "Número do apartamento do destinatário: ";
+                cin >> num_ap;
                 cout << "Destinatário: ";
-                cin.ignore(); 
+                cin.ignore();
                 getline(cin, destinatario);
-                cout << "Data de Entrega: ";
-                cin >> data_entrega;
 
-                encomendasManager.registrar_encomenda(id, destinatario, data_entrega);
+                if(aps[num_ap].eh_morador(destinatario)){
+                    cout << "ID da Encomenda: ";
+                    cin >> id;
+                    cout << "Data de Entrega: ";
+                    cin >> data_entrega;
+                    encomendasManager.registrar_encomenda(id, destinatario, data_entrega);
+                } else {
+                    cout << "Erro: O destinatário não é morador deste apartamento\n";
+                }
             
             // Apagar Encomenda    
             } else if (choice == 2) {
@@ -365,12 +370,12 @@ int main() {
                 cout << "Encomendas Registradas:\n";
                 encomendasManager.exibir_encomendas();
             
-            // Verificar Encomenda    
+            // Procurar Encomenda    
             } else if (choice == 4) {
                 string id;
-                cout << "ID da Encomenda a ser verificada: ";
+                cout << "ID da Encomenda a ser procurada: ";
                 cin >> id;
-                encomendasManager.verificar_encomenda(id);
+                encomendasManager.procurar_encomenda(id);
                 
             } else if (choice == 5) {
                 break; // encerra programa
@@ -379,7 +384,7 @@ int main() {
         }
 
     // FIM DO PROGRAMA ================================================================================================================
-        else {
+        if (opcao == 4){
             cout <<"Até mais!\n";
             break;
         }
