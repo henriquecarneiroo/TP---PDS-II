@@ -75,3 +75,164 @@ void Evento::exibir_eventos(){
         cout << "\n" << endl;
     }
 }
+
+
+/*
+#include "evento.hpp"
+#include "apartamento.hpp"
+
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+Evento::Evento() {
+}
+
+void Evento::criar_evento(string responsavel, string nome_evento, string data_evento) {
+    try {
+        Agendamento novo_evento;
+        novo_evento.responsavel = responsavel;
+        novo_evento.nome_evento = nome_evento;
+        novo_evento.data_evento = data_evento;
+
+        // Verifica se o responsável já possui um evento com o mesmo nome
+        for (const auto& evento : eventos_) {
+            if (evento.responsavel == responsavel && evento.nome_evento == nome_evento) {
+                throw runtime_error("Erro: Responsável já possui um evento com o mesmo nome.");
+            }
+        }
+
+        eventos_.push_back(novo_evento);
+        cout << "\nEvento criado com sucesso!\n" << endl;
+    } catch (const exception& e) {
+        cerr << "\nErro ao criar evento: " << e.what() << endl;
+    }
+}
+
+void Evento::adicionar_convidado(string nome_evento, string convidado) {
+    try {
+        Apartamento ap;
+        bool eventoEncontrado = false;
+
+        for (auto& evento : eventos_) {
+            if (evento.nome_evento == nome_evento) {
+                eventoEncontrado = true;
+
+                // Verifica se o convidado é morador ou visitante
+                if (ap.eh_morador(convidado) || ap.eh_visitante(convidado)) {
+                    evento.convidados.push_back(convidado);
+                    cout << "Convidado adicionado ao evento com sucesso!" << endl;
+                } else {
+                    throw runtime_error("Erro: O convidado deve ser um morador ou visitante.");
+                }
+            }
+        }
+
+        if (!eventoEncontrado) {
+            throw runtime_error("Erro: Evento não encontrado.");
+        }
+    } catch (const exception& e) {
+        cerr << "\nErro ao adicionar convidado: " << e.what() << endl;
+    }
+}
+
+void Evento::editar_evento(string responsavel, string nome_evento) {
+    try {
+        bool eventoEncontrado = false;
+
+        for (auto& evento : eventos_) {
+            if (evento.responsavel == responsavel && evento.nome_evento == nome_evento) {
+                eventoEncontrado = true;
+
+                string responsavel_aux, nome_evento_aux;
+                cout << "Informe o novo responsável: ";
+                cin >> responsavel_aux;
+                cout << "Informe o novo nome do evento: ";
+                cin >> nome_evento_aux;
+                evento.responsavel = responsavel_aux;
+                evento.nome_evento = nome_evento_aux;
+                cout << "Evento alterado com sucesso!\n" << endl;
+            }
+        }
+
+        if (!eventoEncontrado) {
+            throw runtime_error("Erro: Evento não encontrado.");
+        }
+    } catch (const exception& e) {
+        cerr << "\nErro ao editar evento: " << e.what() << endl;
+    }
+}
+
+void Evento::excluir_evento(string responsavel, string nome_evento) {
+    try {
+        eventos_.remove_if([responsavel, nome_evento](const Agendamento& evento) {
+            return evento.responsavel == responsavel && evento.nome_evento == nome_evento;
+        });
+        cout << "\nEvento excluído com sucesso!\n" << endl;
+    } catch (const exception& e) {
+        cerr << "\nErro ao excluir evento: " << e.what() << endl;
+    }
+}
+
+void Evento::exibir_evento(string responsavel, string nome_evento) {
+    try {
+        bool eventoEncontrado = false;
+
+        for (const auto& evento : eventos_) {
+            if (evento.responsavel == responsavel && evento.nome_evento == nome_evento) {
+                eventoEncontrado = true;
+
+                cout << "Responsável: " << evento.responsavel << endl;
+                cout << "Nome do evento: " << evento.nome_evento << endl;
+                cout << "Data do evento: " << evento.data_evento << endl;
+
+                if (!evento.convidados.empty()) {
+                    cout << "Convidados:" << endl;
+                    for (const string& convidado : evento.convidados) {
+                        cout << "  " << convidado << endl;
+                    }
+                } else {
+                    cout << "Nenhum convidado cadastrado." << endl;
+                }
+
+                cout << "----------------------------------\n" << endl;
+            }
+        }
+
+        if (!eventoEncontrado) {
+            throw runtime_error("Erro: Evento não encontrado.");
+        }
+    } catch (const exception& e) {
+        cerr << "\nErro ao exibir evento: " << e.what() << endl;
+    }
+}
+
+void Evento::exibir_eventos() {
+    if (eventos_.empty()) {
+        cout << "\nNenhum evento cadastrado.\n" << endl;
+        return;
+    }
+
+    cout << "\nLista de Eventos:\n" << endl;
+
+    for (const auto& evento : eventos_) {
+        cout << "Responsável: " << evento.responsavel << endl;
+        cout << "Nome do evento: " << evento.nome_evento << endl;
+        cout << "Data do evento: " << evento.data_evento << endl;
+
+        if (!evento.convidados.empty()) {
+            cout << "Convidados:" << endl;
+            for (const string& convidado : evento.convidados) {
+                cout << "  " << convidado << endl;
+            }
+        } else {
+            cout << "Nenhum convidado cadastrado." << endl;
+        }
+
+        cout << "----------------------------------\n" << endl;
+    }
+}
+*/
