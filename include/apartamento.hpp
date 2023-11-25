@@ -151,6 +151,7 @@ private:
     //verifica se a lista de pessoas, veiculos ou pets está vazia. Retorna true se sim e false caso contrário
     bool esta_vazio(string tipo);
 
+    
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos e serão utilizadas nos construtores
 
     int MAX_MORADORES = 0;

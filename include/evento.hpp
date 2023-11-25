@@ -57,7 +57,7 @@ class Evento {
     /**
      * Variáveis que serão utilizadas nas funções
     */
-
+   
     struct Agendamento {
         string responsavel;
         string nome_evento;
