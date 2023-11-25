@@ -8,6 +8,7 @@ using namespace std;
 
 bool Apartamento::verifica_quantidade_restante(string tipo)
 {
+
     if (tipo == "moradora")
     {
         if (MAX_MORADORES > 0)
@@ -188,9 +189,9 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
 
 void Apartamento::editar_pessoa(string nome_antigo,
                                 string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo){
-if(verifica_quantidade_restante(tipo_pessoa_novo)){
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
         if (it->nome == nome_antigo){
+            if(it->tipo_pessoa == tipo_pessoa_novo || verifica_quantidade_restante(tipo_pessoa_novo)){ // se o tipo de pessoa nova for igual ao antigo, edita direto, se não verifica se ainda não atingiu o numero máximo do tipo novo
             it->nome = nome_novo;
             it->data_nascimento = data_nascimento_nova;
 
@@ -218,12 +219,13 @@ if(verifica_quantidade_restante(tipo_pessoa_novo)){
                 }
             }
             break;
-        }
     }
-}
-else{
+    else{
     cout << "Edição Falhou\n";
+    return;
 }
+    }
+    }
 }
 
 void Apartamento::editar_pet(string nome_pet_antigo,
