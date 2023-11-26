@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool Apartamento::verifica_quantidade_restante(string tipo)
+bool Apartamento::verifica_quantidade_restante(string tipo) 
 {
 
     if (tipo == "moradora")
@@ -86,6 +86,15 @@ bool Apartamento::esta_vazio(string tipo)
     return false;
 }
 
+bool Apartamento::ja_exite(string nome){
+    for(auto it = pessoas_.begin(); it != pessoas_.end(); it++){
+        if(it->nome == nome){
+            return true;
+        }
+    }
+    return false;
+}
+
 Apartamento::Apartamento(int _Moradores, int _Visitantes, int _Pets, int _Veiculos)
     : MAX_MORADORES(_Moradores), MAX_VISITANTES(_Visitantes), MAX_PETS(_Pets), MAX_VEICULOS(_Veiculos){   
     }
@@ -94,7 +103,7 @@ Apartamento::Apartamento(){}
 
 
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
-{
+{   if(!ja_exite(nome)){
     Pessoa pessoa;
     pessoa.nome = nome;
     pessoa.data_nascimento = data_nascimento;
@@ -107,6 +116,7 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
             contador["Moradores"]++;
             cout << "Morador inserido com sucesso\n";
         } else {
+            //throw ExcecaoNumeroExcedido{nome,MAX_MORADORES};
             cout << "Morador não inserido, número máximo atingido\n";
         }
         return;
@@ -120,13 +130,17 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
             contador["Visitantes"]++;
             cout << "Visitante inserido com sucesso\n";
         } else {
+            //throw ExcecaoNumeroExcedido{nome,MAX_MORADORES};
             cout << "Morador não inserido, número máximo atingido\n";
         }
         return;
-    } else {
-        cout << "Inserção Falhou\n";
-        return;
     }
+}
+else{
+    //throw ExcecaoNomeJaExistente {nome};
+    cout << "Pessoa já existe!\n";
+    return;
+}
 }
 
 void Apartamento::inserir_pet(string nome, string raca, string tipo)
