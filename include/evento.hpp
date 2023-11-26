@@ -46,7 +46,7 @@ class Evento {
     /**
      * @brief Permite editar um evento
     */
-    void editar_evento (string responsavel, string nome_evento);
+    void editar_evento (Apartamento& ap, string responsavel, string nome_evento);
 
     /**
      * @brief Permite exluir um evento da lista de evento

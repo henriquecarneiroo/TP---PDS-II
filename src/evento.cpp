@@ -24,7 +24,7 @@ void Evento::criar_evento(Apartamento& ap,string responsavel, string nome_evento
             }
             else{
                 //throw ExcecaoResponsavelNaoEhMorador{responsavel, it->tipo_pessoa};
-                cout << "\nErro! O responsável precisa ser morador\n" << endl;
+                cout << "\nO responsável precisa ser morador\n" << endl;
                 return;
             }
             PessoaEncontrada = true;
@@ -54,10 +54,12 @@ void Evento::adicionar_convidado(Apartamento& ap, string nome_evento, string con
     if(!PessoaEncontrada){
         //throw ExcecaoPessoaNaoExiste{convidado};
         cout << "\nPessoa não encontrada\n";
+    } else {
+        cout << "\nConvidado adicionado\n" << endl;
     }
 }
 
-void Evento::editar_evento(string responsavel, string nome_evento){
+void Evento::editar_evento(Apartamento& ap, string responsavel, string nome_evento){
     for (auto it = eventos_.begin(); it != eventos_.end(); it++){
         if ((*it).responsavel == responsavel && (*it).nome_evento == nome_evento){
             string responsavel_aux, nome_evento_aux;
@@ -65,9 +67,13 @@ void Evento::editar_evento(string responsavel, string nome_evento){
             cin >> responsavel_aux;
             cout << "Informe o novo nome do evento: ";
             cin >> nome_evento_aux;
-            (*it).responsavel = responsavel_aux;
-            (*it).nome_evento = nome_evento_aux;
-            cout << "Evento alterado!" << endl;
+            if (ap.eh_morador(responsavel_aux)){
+                (*it).responsavel = responsavel_aux;
+                (*it).nome_evento = nome_evento_aux;
+                cout << "Evento alterado" << endl;
+            } else {
+                cout << "O novo responsavel nao existe\n";
+            }
         }
     }
 }
@@ -75,6 +81,7 @@ void Evento::editar_evento(string responsavel, string nome_evento){
 
 void Evento::excluir_evento(string responsavel, string nome_evento) {
     eventos_.remove_if([responsavel, nome_evento](const Agendamento& evento) {
+        cout << "\nEvento excluido\n";
         return evento.responsavel == responsavel && evento.nome_evento == nome_evento;
     });
 }
@@ -100,7 +107,7 @@ void Evento::exibir_eventos(){
         cout << "Nome do evento: " << (*it).nome_evento << endl;
         cout << "Data do evento: " << (*it).data_evento << endl;
         cout << "Convidados:" << endl;
-        for (auto it2 = (*it).convidados.begin(); it2 != (*it).convidados.end(); it++){
+        for (auto it2 = (*it).convidados.begin(); it2 != (*it).convidados.end(); it2++){
             cout << (*it2) << " " << endl;
         }
         cout << "\n" << endl;

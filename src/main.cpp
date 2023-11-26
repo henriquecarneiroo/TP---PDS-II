@@ -281,8 +281,9 @@ int main() {
                 cout << "1. Criar Evento\n";
                 cout << "2. Adicionar Convidado\n";
                 cout << "3. Exibir Eventos\n";
-                cout << "4. Excluir Evento\n";
-                cout << "5. Voltar\n";
+                cout << "4. Editar evento\n";
+                cout << "5. Excluir Evento\n";
+                cout << "6. Voltar\n";
 
                 cin >> choice;
 
@@ -308,18 +309,22 @@ int main() {
                     getline(cin, convidado);
                     eventoManager.adicionar_convidado(aps[num_ap],nome_evento, convidado);
                 
-                // Exibir Evento
+                // Exibir Eventos
                 } else if (choice == 3) {
+                    eventoManager.exibir_eventos();
+                
+                // Editar Evento
+                } else if (choice == 4){
                     string responsavel, nome_evento;
                     cout << "Responsável do Evento: ";
                     cin.ignore(); 
                     getline(cin, responsavel);
                     cout << "Nome do Evento: ";
                     getline(cin, nome_evento);
-                    eventoManager.exibir_evento(responsavel, nome_evento);
-                
+                    eventoManager.editar_evento(aps[num_ap],responsavel, nome_evento);
+
                 // Excluir Evento
-                } else if (choice == 4) {
+                } else if (choice == 5) {
                     string responsavel, nome_evento;
                     cout << "Responsável do Evento: ";
                     cin.ignore(); 
@@ -328,7 +333,7 @@ int main() {
                     getline(cin, nome_evento);
                     eventoManager.excluir_evento(responsavel, nome_evento);
                 
-                } else if (choice == 5) {
+                } else if (choice == 6) {
                     break; // Encerra o programa
                 }
             }
