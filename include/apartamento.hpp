@@ -15,6 +15,17 @@ using std::map;
  * @class Apartamento 
  * Classe que organiza as operações realizadas nos Apartamentos
 */
+struct ExcecaoNomeJaExistente
+{
+    string nome;
+};
+
+struct ExcecaoNumeroExcedido
+{
+    string nome;
+    int max;
+};
+
 class Apartamento {
 public:
     /**
@@ -150,6 +161,8 @@ private:
     bool verifica_quantidade_restante(string tipo);
     //verifica se a lista de pessoas, veiculos ou pets está vazia. Retorna true se sim e false caso contrário
     bool esta_vazio(string tipo);
+    //verifica se a pessoa já existe no apartamento
+    bool ja_exite(string nome);
 
     
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos e serão utilizadas nos construtores
