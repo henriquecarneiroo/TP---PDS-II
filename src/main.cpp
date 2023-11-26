@@ -158,7 +158,7 @@ int main() {
                             cin.ignore();
                             cin >> tipo_pessoa_novo;
                         }
-                        //cout << "Tipo: ";
+                        //cout << "Tipo: "; 
                         //cin.ignore();
                         //cin >> tipo_pessoa_novo;
                         aps[num_ap].editar_pessoa (nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
@@ -260,6 +260,7 @@ int main() {
         }
 
     // MENU DE OPÇÕES DOS EVENTOS ====================================================================================================
+        auto it = aps.begin();
         if (opcao == 2){
 
         Evento eventoManager;
@@ -285,7 +286,7 @@ int main() {
                 getline(cin, nome_evento);
                 cout << "Data do Evento: ";
                 cin >> data_evento;
-                eventoManager.criar_evento(responsavel, nome_evento, data_evento);
+                eventoManager.criar_evento(it->second,responsavel, nome_evento, data_evento);
             
             // Adicionar Convidado
             } else if (choice == 2) {
@@ -295,7 +296,7 @@ int main() {
                 getline(cin, nome_evento);
                 cout << "Nome do Convidado: "; 
                 getline(cin, convidado);
-                eventoManager.adicionar_convidado(nome_evento, convidado);
+                eventoManager.adicionar_convidado(it->second,nome_evento, convidado);
             
             // Exibir Evento
             } else if (choice == 3) {
