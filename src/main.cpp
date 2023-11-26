@@ -1,7 +1,6 @@
 #include "apartamento.hpp"
 #include "evento.hpp"
 #include "encomendas.hpp"
-
 #include <iostream>
 #include <string>
 
@@ -43,16 +42,21 @@ int main() {
 
         // Permite o gerenciamento dos Apartamentos
         if (opcao == 1){
-            Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
-            cout << "Informe o número do apartamento: \n";
-            cin >> num_ap;
-            if (aps.find(num_ap)==aps.end()){
-                Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
-                aps[num_ap] = novoApartamento;
-            }
-            if (num_ap <= 0){
-                cout << "Digite um numero de apartamento válido\n";
-            }
+            bool verifica_ap_valido = 1;
+            while (verifica_ap_valido){
+                Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
+                cout << "Informe o número do apartamento: \n";
+                cin >> num_ap;
+                verifica_ap_valido = 0;
+                if (aps.find(num_ap)==aps.end()){
+                    Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
+                    aps[num_ap] = novoApartamento;
+                }
+                if (num_ap <= 0){
+                    cout << "Digite um numero de apartamento válido\n";
+                    verifica_ap_valido = 1;
+                }
+            }    
         
     // MENU DE OPÇÕES APARTAMENTOS ====================================================================================================
             while (true){
@@ -173,7 +177,6 @@ int main() {
 
                         cout << "Informe os dados novos do pet\n";
                         cout << "Nome: ";
-                        cin.ignore();
                         getline(cin, nome_pet_novo);
                         cout << "Raca: ";
                         cin >> raca_nova;
@@ -265,63 +268,66 @@ int main() {
 
         Evento eventoManager;
         int choice;
+        cout << "Informe o número do apartamento para o Evento\n";
+        
+        
 
-        while (true) {
-            cout << "Escolha uma ação:\n";
-            cout << "1. Criar Evento\n";
-            cout << "2. Adicionar Convidado\n";
-            cout << "3. Exibir Evento\n";
-            cout << "4. Excluir Evento\n";
-            cout << "5. Voltar\n";
+            while (true) {
+                cout << "Escolha uma ação:\n";
+                cout << "1. Criar Evento\n";
+                cout << "2. Adicionar Convidado\n";
+                cout << "3. Exibir Evento\n";
+                cout << "4. Excluir Evento\n";
+                cout << "5. Voltar\n";
 
-            cin >> choice;
+                cin >> choice;
 
-            // Criar Evento
-            if (choice == 1) {
-                string responsavel, nome_evento, data_evento;
-                cout << "Responsável: ";
-                cin.ignore(); 
-                getline(cin, responsavel);
-                cout << "Nome do Evento: ";
-                getline(cin, nome_evento);
-                cout << "Data do Evento: ";
-                cin >> data_evento;
-                eventoManager.criar_evento(it->second,responsavel, nome_evento, data_evento);
-            
-            // Adicionar Convidado
-            } else if (choice == 2) {
-                string convidado, nome_evento;
-                cout << "Nome do Evento: ";
-                cin.ignore(); 
-                getline(cin, nome_evento);
-                cout << "Nome do Convidado: "; 
-                getline(cin, convidado);
-                eventoManager.adicionar_convidado(it->second,nome_evento, convidado);
-            
-            // Exibir Evento
-            } else if (choice == 3) {
-                string responsavel, nome_evento;
-                cout << "Responsável do Evento: ";
-                cin.ignore(); 
-                getline(cin, responsavel);
-                cout << "Nome do Evento: ";
-                getline(cin, nome_evento);
-                eventoManager.exibir_evento(responsavel, nome_evento);
-            
-            // Excluir Evento
-            } else if (choice == 4) {
-                string responsavel, nome_evento;
-                cout << "Responsável do Evento: ";
-                cin.ignore(); 
-                getline(cin, responsavel);
-                cout << "Nome do Evento: ";
-                getline(cin, nome_evento);
-                eventoManager.excluir_evento(responsavel, nome_evento);
-            
-            } else if (choice == 5) {
-                break; // Encerra o programa
+                // Criar Evento
+                if (choice == 1) {
+                    string responsavel, nome_evento, data_evento;
+                    cout << "Responsável: ";
+                    cin.ignore(); 
+                    getline(cin, responsavel);
+                    cout << "Nome do Evento: ";
+                    getline(cin, nome_evento);
+                    cout << "Data do Evento: ";
+                    cin >> data_evento;
+                    eventoManager.criar_evento(it->second,responsavel, nome_evento, data_evento);
+                
+                // Adicionar Convidado
+                } else if (choice == 2) {
+                    string convidado, nome_evento;
+                    cout << "Nome do Evento: ";
+                    cin.ignore(); 
+                    getline(cin, nome_evento);
+                    cout << "Nome do Convidado: "; 
+                    getline(cin, convidado);
+                    eventoManager.adicionar_convidado(it->second,nome_evento, convidado);
+                
+                // Exibir Evento
+                } else if (choice == 3) {
+                    string responsavel, nome_evento;
+                    cout << "Responsável do Evento: ";
+                    cin.ignore(); 
+                    getline(cin, responsavel);
+                    cout << "Nome do Evento: ";
+                    getline(cin, nome_evento);
+                    eventoManager.exibir_evento(responsavel, nome_evento);
+                
+                // Excluir Evento
+                } else if (choice == 4) {
+                    string responsavel, nome_evento;
+                    cout << "Responsável do Evento: ";
+                    cin.ignore(); 
+                    getline(cin, responsavel);
+                    cout << "Nome do Evento: ";
+                    getline(cin, nome_evento);
+                    eventoManager.excluir_evento(responsavel, nome_evento);
+                
+                } else if (choice == 5) {
+                    break; // Encerra o programa
+                }
             }
-        }
         }
 
     // MENU OPÇÕES ENCOMENDAS =========================================================================================================

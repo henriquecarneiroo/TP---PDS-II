@@ -3,7 +3,6 @@
 #include <list>
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 bool Apartamento::verifica_quantidade_restante(string tipo) 
@@ -131,7 +130,7 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
             cout << "Visitante inserido com sucesso\n";
         } else {
             //throw ExcecaoNumeroExcedido{nome,MAX_MORADORES};
-            cout << "Morador não inserido, número máximo atingido\n";
+            cout << "Visitante não inserido, número máximo atingido\n";
         }
         return;
     }
@@ -233,13 +232,13 @@ void Apartamento::editar_pessoa(string nome_antigo,
                 }
             }
             break;
+            } else {
+                cout << "Edição Falhou\n";
+                return;
+            }
+        }
     }
-    else{
-    cout << "Edição Falhou\n";
-    return;
-}
-    }
-    }
+    cout << "Edição Falhou, pessoa nao existe\n";
 }
 
 void Apartamento::editar_pet(string nome_pet_antigo,
