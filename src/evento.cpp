@@ -9,21 +9,52 @@
 Evento::Evento(){
 }
 
-void Evento::criar_evento(string responsavel, string nome_evento, string data_evento){
+void Evento::criar_evento(Apartamento& ap,string responsavel, string nome_evento, string data_evento){
+
     Agendamento novo_evento;
-    novo_evento.responsavel = responsavel;
-    novo_evento.nome_evento = nome_evento;
-    novo_evento.data_evento = data_evento;
-    eventos_.push_back(novo_evento);
+    bool PessoaEncontrada = false;
+
+    for(auto it = ap.pessoas_.begin(); it != ap.pessoas_.end(); it++){
+        if(it->nome == responsavel){
+            if(it->tipo_pessoa == "moradora"){
+                novo_evento.responsavel = responsavel;
+                novo_evento.nome_evento = nome_evento; 
+                novo_evento.data_evento = data_evento;
+                eventos_.push_back(novo_evento);
+                cout << "\nEvento criado com sucesso\n" << endl;
+            }
+            else{
+                //throw ExcecaoResponsavelNaoEhMorador{responsavel, it->tipo_pessoa};
+                cout << "\nErro! O responsável precisa ser morador\n" << endl;
+                return;
+            }
+            PessoaEncontrada = true;
+        }
+    }
+    if(!PessoaEncontrada){
+        //throw ExcecaoPessoaNaoExiste{responsavel};
+        cout << "\nPessoa não encontrada\n" << endl;
+    }
+    
+    
 };
 
 //Pré-condição: convidados devem ser moradores ou visitantes
-void Evento::adicionar_convidado(string nome_evento, string convidado){
-    Apartamento ap;
-    for (auto it = eventos_.begin(); it != eventos_.end(); it++){
-        if ((*it).nome_evento == nome_evento && (ap.eh_morador(convidado) || ap.eh_visitante(convidado))){
-            (*it).convidados.push_back(convidado);
+void Evento::adicionar_convidado(Apartamento& ap, string nome_evento, string convidado){
+    bool PessoaEncontrada = false;
+    for(auto it = ap.pessoas_.begin(); it != ap.pessoas_.end(); it++){
+        if(it->nome == convidado){ // verifica se o nome do convidado está entre os moradores e visitantes
+            for(auto i = eventos_.begin(); i != eventos_.end(); i++){
+                if(i->nome_evento == nome_evento){
+                    i->convidados.push_back(convidado);
+                }
+            }
+            PessoaEncontrada = true;
         }
+    }
+    if(!PessoaEncontrada){
+        //throw ExcecaoPessoaNaoExiste{convidado};
+        cout << "\nPessoa não encontrada\n";
     }
 }
 
@@ -52,13 +83,14 @@ void Evento::excluir_evento(string responsavel, string nome_evento) {
 void Evento::exibir_evento(string responsavel, string nome_evento) {
     for (const auto& evento : eventos_) {
         if (evento.responsavel == responsavel && evento.nome_evento == nome_evento) {
-            cout << "Responsável: " << evento.responsavel << endl;
+            cout << "\nResponsável: " << evento.responsavel << endl;
             cout << "Nome do evento: " << evento.nome_evento << endl;
             cout << "Data do evento: " << evento.data_evento << endl;
             cout << "Convidados:" << endl;
             for (const string& convidado : evento.convidados) {
                 cout << "  " << convidado << endl;
             }
+            cout << endl;
         }
     }
 }
