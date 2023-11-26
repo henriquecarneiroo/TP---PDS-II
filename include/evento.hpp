@@ -11,6 +11,16 @@ using namespace std;
  * @class Evento
  * Classe que organiza as operações realizadas nos Eventos
 */
+
+struct ExcecaoPessoaNaoExiste{
+    string nome;
+};
+
+struct ExcecaoResponsavelNaoEhMorador{
+    string nome;
+    string tipo;
+};
+
 class Evento {
     public:
 
@@ -24,13 +34,13 @@ class Evento {
      * @brief Cria um evento, informando o nome do responsavel, o nome do evento e sua data
      * @pre Um responsavel nao pode ter em seu nome dois eventos com o mesmo nome. Visitantes nao podem criar eventos
     */
-    void criar_evento (string responsavel, string nome_evento, string data_evento);
+    void criar_evento (Apartamento& ap,string responsavel, string nome_evento, string data_evento);
 
     /**
      * @brief Adiciona um convidado ao evento 
-     * @pre O nome do evento deve estar associado a um evento existente. O nome do convidade deve estar associado a um morador ou visitante
+     * @pre O nome do evento deve estar associado a um evento existente. O nome do convidado deve estar associado a um morador ou visitante
     */
-    void adicionar_convidado (string nome_evento, string convidado);
+    void adicionar_convidado (Apartamento& ap, string nome_evento, string convidado);
 
     /**
      * @brief Permite editar um evento
@@ -66,6 +76,7 @@ class Evento {
     };
 
     list <Agendamento> eventos_;
+    
 };
 
 #endif
