@@ -11,7 +11,7 @@ using namespace std;
 
 // Verifica se o id é válido
 bool verifica_id(string id){
-    if (id.size() < 6 || id.size() > 50){
+    if (id.size() < 6 || id.size() > 50){ 
         return false;
     }
     return true;
