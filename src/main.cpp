@@ -26,6 +26,7 @@ int main() {
 
     // Map que armazena os apartamentos com o número de cada
     map<int, Apartamento> aps; 
+    Evento eventoManager;
     int num_ap = 0;
 
 // PAINEL INICIAL ====================================================================================================================
@@ -263,20 +264,23 @@ int main() {
         }
 
     // MENU DE OPÇÕES DOS EVENTOS ====================================================================================================
-        auto it = aps.begin();
         if (opcao == 2){
-
-        Evento eventoManager;
         int choice;
-        cout << "Informe o número do apartamento para o Evento\n";
-        
-        
-
+        bool verifica_ap = 1;
+        while (verifica_ap){
+            cout << "Informe o número do apartamento para o Evento\n";
+            cin >> num_ap;
+            verifica_ap = 0;
+            if (aps.find(num_ap) == aps.end()){
+                verifica_ap = 1;
+                cout << "Digite o número de um apartamento que ja existe\n";
+            }
+        }
             while (true) {
                 cout << "Escolha uma ação:\n";
                 cout << "1. Criar Evento\n";
                 cout << "2. Adicionar Convidado\n";
-                cout << "3. Exibir Evento\n";
+                cout << "3. Exibir Eventos\n";
                 cout << "4. Excluir Evento\n";
                 cout << "5. Voltar\n";
 
@@ -292,7 +296,7 @@ int main() {
                     getline(cin, nome_evento);
                     cout << "Data do Evento: ";
                     cin >> data_evento;
-                    eventoManager.criar_evento(it->second,responsavel, nome_evento, data_evento);
+                    eventoManager.criar_evento(aps[num_ap],responsavel, nome_evento, data_evento);
                 
                 // Adicionar Convidado
                 } else if (choice == 2) {
@@ -302,7 +306,7 @@ int main() {
                     getline(cin, nome_evento);
                     cout << "Nome do Convidado: "; 
                     getline(cin, convidado);
-                    eventoManager.adicionar_convidado(it->second,nome_evento, convidado);
+                    eventoManager.adicionar_convidado(aps[num_ap],nome_evento, convidado);
                 
                 // Exibir Evento
                 } else if (choice == 3) {
