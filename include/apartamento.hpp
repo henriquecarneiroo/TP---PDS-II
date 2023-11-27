@@ -15,6 +15,8 @@ using std::map;
  * @class Apartamento 
  * Classe que organiza as operações realizadas nos Apartamentos
 */
+
+//Structs que salvam as exceções
 struct ExcecaoNomeJaExistente
 {
     string nome;
@@ -41,24 +43,28 @@ public:
     /**
      * @brief Insere uma pessoa
      * @pre Não há uma pessoa com o mesmo nome dentro de um mesmo apartamento
+     * @pre O numero máximo do tipo da pessoa não foi atingido
     */
     void inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa);
 
     /**
      * @brief Insere um pet
      * @pre Não há um pet com o mesmo nome dentro de um mesmo apartamento (associado ao número)
+     * @pre O número máximo de pets não foi atingido
     */
     void inserir_pet(string nome, string raca, string tipo);
 
     /**
      * @brief Insere um veiculo
      * @pre Não há outro veículo com a mesma placa cadastrada em nenhum outro apartamento
+     * @pre O número máximo de veículos não foi atingido
     */
     void inserir_veiculo(string modelo, string placa, string tipo_veiculo);
 
     /**
      * @brief Edita uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
+     * @pre O número máximo do novo tipo de pessoa não foi atingido
     */
     void editar_pessoa(string nome_antigo,
                        string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);
@@ -80,18 +86,21 @@ public:
     /**
      * @brief Exclui uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
+     * @pre A lista de pessoas não está vazia
     */
     void excluir_pessoa(string nome_pessoa);
 
     /**
      * @brief Exclui um pet
      * @pre Esse pet deve existir de acordo com os dados passados
+     * @pre A lista de pets não está vazia
     */
     void excluir_pet(string nome_pet);
 
     /**
      * @brief Exclui um veiculo
      * @pre Esse veículo deve existir de acordo com os dados passados
+     * @pre A lista de veículos não está vazia
     */
     void excluir_veiculo(string placa);
 
@@ -160,6 +169,9 @@ private:
     // verifica se o numero máximo de cada tipo foi atingido. Retorna true caso não e false caso sim
     bool verifica_quantidade_restante(string tipo);
     //verifica se a lista de pessoas, veiculos ou pets está vazia. Retorna true se sim e false caso contrário
+    /**
+    @pre O tipo passado precisa existir
+    */
     bool esta_vazio(string tipo);
     //verifica se a pessoa já existe no apartamento
     bool ja_exite(string nome);

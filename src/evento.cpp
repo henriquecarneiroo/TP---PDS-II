@@ -96,7 +96,7 @@ void Evento::exibir_evento(string responsavel, string nome_evento) {
             for (const string& convidado : evento.convidados) {
                 cout << "  " << convidado << endl;
             }
-            cout << endl;
+            cout << endl; 
         }
     }
 }

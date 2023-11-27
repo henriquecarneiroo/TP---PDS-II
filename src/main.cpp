@@ -379,7 +379,7 @@ int main() {
                 string id;
                 cout << "ID da Encomenda a ser apagada: ";
                 cin >> id;
-                encomendasManager.apagar_encomenda(id);
+                encomendasManager.apagar_encomenda(id); 
             
             // Exibir Encomendas
             } else if (choice == 3) {

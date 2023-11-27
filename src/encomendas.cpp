@@ -22,26 +22,36 @@ void Encomendas::registrar_encomenda(string id, string destinatario, string data
         encomenda.data_entrega = data_entrega;
         encomenda.destinatario = destinatario;
         encomendas_[id] = encomenda;
-        cout << "Encomenda registrada!\n" << endl;
+        cout << "\nEncomenda registrada!\n" << endl;
         return;
     }
-    cout << "Registro de encomenda falhou :(\n" << endl;
+    cout << "Registro de encomenda falhou, ID inválido :(\n" << endl;
 }
 
 void Encomendas::apagar_encomenda(string id){
+    bool apagado = false;
+    if(encomendas_.size()>0){
     for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
         if (it->first == id){
             encomendas_.erase(it);
-            break;
+            apagado = true;
+            return;
         }
+    }
+    }
+    else{
+        cout << "\nNão existem encomendas a serem apagadas\n" << endl;
+    }
+    if(!apagado){
+        cout << "\nEncomenda não encontrada\n" << endl;
     }
 }
 
 void Encomendas::exibir_encomendas(){
     for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
-        cout << "Id: " << it->first << endl;
+        cout << "\nId: " << it->first << endl;
         cout << "Destinatario: " << it->second.destinatario << endl;
-        cout << "Data de entrega: \n" << it->second.data_entrega << endl;
+        cout << "Data de entrega: \n" << it->second.data_entrega << endl << endl;
     }
 }
 
@@ -49,8 +59,9 @@ void Encomendas::procurar_encomenda(string id){
     if (verificar_encomenda(id)){
         for(auto it = encomendas_.begin(); it != encomendas_.end(); it++){
             if(it->first == id){
-                cout << "Dados da encomenda:\n" << "Id: " << it->first << "\nDestinatário: " << it->second.destinatario 
-                << "\nData de entrega :" << it->second.data_entrega << "\n" << endl;
+                cout << "\nDados da encomenda:\n" << "Id: " << it->first << "\nDestinatário: " << it->second.destinatario 
+                << "\nData de entrega: " << it->second.data_entrega << "\n" << endl;
+                return;
             }
         }
     } else {
