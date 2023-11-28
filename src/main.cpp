@@ -307,7 +307,7 @@ int main() {
                     getline(cin, nome_evento);
                     cout << "Nome do Convidado: "; 
                     getline(cin, convidado);
-                    eventoManager.adicionar_convidado(aps[num_ap],nome_evento, convidado);
+                    eventoManager.adicionar_convidado(aps,nome_evento, convidado);
                 
                 // Exibir Eventos
                 } else if (choice == 3) {
