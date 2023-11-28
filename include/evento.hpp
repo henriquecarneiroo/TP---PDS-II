@@ -41,7 +41,7 @@ class Evento {
      * @brief Adiciona um convidado ao evento 
      * @pre O nome do evento deve estar associado a um evento existente. O nome do convidado deve estar associado a um morador ou visitante
     */
-    void adicionar_convidado (Apartamento& ap, string nome_evento, string convidado);
+    void adicionar_convidado (map<int,Apartamento>& ap, string nome_evento, string convidado);
 
     /**
      * @brief Permite editar um evento
