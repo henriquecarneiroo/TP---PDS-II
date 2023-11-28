@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <iostream>
+
 using namespace std;
 // verifica se o numero máximo do tipo a ser adicionado já foi atingido
 bool Apartamento::verifica_quantidade_restante(string tipo) 

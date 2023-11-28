@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+
 using namespace std;
 
 // Verifica se o id é válido

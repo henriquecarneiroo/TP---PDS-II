@@ -1,6 +1,7 @@
 #include "apartamento.hpp"
 #include "evento.hpp"
 #include "encomendas.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -27,6 +28,7 @@ int main() {
     // Map que armazena os apartamentos com o número de cada
     map<int, Apartamento> aps; 
     Evento eventoManager;
+    Encomendas encomendasManager;
     int num_ap = 0;
 
 // PAINEL INICIAL ====================================================================================================================
@@ -341,8 +343,6 @@ int main() {
 
     // MENU OPÇÕES ENCOMENDAS =========================================================================================================
         if (opcao == 3){
-
-        Encomendas encomendasManager;
 
         while (true) {
             cout << "Escolha uma ação:\n";
