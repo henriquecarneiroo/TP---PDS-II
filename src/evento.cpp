@@ -37,8 +37,30 @@ void Evento::criar_evento(Apartamento& ap,string responsavel, string nome_evento
     
     
 };
-
 //Pré-condição: convidados devem ser moradores ou visitantes
+void Evento::adicionar_convidado(map<int,Apartamento>& ap, string evento, string convidado){
+    bool pessoa_encontrada = false;
+
+    for(auto it = ap.begin(); it != ap.end(); it++){ // passa por todos os apartamentos do map
+        for(auto it2 = it->second.pessoas_.begin(); it2 != it->second.pessoas_.end(); it2++){ // passa por todas as pessoas do apartamento
+            if(it2 -> nome == convidado){ // verifica se o nome do convidado existe no apartamento
+                pessoa_encontrada = true;
+                for(auto it3 = eventos_.begin(); it3 != eventos_.end(); it3++){ // procura o evento para adicionar o convidado
+                    if(it3->nome_evento == evento){
+                     it3 ->convidados.push_back(convidado); // adiciona o convidado ao evento
+                     cout << "\nPessoa adicionada com sucesso\n" << endl;
+                     return;   
+                    }
+                }
+            }
+        }
+    }
+    if(!pessoa_encontrada){
+        cout << "\nPesssoa não encontrada\n" << endl;
+    }
+}
+//Pré-condição: convidados devem ser moradores ou visitantes
+/*
 void Evento::adicionar_convidado(Apartamento& ap, string nome_evento, string convidado){
     bool PessoaEncontrada = false;
     for(auto it = ap.pessoas_.begin(); it != ap.pessoas_.end(); it++){
@@ -58,6 +80,7 @@ void Evento::adicionar_convidado(Apartamento& ap, string nome_evento, string con
         cout << "\nConvidado adicionado\n" << endl;
     }
 }
+*/
 
 void Evento::editar_evento(Apartamento& ap, string responsavel, string nome_evento){
     for (auto it = eventos_.begin(); it != eventos_.end(); it++){
