@@ -9,7 +9,7 @@
 
 using namespace std;
 
-// Verifica se o id é válido
+// Verifica se o id é válido 
 bool verifica_id(string id){
     if (id.size() < 6 || id.size() > 50){ 
         return false;
@@ -20,6 +20,12 @@ bool verifica_id(string id){
 void Encomendas::registrar_encomenda(string id, string destinatario, string data_entrega){
     Encomenda encomenda;
     if (verifica_id(id)){
+        for(auto it = encomendas_.begin(); it != encomendas_.end(); it++){
+            if(it->first == id){
+                cout << "O ID fornecido já existe" << endl;
+                return;
+            }
+        }
         encomenda.data_entrega = data_entrega;
         encomenda.destinatario = destinatario;
         encomendas_[id] = encomenda;
@@ -30,21 +36,17 @@ void Encomendas::registrar_encomenda(string id, string destinatario, string data
 }
 
 void Encomendas::apagar_encomenda(string id){
-    bool apagado = false;
     if(encomendas_.size()>0){
-    for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
-        if (it->first == id){
-            encomendas_.erase(it);
-            apagado = true;
-            return;
+        for (auto it = encomendas_.begin(); it != encomendas_.end(); it++){
+            if (it->first == id){
+                encomendas_.erase(it);
+                cout << "Registro de encomenda apagado" << endl;
+                return;
+            }
         }
-    }
-    }
-    else{
-        cout << "\nNão existem encomendas a serem apagadas\n" << endl;
-    }
-    if(!apagado){
         cout << "\nEncomenda não encontrada\n" << endl;
+    } else {
+        cout << "\nNão existem encomendas a serem apagadas\n" << endl;
     }
 }
 

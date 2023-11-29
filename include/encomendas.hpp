@@ -12,7 +12,7 @@ using std::map;
 /**
  * @class Encomendas 
  * Classe que organiza as operações realizadas nas Encomendas
-*/
+*/ 
 class Encomendas{
     public:
 

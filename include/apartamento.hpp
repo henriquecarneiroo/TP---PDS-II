@@ -39,7 +39,6 @@ public:
                 int max_Pets, int max_Veiculos);
     
     Apartamento();
-        
     
     /**
      * @brief Insere uma pessoa
@@ -136,7 +135,7 @@ private:
 
     /**
      * Variáveis que serão utilizadas nas funções
-    */
+    */ 
 
     struct Pessoa
     {
