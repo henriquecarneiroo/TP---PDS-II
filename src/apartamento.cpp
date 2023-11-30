@@ -5,7 +5,7 @@
 #include <iostream>
 
 using namespace std;
-// verifica se o numero máximo do tipo a ser adicionado já foi atingido
+
 bool Apartamento::verifica_quantidade_restante(string tipo) 
 {
 
@@ -55,8 +55,7 @@ bool Apartamento::verifica_quantidade_restante(string tipo)
     }
     return false;
 }
-// verifica se alguma lista (pessoas_, veiculos_) está vazia;
-//precondição: o tipo passado precisa existir
+
 bool Apartamento::esta_vazio(string tipo)
 {
     if(tipo == "pessoa")
@@ -100,7 +99,6 @@ bool eh_numero(string& str) {
     return true; // Se todos os caracteres são dígitos, retorna verdadeiro
 }
 
-//Verifica se o nome informado já existe no apartamento
 bool Apartamento::ja_exite(string nome){
     for(auto it = pessoas_.begin(); it != pessoas_.end(); it++){
         if(it->nome == nome){
@@ -232,7 +230,7 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
         cout << "\nVeículo não inserido, número máximo atingido\n" << endl;
     }
 }
-//Pre-condição: O novo tipo da pessoa não atingiu o numero máximo
+
 void Apartamento::editar_pessoa(string nome_antigo,
                                 string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo){
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
@@ -325,8 +323,6 @@ void Apartamento::editar_veiculo(string placa_antiga,
     cout << "\nEdição Falhou\n" << endl;
 }
 
-// Exclui a pessoa e atualiza os contadores
-//Pre-condições: A pessoa existe no apartamento e o apartamento não está vazio
 void Apartamento::excluir_pessoa(string nome_pessoa){
     if(!esta_vazio("pessoa")){
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
@@ -357,12 +353,6 @@ else{
     cout << "\nPessoa não encontrada\n" << endl;
 }
 
-// Lembrar de tratar exceções, pro caso dos dados não baterem
-// Lembrando que podemos retirar esse contadores de tipos, talvez seja desnecessário
-// Exclui um pet e atualiza os contadores
-
-//Da para deixar so com o nome do pet 
-//Pre-condição: A lista de pets não está vazia
 void Apartamento::excluir_pet(string nome_pet){
     if(!esta_vazio("pet")){
     for (auto it = pets_.begin(); it != pets_.end(); it++){
@@ -383,8 +373,6 @@ void Apartamento::excluir_pet(string nome_pet){
     cout << "\nExclusão Falhou\n" << endl;
 }
 
-// Exclui um veículo e atualiza os contadores
-// Pre-condição: A lista de veículos não está vazia
 void Apartamento::excluir_veiculo(string placa){
     if(!esta_vazio("veiculo")){
     for (auto it = veiculos_.begin(); it != veiculos_.end(); it++){
@@ -422,7 +410,6 @@ void Apartamento::exibir_estatisticas(){
     }
 }
 
-// Retorna a quantidade de itens, a partir da chave passada, do contador
 int Apartamento::quantidade(string chave){
     return contador[chave];
 }

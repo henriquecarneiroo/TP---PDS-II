@@ -16,14 +16,14 @@ using std::map;
  * @class Apartamento 
  * Classe que organiza as operações realizadas nos Apartamentos
 */
-
 class Apartamento {
 public:
     /**
      * @brief Construtor que permite definir limites máximos para diferentes tipos de
     pessoas, pets e veículos
+     * @pre O número máximo de moradores não pode ser menor ou igual a 0, os restantes 
+    não podem ser menores que 0.
     */
-   // O número máximo de moradores não pode ser menor ou igual a 0, os restantes não podem ser menores que 0.
     Apartamento(int max_Moradores, int max_Visitantes,
                 int max_Pets, int max_Veiculos);
     
@@ -98,10 +98,7 @@ public:
     void excluir_veiculo(string placa);
 
     /**
-     * @brief Exibe, de um modo geral as informacoes de um apartamento, como:
-    - Estatísticas (por enquanto so a quantidade de cada objeto, com o passar
-    do tempo podemos adicionar mais se quisermos)
-    - Informações gerais de cada objeto
+     * @brief Exibe, de um modo geral as informações de cada objeto
     */
     void exibir_estatisticas();
 
@@ -109,6 +106,7 @@ public:
      * @brief Função que retorna a quantidade de algo específico dentro das classes desde o número de 
      * pessoas, visitantes, moradores, pets, tipos de pets...
      * @pre O objeto especificado deve existir de acordo com os dados passados
+     * @return Quantidade de itens, a partir da chave passada do contador
     */    
     int quantidade(string objeto);
 
@@ -159,17 +157,26 @@ private:
     
     friend class Evento;
     friend class Encomendas;
-    // verifica se o numero máximo de cada tipo foi atingido. Retorna true caso não e false caso sim
-    bool verifica_quantidade_restante(string tipo);
-    //verifica se a lista de pessoas, veiculos ou pets está vazia. Retorna true se sim e false caso contrário
+
     /**
-    @pre O tipo passado precisa existir
+     * @brief Verifica se o numero máximo de cada tipo foi atingido
+     * @return true caso não e false caso sim
+    */
+    bool verifica_quantidade_restante(string tipo);
+
+    /**
+     * @brief Verifica se a lista de pessoas, veiculos ou pets está vazia
+     * @return True se sim e false caso contrário
+     * @pre O tipo passado precisa existir
     */
     bool esta_vazio(string tipo);
-    //verifica se a pessoa já existe no apartamento
+
+    /**
+     * @brief verifica se a pessoa já existe no apartamento
+     * @return True se sim e false caso contrário 
+    */
     bool ja_exite(string nome);
 
-    
     // As variaveis abaixo sao limitadores de pessoas, pets e veiculos e serão utilizadas nos construtores
 
     int MAX_MORADORES = 0;
