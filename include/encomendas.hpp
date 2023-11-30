@@ -17,16 +17,17 @@ class Encomendas{
     public:
 
     /**
-     * @brief Permite inserir uma nova encomenda, informando o seu id,o destinatário que deve ser um morador do prédio e a data 
-     * de entrega
+     * @brief Permite inserir uma nova encomenda
+     * @param id, destinatario, data_entrega
      * @pre O id não pode ter menos de 6 caracteres e nem mais de 50;
-     * O destinatário deve ser um morador;
-     * Se o destinatário não existir ou se não for um morador, a encomenda não será registrada
+     * @pre O destinatário deve ser um morador;
+     * @pre Se o destinatário não existir ou se não for um morador, a encomenda não será registrada
     */
     void registrar_encomenda (string id, string destinatario, string data_entrega);
 
     /**
-     * @brief Permite apagar uma encomenda, o seu id deve ser fornecido
+     * @brief Permite apagar uma encomenda
+     * @param id
      * @pre O id deve existir, senão, nada acontecerá.
     */
     void apagar_encomenda (string id);
@@ -37,8 +38,8 @@ class Encomendas{
     void exibir_encomendas ();
 
     /**
-     * @brief Permite procurar uma encomenda registrada pelo seu id
-     * e retornar os demais dados dessa encomenda
+     * @brief Permite procurar uma encomenda registrada
+     * @param id
      * @pre A id deve ser válida
     */
     void procurar_encomenda (string id);
@@ -51,7 +52,7 @@ class Encomendas{
     private:
 
     /**
-     * Variáveis que serão utilizadas nas funções
+     * @brief Variaveis que serão utilizadas nas funções
     */
     struct Encomenda {
         string destinatario;
