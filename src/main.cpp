@@ -7,12 +7,30 @@
 
 using namespace std;
 
+bool ehNumero(std::string& str) {
+    int contador = 0;
+    for (char c : str) {
+        if('-' == c){
+            contador++;
+        }
+        if (!isdigit(c)) {
+            if(contador != 1){
+            return false; // Se qualquer caractere não for um dígito, retorna falso
+            }
+            else{
+            contador = 0;
+            }
+        }
+    }
+    return true; // Se todos os caracteres são dígitos, retorna verdadeiro
+}
+
 int main() {
 
 // CONSTRUTORES =======================================================================================================================
 
     int max_Moradores, max_Visitantes, max_Pets, max_Veiculos;
-
+    do{
     cout << "Informe o número máximo de moradores: ";
     cin >> max_Moradores;
 
@@ -24,6 +42,16 @@ int main() {
 
     cout << "Informe o número máximo de veículos: ";
     cin >> max_Veiculos;
+
+    if(max_Moradores == 0){
+        cout << "\nO número máximo de moradores precisar ser maior que zero\n" << endl;
+    }
+    else if(max_Visitantes < 0 || max_Pets < 0 || max_Veiculos < 0 || max_Moradores < 0){
+        cout << "\nO número máximo não pode ser negativo\n" << endl;
+    }
+    } while(!(max_Moradores > 0 && max_Visitantes >= 0 && max_Pets >= 0 && max_Veiculos >= 0));
+    
+    
 
     // Map que armazena os apartamentos com o número de cada
     map<int, Apartamento> aps; 
@@ -45,19 +73,35 @@ int main() {
 
         // Permite o gerenciamento dos Apartamentos
         if (opcao == 1){
+            string num_ap_s;
             bool verifica_ap_valido = 1;
             while (verifica_ap_valido){
                 Apartamento apartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
                 cout << "Informe o número do apartamento: \n";
-                cin >> num_ap;
+                cin >> num_ap_s; // lê o numero do apartamento como string para evitar o loop infinito
                 verifica_ap_valido = 0;
-                if (aps.find(num_ap)==aps.end()){
-                    Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
-                    aps[num_ap] = novoApartamento;
-                }
-                if (num_ap <= 0){
-                    cout << "Digite um numero de apartamento válido\n";
+
+                if (!ehNumero(num_ap_s)){
+                    cout << "\nO número do apartamento precisa ser um número\n" << endl;
                     verifica_ap_valido = 1;
+                }
+
+                if(ehNumero(num_ap_s)){
+                    num_ap = stoi(num_ap_s);
+                    if(num_ap <= 0){
+                        cout << "\nDigite um numero de apartamento válido\n" << endl;
+                        verifica_ap_valido = 1;
+                        }
+                    else{
+                    verifica_ap_valido = 0;
+                    }
+                }
+
+                if(!verifica_ap_valido){    
+                    if (aps.find(num_ap)==aps.end()){
+                        Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
+                        aps[num_ap] = novoApartamento;
+                    }
                 }
             }    
         

@@ -35,6 +35,7 @@ public:
      * @brief Construtor que permite definir limites máximos para diferentes tipos de
     pessoas, pets e veículos
     */
+   // O número máximo de moradores não pode ser menor ou igual a 0, os restantes não podem ser menores que 0.
     Apartamento(int max_Moradores, int max_Visitantes,
                 int max_Pets, int max_Veiculos);
     
