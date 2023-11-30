@@ -26,13 +26,15 @@ class Evento {
     
     /**
      * @brief Cria um evento, informando o nome do responsavel, o nome do evento e sua data
-     * @pre Um responsavel nao pode ter em seu nome dois eventos com o mesmo nome. Visitantes nao podem criar eventos
+     * @pre Um responsavel nao pode ter em seu nome dois eventos com o mesmo nome
+     * @pre Visitantes nao podem criar eventos
     */
     void criar_evento (Apartamento& ap,string responsavel, string nome_evento, string data_evento);
 
     /**
      * @brief Adiciona um convidado ao evento 
-     * @pre O nome do evento deve estar associado a um evento existente. O nome do convidado deve estar associado a um morador ou visitante
+     * @pre O nome do evento deve estar associado a um evento existente
+     * @pre O nome do convidado deve estar associado a um morador ou visitante
     */
     void adicionar_convidado (map<int,Apartamento>& ap, string nome_evento, string convidado);
 
