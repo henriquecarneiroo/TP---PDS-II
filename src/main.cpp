@@ -27,7 +27,7 @@ bool ehNumero(std::string& str) {
 
 int main() {
 
-// CONSTRUTORES =======================================================================================================================
+// CONSTRUTORES E INICIALIZACAO =======================================================================================================================
 
     int max_Moradores, max_Visitantes, max_Pets, max_Veiculos;
     do{
@@ -55,8 +55,12 @@ int main() {
 
     // Map que armazena os apartamentos com o número de cada
     map<int, Apartamento> aps; 
+
+    // Variaveis que serao utilizadas para o armazenamento das informacoes dos eventos e encomendas
     Evento eventoManager;
     Encomendas encomendasManager;
+
+    // Variavel que guarda o numero do apartamento
     int num_ap = 0;
 
 // PAINEL INICIAL ====================================================================================================================
@@ -71,8 +75,10 @@ int main() {
         cin >> opcao;
 
 
-        // Permite o gerenciamento dos Apartamentos
+        // Gerenciamento dos Apartamentos
         if (opcao == 1){
+
+            // Estado que verifica se o numero do apartamento eh valido
             string num_ap_s;
             bool verifica_ap_valido = 1;
             while (verifica_ap_valido){
@@ -98,6 +104,8 @@ int main() {
                 }
 
                 if(!verifica_ap_valido){    
+
+                    // Se for valido, eh verificado se o apartamento ja foi criado
                     if (aps.find(num_ap)==aps.end()){
                         Apartamento novoApartamento(max_Moradores, max_Visitantes, max_Pets, max_Veiculos);
                         aps[num_ap] = novoApartamento;
@@ -105,7 +113,7 @@ int main() {
                 }
             }    
         
-    // MENU DE OPÇÕES APARTAMENTOS ====================================================================================================
+            // MENU DE OPÇÕES APARTAMENTOS ====================================================================================================
             while (true){
                 cout << "Escolha uma execução\n";
                 cout << "1. Inserir\n";
@@ -114,6 +122,7 @@ int main() {
                 cout << "4. Exibir Estatísiticas\n";
                 cout << "5. Voltar\n";
 
+                // Variavel que guarda a escolha
                 int execucao;
                 cin >> execucao;
 
@@ -125,6 +134,8 @@ int main() {
                     cout << "2. Inserir Pet\n";
                     cout << "3. Inserir Veículo\n";
                     cout << "4. Voltar\n";
+
+                    // Variavel que guarda a escolha
                     int escolha;
                     cin >> escolha;
 
@@ -174,7 +185,7 @@ int main() {
                         getline(cin, tipo_veiculo);
                         aps[num_ap].inserir_veiculo(modelo, placa, tipo_veiculo);
                     
-                    // Encerra essa parte do programa
+                    // Encerram essa parte do programa
                     } else if (escolha == 4) {
                         break; 
                     } else {
@@ -191,6 +202,8 @@ int main() {
                     cout << "2. Editar Pet\n";
                     cout << "3. Editar Veículo\n";
                     cout << "4. Voltar\n";
+
+                    // Variavel que guarda a escolha
                     int escolha;
                     cin >> escolha;
 
@@ -212,9 +225,6 @@ int main() {
                             cin.ignore();
                             cin >> tipo_pessoa_novo;
                         }
-                        //cout << "Tipo: "; 
-                        //cin.ignore();
-                        //cin >> tipo_pessoa_novo;
                         aps[num_ap].editar_pessoa (nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo);
                     
                     // Editar Pet
@@ -302,9 +312,13 @@ int main() {
                     }
                 }
                 }
+
+                // Exibir Estatisticas ================================================================================================
                 if (execucao == 4){
                     aps[num_ap].exibir_estatisticas();
                 }
+
+                // Voltar =============================================================================================================
                 if (execucao == 5){
                     break;
                 }
