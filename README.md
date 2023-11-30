@@ -38,6 +38,7 @@ Responsabilidades:
 - Exibir estatísiticas de um apartamento;
 - Verificar se uma pessoa é moradora;
 - Verificar se uma pessoa é visitante;
+- Retornar algo em específico da classe;
 
 
 Colaboradores:
@@ -46,8 +47,8 @@ list <Pets>
 list <Veiculos>
 map<string,int>
 enum TipoPessoa
-Struct Pessoa
-Enum TipoPet
+struct Pessoa
+enum TipoPet
 struct Pet
 struct Veiculo
 
@@ -82,77 +83,10 @@ list <Agendamento>
 A compilação do código pode ser feita de forma rápida e eficiente através do arquivo makefile, digitando apenas
 "make" no terminal. Caso um novo código seja criado, apenas o nome do "main.cpp" deverá ser alterado.
 
-A execução do caso de teste pode ser realizada escrevendo no terminal "./tp-execution".
+A execução do programa pode ser realizada escrevendo no terminal "./tp-execution".
 
 As observações de cada biblioteca estão destacadas nos comentários, com suas devidas pré condições.
 
-Para a utilização do código, é recomendado que seja criado um map da classe para que assim os números de cada apartamento sejam 
-enumerados de acordo com o interesse do usuário.
+Para a utilização do código, é recomendado que seja criado um map da classe para que assim os números de cada apartamento sejam enumerados de acordo com o interesse do usuário e que seja passado para as funções relacionadas e Evento e Encomendas o apartamento que está relacionado com a devida operação.
 
-Para o uso de todo o potencial do código, é recomendado que um código que integre todas a bibliotecas seja criado, pois elas são
-capazes de conversar entre si.
-
-Comentários do projeto (apenas para a progresso do trabalho):
-
-    Apartamento =====================================================================================
-    Coisas que podem ser adicionadas:
-
-    Consideracoes antes de alterar o codigo:
-
-    Mudanças no último commit:
-    adicionadas funções privadas, adicionados parâmetros nas funções
-    incluindo alguns para dar mais segurança (como data de nascimento
-    pra editar a pessoa)
-
-    att.: Adicionando também a opção de alterar o tipo da pessoa, pet ou veículo para 
-    que as funções fiquem mais completas;
-    Removendo o tipo administradora, já que ela não vai mais existir.
-
-    att.: Alterações de parâmetros desnecessários nas funções
-    Pequenas correções na implementação
-
-    att.: Adicionei funções de bool em apartamento.hpp e as implementei;
-    Implementei algumas funções do evento.cpp, temos que pensar em como vamos adicionar os convidados
-
-    att.: Corrigi os parâmetros e adaptei os códigos de acordo
-    OBS.: Temos que lembrar do seguinte caso: alterar pessoa quando ela tem encomendas ou eventos
-    relacionadas a ela
-    
-    Encomendas ======================================================================================
-    Comentários:
-    Não sei se na função de verificar se uma encomenda existe ou não é melhor retornar uma
-    string afirmando isso ou um true or false
-    
-    O map foi utilizado, porque ele simplifica as operações
-
-    Na criação do .cpp, somente moradores podem receber encomendas, não sei ainda muito bem
-    como vamos relacionar as duas classes
-
-    att.: Implementalção funcional das encomendas.
-    OBS.: Lembrar de tratar caso onde a pessoa(destinatária) é editada 
-
-    Evento ===========================================================================================
-    Coisas que podem ser adicionadas:
-    - Queria que o adicionar convidado abrangesse todos os apartamentos
-    para nao ter que ficar chamando a funcao toda vez que for necessario
-    adiconar um convidado
-    - A funcao criar_evento, ao ser implementada, devemos tomar cuidado, 
-    pois um evento nao pode ter o mesmo nome de um outro registrado no 
-    mesmo responsavel
-    - Nao sei se devemos juntar as funcoes exibir_evento e exibir-eventos
-    em uma só
-
-    Consideracoes antes de alterar o codigo:
-    - Fiquei em duvida se devemos criar uma classe Eventos ou Evento, ja
-    que temos uma lsita de armazena todos os eventos
-
-    Main ============================================================================================
-
-    att.: Adicionando um map na main para associar cada ap a um número;
-    Ajustando melhor, também, os parâmetros das funções e estabelecendo algumas pré-condições (prévias);
-    Mudei o "Apartamento apartamento" para dentro do bloco na main pois ele vai variando de acordo
-    com o número do apartamento e precisa ser reiniciado, se não, dados de outro apartamento
-    poderiam ser copiados indesejavelmente para o outro.
-
-    att.: Atualizei e adaptei algumas opções na main e alterei o painel do "editar_pessoa" como teste
-    para um possível modelo para os tratamentos de exceções. Se não for utilizar, só tirar.
+Para o uso de todo o potencial do código, é recomendado que um código que integre todas a bibliotecas seja criado, pois elas são capazes de conversar entre si.
