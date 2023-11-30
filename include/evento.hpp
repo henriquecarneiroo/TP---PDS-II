@@ -14,14 +14,6 @@ using namespace std;
  * Classe que organiza as operações realizadas nos Eventos
 */
 
-struct ExcecaoPessoaNaoExiste{
-    string nome;
-};
-
-struct ExcecaoResponsavelNaoEhMorador{
-    string nome;
-    string tipo;
-};
 
 class Evento {
     public:

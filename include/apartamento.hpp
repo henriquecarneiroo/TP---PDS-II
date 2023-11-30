@@ -17,18 +17,6 @@ using std::map;
  * Classe que organiza as operações realizadas nos Apartamentos
 */
 
-//Structs que salvam as exceções
-struct ExcecaoNomeJaExistente
-{
-    string nome;
-};
-
-struct ExcecaoNumeroExcedido
-{
-    string nome;
-    int max;
-};
-
 class Apartamento {
 public:
     /**
@@ -45,6 +33,8 @@ public:
      * @brief Insere uma pessoa
      * @pre Não há uma pessoa com o mesmo nome dentro de um mesmo apartamento
      * @pre O numero máximo do tipo da pessoa não foi atingido
+     * @pre A data de nascimento é um número positivo. dd/mm/aaaa, dd/mm/aa, ddmmaaaa ou ddmmaa
+     * @pre O tipo da pessoa é "morador" ou "visitante"
     */
     void inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa);
 
@@ -66,6 +56,8 @@ public:
      * @brief Edita uma pessoa
      * @pre Essa pessoa deve existir de acordo com os dados passados
      * @pre O número máximo do novo tipo de pessoa não foi atingido
+     * @pre A data de nascimento é um número inteiro
+     * @pre O novo tipo da pessoa é "morador" ou "visitante"
     */
     void editar_pessoa(string nome_antigo,
                        string nome_novo, string data_nascimento_nova, string tipo_pessoa_novo);

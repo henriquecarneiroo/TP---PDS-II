@@ -140,6 +140,9 @@ int main() {
                             cout << "Tipo de Pessoa (moradora ou visitante): ";
                             cin.ignore();
                             cin >> tipo_pessoa;
+                            if(tipo_pessoa != "moradora" && tipo_pessoa != "visitante"){
+                                cout << "\nTipo de pessoa inválido\n" << endl;
+                            }
                         }
                         aps[num_ap].inserir_pessoa(nome, data_nascimento, tipo_pessoa);
 

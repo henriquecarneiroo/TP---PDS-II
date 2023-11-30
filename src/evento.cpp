@@ -24,7 +24,6 @@ void Evento::criar_evento(Apartamento& ap,string responsavel, string nome_evento
                 cout << "\nEvento criado com sucesso\n" << endl;
             }
             else{
-                //throw ExcecaoResponsavelNaoEhMorador{responsavel, it->tipo_pessoa};
                 cout << "\nO responsável precisa ser morador\n" << endl;
                 return;
             }
@@ -32,7 +31,6 @@ void Evento::criar_evento(Apartamento& ap,string responsavel, string nome_evento
         }
     }
     if(!PessoaEncontrada){
-        //throw ExcecaoPessoaNaoExiste{responsavel};
         cout << "\nPessoa não encontrada\n" << endl;
     }
     

@@ -87,6 +87,19 @@ bool Apartamento::esta_vazio(string tipo)
     return false;
 }
 
+/** 
+    @brief verfica se a string contém apenas numero ou "/"
+    @pre O parâmetro passado precisar ser uma string
+**/
+bool eh_numero(string& str) {
+    for (char c : str) {
+        if (!isdigit(c) && c != '/') {
+            return false; // Se qualquer caractere não for um dígito, retorna falso
+        }
+    }
+    return true; // Se todos os caracteres são dígitos, retorna verdadeiro
+}
+
 //Verifica se o nome informado já existe no apartamento
 bool Apartamento::ja_exite(string nome){
     for(auto it = pessoas_.begin(); it != pessoas_.end(); it++){
@@ -97,20 +110,35 @@ bool Apartamento::ja_exite(string nome){
     return false;
 }
 
+/**
+    @brief verfica se a string está de acordo com o formato da data. dd/mm/aaaa, ddmmaaaa, ddmmaa ou dd/mm/aa
+    @pre O parâmetro é uma string
+**/
+bool verifica_data_nascimento(string data_nascimento){
+    if(eh_numero(data_nascimento)){
+        return  true;
+    }
+    else{
+        cout << "\nData de nascimento inválida\n" << endl;
+        return false;
+    }
+}
+
 Apartamento::Apartamento(int _Moradores, int _Visitantes, int _Pets, int _Veiculos)
     : MAX_MORADORES(_Moradores), MAX_VISITANTES(_Visitantes), MAX_PETS(_Pets), MAX_VEICULOS(_Veiculos){   
     }
 
 Apartamento::Apartamento(){}
 
-//Insere uma pessoa no apartamento
-//Pré-condição: A pessoa não existe no apartamento
 void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa)
 {   
     if(!ja_exite(nome)){
         Pessoa pessoa;
         pessoa.nome = nome;
         pessoa.data_nascimento = data_nascimento;
+        if(!verifica_data_nascimento(data_nascimento)){
+            return;
+        }
         if (tipo_pessoa == "moradora")
         {
             if(verifica_quantidade_restante(tipo_pessoa)){
@@ -118,30 +146,32 @@ void Apartamento::inserir_pessoa(string nome, string data_nascimento, string tip
                 pessoas_.push_back(pessoa);
                 MAX_MORADORES--;
                 contador["Moradores"]++;
-                cout << "\nMorador inserido com sucesso\n";
+                cout << "\nMorador inserido com sucesso\n" << endl;
             } else {
-                //throw ExcecaoNumeroExcedido{nome,MAX_MORADORES};
-                cout << "\nMorador não inserido, número máximo atingido\n";
+                cout << "\nMorador não inserido, número máximo atingido\n" << endl;
             }
             return;
         }
         if (tipo_pessoa == "visitante")
         {
-            if(verifica_quantidade_restante(tipo_pessoa)){
+            if(verifica_quantidade_restante(tipo_pessoa) && eh_numero(data_nascimento)){
                 pessoa.tipo_pessoa = "visitante";
                 pessoas_.push_back(pessoa);
                 MAX_VISITANTES--;
                 contador["Visitantes"]++;
-                cout << "Visitante inserido com sucesso\n";
+                cout << "\nVisitante inserido com sucesso\n" << endl;
             } else {
-                //throw ExcecaoNumeroExcedido{nome,MAX_MORADORES};
-                cout << "Visitante não inserido, número máximo atingido\n";
+                if(!eh_numero(data_nascimento)){
+                    cout << "\nFormato da data de nascimento inválido\n" << endl;
+                }
+                else{
+                cout << "\nMorador não inserido, número máximo atingido\n" << endl;
+                }
             }
             return;
         }
     } else {
-        //throw ExcecaoNomeJaExistente {nome};
-        cout << "Pessoa já existe!\n";
+        cout << "\nPessoa já existe!\n" << endl;
         return;
     }
 }
@@ -156,22 +186,22 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         if (tipo == "cachorro")
         {
             pet.tipo_pet = "cachorro";
-            cout << "Pet inserido com sucesso\n";
+            cout << "\nPet inserido com sucesso\n" << endl;
         }
         else if (tipo == "gato")
         {
             pet.tipo_pet = "gato";
-            cout << "Pet inserido com sucesso\n";
+            cout << "\nPet inserido com sucesso\n" << endl;
         }
         else if (tipo == "passaro")
         {
             pet.tipo_pet = "passaro";
-            cout << "Pet inserido com sucesso\n";
+            cout << "\nPet inserido com sucesso\n" << endl;
         }
         else if (tipo == "outro")
         {
             pet.tipo_pet = "outro";
-            cout << "Pet inserido com sucesso\n";
+            cout << "\nPet inserido com sucesso\n" << endl;
         } else {
             cout << "Inserção Falhou\n";
         }
@@ -181,7 +211,7 @@ void Apartamento::inserir_pet(string nome, string raca, string tipo)
         contador["Pets"]++;
         return;
     } else {
-        cout << "Pet não inserido, número máximo atingido\n";
+        cout << "\nPet não inserido, número máximo atingido\n" << endl;
     }
 }
 
@@ -197,9 +227,9 @@ void Apartamento::inserir_veiculo(string modelo, string placa, string tipo_veicu
         veiculos_.push_back(veiculo);
         MAX_VEICULOS--;
         contador["Veiculos"]++;
-        cout << "\nVeículo inserido com sucesso\n";
+        cout << "\nVeículo inserido com sucesso\n" << endl;
     } else {
-        cout << "\nVeículo não inserido, número máximo atingido\n";
+        cout << "\nVeículo não inserido, número máximo atingido\n" << endl;
     }
 }
 //Pre-condição: O novo tipo da pessoa não atingiu o numero máximo
@@ -208,6 +238,11 @@ void Apartamento::editar_pessoa(string nome_antigo,
     for (auto it = pessoas_.begin(); it != pessoas_.end(); it++){
         if (it->nome == nome_antigo){
             if(it->tipo_pessoa == tipo_pessoa_novo || verifica_quantidade_restante(tipo_pessoa_novo)){ // se o tipo de pessoa nova for igual ao antigo, edita direto, se não verifica se ainda não atingiu o numero máximo do tipo novo
+
+             if(!verifica_data_nascimento(data_nascimento_nova)){
+                return;
+            }
+
             it->nome = nome_novo;
             it->data_nascimento = data_nascimento_nova;
 
@@ -216,10 +251,10 @@ void Apartamento::editar_pessoa(string nome_antigo,
                     it->tipo_pessoa = "moradora";
                     contador["Visitantes"]--;
                     contador["Moradores"]++;
-                    cout << "\nEdição concluída com sucesso\n";
+                    cout << "\nEdição concluída com sucesso\n" << endl;
                     return;
                 } else if (it->tipo_pessoa == "moradora") {
-                    cout << "\nEdição concluída com sucesso\n";
+                    cout << "\nEdição concluída com sucesso\n" << endl;
                     return;
                 }
             } else if (tipo_pessoa_novo == "visitante"){
@@ -227,10 +262,10 @@ void Apartamento::editar_pessoa(string nome_antigo,
                     it->tipo_pessoa = "visitante";
                     contador["Moradores"]--;
                     contador["Visitantes"]++;
-                    cout << "\nEdição concluída com sucesso\n";
+                    cout << "\nEdição concluída com sucesso\n" << endl;
                     return;
                 } else if (it->tipo_pessoa == "visitante"){
-                    cout << "\nEdição concluída com sucesso\n";
+                    cout << "\nEdição concluída com sucesso\n" << endl;
                     return;
                 }
             }
@@ -255,19 +290,19 @@ void Apartamento::editar_pet(string nome_pet_antigo,
             // Essa parte define o novo tipo de pet
             if (tipo_novo == "cachorro"){
                 it->tipo_pet = "cachorro";
-                cout << "\nEdição concluída com sucesso\n";
+                cout << "\nEdição concluída com sucesso\n" << endl;
                 return;
             } else if (tipo_novo == "gato"){
                 it->tipo_pet = "gato";
-                cout << "\nEdição concluída com sucesso\n";
+                cout << "\nEdição concluída com sucesso\n" << endl;
                 return;
             } else if (tipo_novo == "passaro"){
                 it->tipo_pet = "passaro";
-                cout << "\nEdição concluída com sucesso\n";
+                cout << "\nEdição concluída com sucesso\n" << endl;
                 return;
             } else if (tipo_novo == "outro"){
                 it->tipo_pet = "outro";
-                cout << "\nEdição concluída com sucesso\n";
+                cout << "\nEdição concluída com sucesso\n" << endl;
                 return;
             }
             break;
@@ -283,11 +318,11 @@ void Apartamento::editar_veiculo(string placa_antiga,
             it->modelo = modelo_novo;
             it->placa = placa_nova;
             it->tipo_veiculo = tipo_veiculo_novo;
-            cout << "Edição concluída com sucesso\n";
+            cout << "\nEdição concluída com sucesso\n" << endl;
             return;
         }
     }
-    cout << "Edição Falhou\n";
+    cout << "\nEdição Falhou\n" << endl;
 }
 
 // Exclui a pessoa e atualiza os contadores
@@ -300,7 +335,7 @@ void Apartamento::excluir_pessoa(string nome_pessoa){
                 pessoas_.erase(it);
                 contador["Moradores"]--;
                 MAX_MORADORES++;
-                cout << "Pessoa excluida com sucesso\n";
+                cout << "\nPessoa excluida com sucesso\n" << endl;
                 return;
                 break;
             }
@@ -308,7 +343,7 @@ void Apartamento::excluir_pessoa(string nome_pessoa){
                 pessoas_.erase(it);
                 contador["Visitantes"]--;
                 MAX_VISITANTES++;
-                cout << "Pessoa excluida com sucesso\n";
+                cout << "\nPessoa excluida com sucesso\n" << endl;
                 return;
                 break;
             }
@@ -316,10 +351,10 @@ void Apartamento::excluir_pessoa(string nome_pessoa){
     }
 }
 else{
-    cout << "Não há pessoas a serem excluídas\n";
+    cout << "\nNão há pessoas a serem excluídas\n" << endl;
     return;
 }
-    cout << "\nPessoa não encontrada\n";
+    cout << "\nPessoa não encontrada\n" << endl;
 }
 
 // Lembrar de tratar exceções, pro caso dos dados não baterem
@@ -335,17 +370,17 @@ void Apartamento::excluir_pet(string nome_pet){
                 pets_.erase(it);
                 MAX_PETS++;
                 contador["Pets"]--;
-                cout << "Pet excluido com sucesso\n";
+                cout << "\nPet excluido com sucesso\n" << endl;
                 return;
             }
         break;
     }
     }
     else{
-        cout << "Não há pet para ser excluído\n";
+        cout << "\nNão há pet para ser excluído\n" << endl;
         return;
     }
-    cout << "Exclusão Falhou\n";
+    cout << "\nExclusão Falhou\n" << endl;
 }
 
 // Exclui um veículo e atualiza os contadores
@@ -357,17 +392,17 @@ void Apartamento::excluir_veiculo(string placa){
                 veiculos_.erase(it);
                 contador["Veiculos"]--;
                 MAX_VEICULOS++;
-                cout << "Veículo excluida com sucesso\n";
+                cout << "\nVeículo excluida com sucesso\n" << endl;
                 return;
             }
         break;
     }
     }
     else{
-        cout << "Não há veículo para ser excluído\n";
+        cout << "\nNão há veículo para ser excluído\n" << endl;
         return;
     }
-    cout << "Exclusão Falhou\n";
+    cout << "\nExclusão Falhou\n" << endl;
 }
 
 void Apartamento::exibir_estatisticas(){
