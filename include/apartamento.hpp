@@ -33,7 +33,7 @@ public:
      * @brief Insere uma pessoa
      * @pre Não há uma pessoa com o mesmo nome dentro de um mesmo apartamento
      * @pre O numero máximo do tipo da pessoa não foi atingido
-     * @pre A data de nascimento é um número positivo. dd/mm/aaaa, dd/mm/aa, ddmmaaaa ou ddmmaa
+     * @pre A data de nascimento é um número positivo.
      * @pre O tipo da pessoa é "morador" ou "visitante"
     */
     void inserir_pessoa(string nome, string data_nascimento, string tipo_pessoa);
