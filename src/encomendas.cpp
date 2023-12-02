@@ -15,7 +15,7 @@ bool verifica_id(string id){
         return false;
     }
     return true;
-}
+} 
 
 void Encomendas::registrar_encomenda(string id, string destinatario, string data_entrega){
     Encomenda encomenda;

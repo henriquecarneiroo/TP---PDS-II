@@ -12,7 +12,7 @@ Evento::Evento(){
 void Evento::criar_evento(Apartamento& ap,string responsavel, string nome_evento, string data_evento){
 
     Agendamento novo_evento;
-    bool PessoaEncontrada = false;
+    bool PessoaEncontrada = false; 
 
     for(auto it = ap.pessoas_.begin(); it != ap.pessoas_.end(); it++){
         if(it->nome == responsavel){

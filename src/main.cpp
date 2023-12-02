@@ -208,7 +208,7 @@ int main() {
                     cin >> escolha;
 
                     // Editar Pessoa
-                    if (escolha == 1){
+                    if (escolha == 1){ 
                         string nome_antigo, nome_novo, data_nascimento_nova, tipo_pessoa_novo;
 
                         cout << "Informe o nome da pessoa a ser alterada: ";

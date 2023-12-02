@@ -91,9 +91,13 @@ bool Apartamento::esta_vazio(string tipo)
     @pre O parâmetro passado precisar ser uma string
 **/
 bool eh_numero(string& str) {
+    int contador = 0;
     for (char c : str) {
-        if (!isdigit(c) && c != '/') {
-            return false; // Se qualquer caractere não for um dígito, retorna falso
+        if (!isdigit(c) && c == '-') {
+            contador ++;
+        }
+        if(contador > 0 && isdigit(c)){
+            return false; // se for numero negativo, retorna false
         }
     }
     return true; // Se todos os caracteres são dígitos, retorna verdadeiro
