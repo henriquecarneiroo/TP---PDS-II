@@ -42,15 +42,13 @@ Responsabilidades:
 
 
 Colaboradores:
-list <Pessoas>
-list <Pets>
-list <Veiculos>
-map<string,int>
-enum TipoPessoa
-struct Pessoa
-enum TipoPet
-struct Pet
-struct Veiculo
+- list<Pessoas>
+- list<Pets>
+- list<Veiculos>
+- map<string,int>
+- struct Pessoa
+- struct Pet
+- struct Veiculo
 
 
 == Classe: Encomendas ==
@@ -62,8 +60,8 @@ Responsabilidades:
 - Verificar se uma encomenda existe;
 
 Colaboradores:
-struct Encomenda
-map<string, Encomenda>
+- struct Encomenda
+- map<string, Encomenda>
 
 == Classe: Evento ==
 
@@ -75,8 +73,8 @@ Responsabilidades:
 - Listar pessoas de um evento.
 
 Colaboradores:
-struct Agendamento
-list <Agendamento>
+- struct Agendamento
+- list<Agendamento>
 
 *_Instruções de Instalação e de Uso:_*
 
