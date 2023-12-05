@@ -42,9 +42,9 @@ Responsabilidades:
 
 
 Colaboradores:
-- list<Pessoas>
-- list<Pets>
-- list<Veiculos>
+- list Pessoas
+- list Pets
+- list Veiculos
 - map<string,int>
 - struct Pessoa
 - struct Pet
@@ -74,7 +74,7 @@ Responsabilidades:
 
 Colaboradores:
 - struct Agendamento
-- list<Agendamento>
+- list Agendamento
 
 *_Instruções de Instalação e de Uso:_*
 
